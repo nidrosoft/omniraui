@@ -219,17 +219,16 @@ export default function LogosPage() {
             <p style={sectionDesc}>
                 Display brand logos in a clean grid layout — great for partner sections or integrations pages.
             </p>
-            <ComponentPreview>
-                <div style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
-                    gap: 1,
-                    background: "var(--color-border-standard)",
-                    borderRadius: "var(--radius-lg)",
-                    overflow: "hidden",
-                    border: "1px solid var(--color-border-standard)",
-                }}>
-                    {logoList.slice(0, 16).map((logo) => {
+            <div style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(6, 1fr)",
+                gap: 1,
+                background: "var(--color-border-standard)",
+                borderRadius: "var(--radius-lg)",
+                overflow: "hidden",
+                border: "1px solid var(--color-border-standard)",
+            }}>
+                    {logoList.slice(0, 24).map((logo) => {
                         const Icon = logo.icon;
                         return (
                             <div key={logo.name} style={{
@@ -247,13 +246,12 @@ export default function LogosPage() {
                         );
                     })}
                 </div>
-            </ComponentPreview>
             <div style={{ marginTop: 16 }}>
                 <CodeBlock
                     code={`// Logo grid with divider borders
 <div style={{
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
+  gridTemplateColumns: "repeat(6, 1fr)",
   gap: 1,
   background: "var(--color-border-standard)",
   borderRadius: "var(--radius-lg)",
