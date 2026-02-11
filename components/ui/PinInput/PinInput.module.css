@@ -1,0 +1,104 @@
+/* ── Root ── */
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: fit-content;
+}
+
+/* ── Label ── */
+.label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Description ── */
+.description {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Group ── */
+.group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ── Separator ── */
+.separator {
+    color: var(--color-text-tertiary);
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.separator_sm {
+    font-size: 14px;
+    width: 12px;
+}
+
+.separator_md {
+    font-size: 16px;
+    width: 14px;
+}
+
+.separator_lg {
+    font-size: 18px;
+    width: 16px;
+}
+
+/* ── Slot ── */
+.slot {
+    text-align: center;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border-standard);
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    transition: all 0.2s;
+    outline: none;
+    caret-color: var(--color-lime);
+}
+
+.slot:focus {
+    border-color: var(--color-border-lime-strong);
+    background: var(--color-bg-elevated);
+    box-shadow: 0 0 0 3px var(--color-bg-lime-subtle);
+}
+
+.slot::placeholder {
+    color: var(--color-text-tertiary);
+    opacity: 0.4;
+}
+
+/* ── Slot sizes ── */
+.slot_sm {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+}
+
+.slot_md {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+}
+
+.slot_lg {
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+}
+
+/* ── Disabled ── */
+.slotDisabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

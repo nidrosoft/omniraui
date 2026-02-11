@@ -1,0 +1,80 @@
+.card {
+    position: relative;
+    border-radius: var(--radius-2xl);
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-standard);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: var(--blur-standard);
+    transition: all 0.35s ease;
+    overflow: hidden;
+}
+
+.card.hoverable:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Variants */
+.standard {
+    border-radius: var(--radius-2xl);
+}
+
+.light {
+    border-radius: var(--radius-xl);
+    background: rgba(248, 248, 248, 0.02);
+    border-width: 1px;
+    border-color: var(--color-border-subtle);
+    box-shadow: var(--shadow-card-light);
+}
+
+.accent {
+    background: var(--color-bg-lime-subtle);
+    border-color: var(--color-border-lime-medium);
+    box-shadow: var(--shadow-card-accent);
+}
+
+.framework {
+    border-radius: 48px;
+    background: var(--gradient-framework);
+    box-shadow: 0px 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+/* Padding sizes */
+.paddingNone {
+    padding: 0;
+}
+
+.paddingSm {
+    padding: 16px;
+}
+
+.paddingMd {
+    padding: 24px;
+}
+
+.paddingLg {
+    padding: 32px;
+}
+
+.paddingXl {
+    padding: 48px;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .card {
+        border-radius: var(--radius-xl);
+    }
+
+    .framework {
+        border-radius: var(--radius-2xl);
+    }
+
+    .paddingLg {
+        padding: 24px;
+    }
+
+    .paddingXl {
+        padding: 32px 20px;
+    }
+}

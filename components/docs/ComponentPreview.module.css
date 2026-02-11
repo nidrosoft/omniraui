@@ -1,0 +1,132 @@
+.wrapper {
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.wrapper:has([aria-expanded="true"]) {
+    z-index: 10;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.headerLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.previewTitle {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+}
+
+.previewDescription {
+    font-size: 14px;
+    color: var(--color-text-tertiary);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.actionBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.actionBtn:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-primary);
+}
+
+.actionBtnActive {
+    background: var(--color-bg-lime-subtle);
+    border-color: var(--color-border-lime-medium);
+    color: var(--color-lime);
+}
+
+.preview {
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    min-height: 120px;
+    transition: all 0.3s;
+    overflow: visible;
+}
+
+.codeWrapper {
+    margin-top: 0;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border-standard);
+    border-top: none;
+}
+
+.tabs {
+    display: flex;
+    gap: 4px;
+    padding: 0 24px;
+    margin-bottom: 16px;
+}
+
+.tab {
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    color: var(--color-text-secondary);
+    background: var(--color-bg-hover);
+}
+
+.tabActive {
+    color: var(--color-text-primary);
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border-standard);
+}
+
+@media (max-width: 767px) {
+    .preview {
+        padding: 24px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}

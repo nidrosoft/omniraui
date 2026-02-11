@@ -1,0 +1,105 @@
+.browser {
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border-standard);
+    background: var(--color-bg-card);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Chrome bar ── */
+.chrome {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-elevated);
+}
+
+.trafficLights {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dotRed { background: #ff5f57; }
+.dotYellow { background: #febc2e; }
+.dotGreen { background: #28c840; }
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.navBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: none;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: color 0.15s, background 0.15s;
+}
+
+.navBtn:hover {
+    color: var(--color-text-secondary);
+    background: var(--color-bg-hover);
+}
+
+/* ── Address bar ── */
+.addressBar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 32px;
+    padding: 0 12px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border-subtle);
+}
+
+.addressText {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.copyBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color 0.15s;
+}
+
+.copyBtn:hover {
+    color: var(--color-text-primary);
+}
+
+/* ── Content ── */
+.content {
+    min-height: 120px;
+    padding: 24px;
+}

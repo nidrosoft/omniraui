@@ -1,0 +1,371 @@
+/* ── Wrapper ── */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    position: relative;
+}
+
+/* ── Label ── */
+.label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-tertiary);
+}
+
+.required {
+    color: var(--color-error);
+    margin-left: 2px;
+}
+
+/* ── Trigger ── */
+.trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 0 14px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border-standard);
+    font-family: inherit;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all 0.25s;
+    outline: none;
+    text-align: left;
+    position: relative;
+}
+
+.trigger:hover {
+    border-color: var(--color-border-medium);
+}
+
+.triggerOpen {
+    border-color: var(--color-border-lime-strong);
+    background: var(--color-bg-elevated);
+}
+
+.triggerError {
+    border-color: var(--color-error-border);
+}
+
+.triggerError.triggerOpen {
+    border-color: var(--color-error);
+}
+
+.triggerDisabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ── Trigger Sizes ── */
+.sm {
+    height: 36px;
+    font-size: 13px;
+    padding: 0 12px;
+}
+
+.md {
+    height: 44px;
+    font-size: 14px;
+}
+
+.lg {
+    height: 52px;
+    font-size: 16px;
+    padding: 0 16px;
+}
+
+/* ── Tags trigger ── */
+.triggerTags {
+    height: auto;
+    min-height: 44px;
+    padding: 6px 14px;
+    flex-wrap: wrap;
+}
+
+.triggerTags.sm {
+    min-height: 36px;
+    padding: 4px 12px;
+}
+
+.triggerTags.lg {
+    min-height: 52px;
+    padding: 8px 16px;
+}
+
+/* ── Trigger Value ── */
+.triggerValue {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* ── Placeholder ── */
+.placeholder {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-tertiary);
+    opacity: 0.6;
+    font-weight: 400;
+}
+
+.placeholderIcon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ── Chevron ── */
+.chevron {
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.chevronOpen {
+    transform: rotate(180deg);
+}
+
+/* ── Listbox ── */
+.listbox {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    margin-top: 6px;
+    padding: 6px;
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-standard);
+    box-shadow: var(--shadow-card);
+    max-height: 280px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    animation: selectIn 0.15s ease-out;
+}
+
+@keyframes selectIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Search Box ── */
+.searchBox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    margin-bottom: 4px;
+}
+
+.searchInput {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--color-text-primary);
+}
+
+.searchInput::placeholder {
+    color: var(--color-text-tertiary);
+    opacity: 0.5;
+}
+
+/* ── No Results ── */
+.noResults {
+    padding: 12px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Option ── */
+.option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--color-text-primary);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.option:hover {
+    background: var(--color-bg-hover);
+}
+
+.optionSelected {
+    background: var(--color-bg-lime-subtle);
+}
+
+.optionSelected:hover {
+    background: var(--color-bg-lime-medium);
+}
+
+.optionDisabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ── Item Content ── */
+.itemContent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+}
+
+.itemText {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.itemLabel {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.itemSupporting {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+}
+
+.itemIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Avatar ── */
+.avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--color-border-subtle);
+}
+
+/* ── Dot ── */
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-success);
+    flex-shrink: 0;
+}
+
+/* ── Tags Container ── */
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+    align-items: center;
+    min-width: 0;
+}
+
+/* ── Tag Chip ── */
+.tagChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+.tagChipAvatar {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: -2px;
+}
+
+.tagChipRemove {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--color-text-tertiary);
+    transition: color 0.15s;
+    line-height: 1;
+}
+
+.tagChipRemove:hover {
+    color: var(--color-text-primary);
+}
+
+/* ── Hint / Error ── */
+.hint {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.errorText {
+    font-size: 12px;
+    color: var(--color-error);
+}
+
+/* ── Scrollbar ── */
+.listbox::-webkit-scrollbar {
+    width: 4px;
+}
+
+.listbox::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.listbox::-webkit-scrollbar-thumb {
+    background: var(--color-border-medium);
+    border-radius: 4px;
+}

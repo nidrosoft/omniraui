@@ -1,0 +1,120 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+/* Variants */
+.section {
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-hover);
+    border: 1.5px solid var(--color-border-medium);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-tertiary);
+}
+
+.accent {
+    padding: 6px 18px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-lime);
+    background: var(--color-bg-lime-medium);
+    border: 1px solid var(--color-border-lime-medium);
+}
+
+.success {
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-success);
+    background: var(--color-success-bg);
+    border: 1px solid var(--color-success-border);
+}
+
+.error {
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-error);
+    background: var(--color-error-bg);
+    border: 1px solid var(--color-error-border);
+}
+
+.warning {
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-warning);
+    background: var(--color-warning-bg);
+    border: 1px solid var(--color-warning-border);
+}
+
+.info {
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-info);
+    background: var(--color-info-bg);
+    border: 1px solid var(--color-info-border);
+}
+
+/* Sizes */
+.sm {
+    font-size: 10px;
+    padding: 2px 8px;
+}
+
+.md {
+    font-size: 12px;
+}
+
+.lg {
+    font-size: 14px;
+    padding: 8px 20px;
+}
+
+/* Dot */
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.section .dot {
+    background: var(--color-text-tertiary);
+}
+
+.accent .dot {
+    background: var(--color-lime);
+}
+
+.success .dot {
+    background: var(--color-success);
+}
+
+.error .dot {
+    background: var(--color-error);
+}
+
+.warning .dot {
+    background: var(--color-warning);
+}
+
+.info .dot {
+    background: var(--color-info);
+}

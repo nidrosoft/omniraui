@@ -1,0 +1,92 @@
+/* ── Group ── */
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ── Wrapper ── */
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.wrapperDisabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ── Radio circle ── */
+.radio {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border-standard);
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+}
+
+.radio:hover {
+    border-color: var(--color-border-lime-strong);
+}
+
+.radioChecked {
+    background: var(--color-bg-input);
+    border-color: var(--color-lime);
+}
+
+/* Radio sizes */
+.radio_sm {
+    width: 18px;
+    height: 18px;
+}
+
+.radio_md {
+    width: 22px;
+    height: 22px;
+}
+
+/* ── Inner dot ── */
+.dot {
+    border-radius: 50%;
+    background: var(--color-lime);
+}
+
+.dot_sm {
+    width: 8px;
+    height: 8px;
+}
+
+.dot_md {
+    width: 10px;
+    height: 10px;
+}
+
+/* ── Text ── */
+.textWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    cursor: pointer;
+    padding-top: 0px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+}
+
+.hint {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    line-height: 1.4;
+}

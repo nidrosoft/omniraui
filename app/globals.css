@@ -1,0 +1,347 @@
+/* ============================================
+   Omnira UI — Design System CSS Variables
+   ============================================ */
+
+/* --- Font Faces --- */
+@font-face {
+    font-family: "Host Grotesk";
+    src: url("/fonts/HostGrotesk-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* --- CSS Custom Properties: Dark Mode (Default) --- */
+[data-theme="dark"] {
+    --color-lime: #D2FE17;
+    --color-lime-hover: #c0e616;
+    --color-lime-gradient: #ABC928;
+    --color-lime-text: #121212;
+
+    --color-bg-primary: #202020;
+    --color-bg-secondary: #1a1a1a;
+    --color-bg-card: rgba(248, 248, 248, 0.03);
+    --color-bg-elevated: rgba(248, 248, 248, 0.06);
+    --color-bg-input: rgba(248, 248, 248, 0.04);
+    --color-bg-hover: rgba(248, 248, 248, 0.05);
+    --color-bg-overlay: rgba(10, 10, 10, 0.97);
+    --color-bg-sidebar: #1a1a1a;
+
+    --color-text-primary: rgba(248, 248, 248, 0.95);
+    --color-text-secondary: rgba(248, 248, 248, 0.70);
+    --color-text-tertiary: rgba(248, 248, 248, 0.50);
+
+    --color-border-subtle: rgba(255, 255, 255, 0.05);
+    --color-border-standard: rgba(255, 255, 255, 0.06);
+    --color-border-medium: rgba(255, 255, 255, 0.08);
+    --color-border-strong: rgba(255, 255, 255, 0.15);
+
+    --color-border-lime-subtle: rgba(210, 254, 23, 0.1);
+    --color-border-lime-medium: rgba(210, 254, 23, 0.15);
+    --color-border-lime-strong: rgba(210, 254, 23, 0.3);
+
+    --color-bg-lime-subtle: rgba(210, 254, 23, 0.06);
+    --color-bg-lime-medium: rgba(210, 254, 23, 0.08);
+    --color-bg-lime-strong: rgba(210, 254, 23, 0.12);
+
+    --color-error: #ef4444;
+    --color-warning: #ffbd2e;
+    --color-success: #28c840;
+    --color-info: #3b82f6;
+
+    --color-error-bg: rgba(239, 68, 68, 0.08);
+    --color-error-border: rgba(239, 68, 68, 0.15);
+    --color-warning-bg: rgba(255, 189, 46, 0.08);
+    --color-warning-border: rgba(255, 189, 46, 0.15);
+    --color-success-bg: rgba(40, 200, 64, 0.08);
+    --color-success-border: rgba(40, 200, 64, 0.15);
+    --color-info-bg: rgba(59, 130, 246, 0.08);
+    --color-info-border: rgba(59, 130, 246, 0.15);
+
+    --shadow-card: inset 2px 4px 16px rgba(248, 248, 248, 0.06), 0px 8px 32px rgba(0, 0, 0, 0.2);
+    --shadow-card-light: inset 1px 2px 12px rgba(248, 248, 248, 0.03), 0px 8px 28px rgba(0, 0, 0, 0.12);
+    --shadow-card-accent: inset 2px 4px 16px rgba(210, 254, 23, 0.04), 0px 16px 48px rgba(0, 0, 0, 0.2);
+    --shadow-card-hover: inset 2px 4px 16px rgba(248, 248, 248, 0.08), 0px 12px 40px rgba(0, 0, 0, 0.28);
+    --shadow-btn-primary: 0 8px 24px rgba(210, 254, 23, 0.3);
+    --shadow-glow-lime: 0 0 8px rgba(210, 254, 23, 0.6), 0 0 16px rgba(210, 254, 23, 0.3);
+
+    --gradient-text: linear-gradient(93deg, rgba(248, 248, 248, 0.9), rgba(248, 248, 248, 0.5));
+    --gradient-framework: linear-gradient(124deg, rgba(248, 248, 248, 0.04) 0%, rgba(248, 248, 248, 0.01) 46.5%), linear-gradient(180deg, rgba(248, 248, 248, 0.03) 0%, rgba(248, 248, 248, 0.00) 100%);
+    --gradient-progress: linear-gradient(90deg, #D2FE17, #e5ff54);
+
+    --blur-standard: blur(50px);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-2xl: 32px;
+    --radius-3xl: 40px;
+    --radius-full: 100px;
+
+    --toggle-track-off: rgba(248, 248, 248, 0.1);
+    --color-grid-line: rgba(248, 248, 248, 0.05);
+}
+
+/* --- CSS Custom Properties: Light Mode --- */
+[data-theme="light"] {
+    --color-lime: #8AB400;
+    --color-lime-hover: #7DA310;
+    --color-lime-gradient: #6B9A00;
+    --color-lime-text: #ffffff;
+
+    --color-bg-primary: #f5f5f7;
+    --color-bg-secondary: #ebebed;
+    --color-bg-card: rgba(255, 255, 255, 0.7);
+    --color-bg-elevated: rgba(255, 255, 255, 0.9);
+    --color-bg-input: rgba(0, 0, 0, 0.03);
+    --color-bg-hover: rgba(0, 0, 0, 0.04);
+    --color-bg-overlay: rgba(255, 255, 255, 0.97);
+    --color-bg-sidebar: #ffffff;
+
+    --color-text-primary: rgba(18, 18, 18, 0.95);
+    --color-text-secondary: rgba(18, 18, 18, 0.65);
+    --color-text-tertiary: rgba(18, 18, 18, 0.45);
+
+    --color-border-subtle: rgba(0, 0, 0, 0.06);
+    --color-border-standard: rgba(0, 0, 0, 0.08);
+    --color-border-medium: rgba(0, 0, 0, 0.10);
+    --color-border-strong: rgba(0, 0, 0, 0.18);
+
+    --color-border-lime-subtle: rgba(138, 180, 0, 0.15);
+    --color-border-lime-medium: rgba(138, 180, 0, 0.25);
+    --color-border-lime-strong: rgba(138, 180, 0, 0.4);
+
+    --color-bg-lime-subtle: rgba(138, 180, 0, 0.06);
+    --color-bg-lime-medium: rgba(138, 180, 0, 0.10);
+    --color-bg-lime-strong: rgba(138, 180, 0, 0.15);
+
+    --color-error: #dc2626;
+    --color-warning: #d97706;
+    --color-success: #16a34a;
+    --color-info: #2563eb;
+
+    --color-error-bg: rgba(220, 38, 38, 0.06);
+    --color-error-border: rgba(220, 38, 38, 0.15);
+    --color-warning-bg: rgba(217, 119, 6, 0.06);
+    --color-warning-border: rgba(217, 119, 6, 0.15);
+    --color-success-bg: rgba(22, 163, 74, 0.06);
+    --color-success-border: rgba(22, 163, 74, 0.15);
+    --color-info-bg: rgba(37, 99, 235, 0.06);
+    --color-info-border: rgba(37, 99, 235, 0.15);
+
+    --shadow-card: 0px 1px 3px rgba(0, 0, 0, 0.04), 0px 6px 24px rgba(0, 0, 0, 0.06);
+    --shadow-card-light: 0px 1px 2px rgba(0, 0, 0, 0.03), 0px 4px 16px rgba(0, 0, 0, 0.04);
+    --shadow-card-accent: 0px 2px 8px rgba(138, 180, 0, 0.08), 0px 12px 36px rgba(0, 0, 0, 0.06);
+    --shadow-card-hover: 0px 2px 6px rgba(0, 0, 0, 0.06), 0px 12px 36px rgba(0, 0, 0, 0.1);
+    --shadow-btn-primary: 0 6px 20px rgba(138, 180, 0, 0.25);
+    --shadow-glow-lime: 0 0 6px rgba(138, 180, 0, 0.4), 0 0 12px rgba(138, 180, 0, 0.2);
+
+    --gradient-text: linear-gradient(93deg, rgba(18, 18, 18, 0.95), rgba(18, 18, 18, 0.55));
+    --gradient-framework: linear-gradient(124deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 46.5%), linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
+    --gradient-progress: linear-gradient(90deg, #8AB400, #a5d600);
+
+    --blur-standard: blur(50px);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-2xl: 32px;
+    --radius-3xl: 40px;
+    --radius-full: 100px;
+
+    --toggle-track-off: rgba(0, 0, 0, 0.12);
+    --color-grid-line: rgba(0, 0, 0, 0.06);
+}
+
+/* --- Font Variables --- */
+:root {
+    --font-display: "Host Grotesk", sans-serif;
+    --font-body: "Rubik", sans-serif;
+}
+
+/* --- Global Reset & Base Styles --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- Typography Utility Classes --- */
+.gradient-text {
+    background-image: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.lime-text {
+    color: var(--color-lime);
+}
+
+.font-display {
+    font-family: var(--font-display);
+}
+
+.font-body {
+    font-family: var(--font-body);
+}
+
+/* --- Glass Card Utility --- */
+.glass-card {
+    border-radius: var(--radius-2xl);
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-standard);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: var(--blur-standard);
+    transition: all 0.35s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* --- Icon Box Utility --- */
+.icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-lime-subtle);
+    border: 1px solid var(--color-border-lime-subtle);
+    transition: all 0.3s;
+}
+
+/* --- Status Dots --- */
+.dot-active {
+    background: var(--color-lime);
+    box-shadow: var(--shadow-glow-lime);
+}
+
+.dot-warning {
+    background: var(--color-warning);
+    box-shadow: 0 0 8px rgba(255, 189, 46, 0.5);
+}
+
+.dot-error {
+    background: var(--color-error);
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes livePulse {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(210, 254, 23, 0.4);
+    }
+    50% {
+        opacity: 0.7;
+        box-shadow: 0 0 0 6px rgba(210, 254, 23, 0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.06);
+        opacity: 0.85;
+    }
+}
+
+@keyframes button-circle {
+    0% { transform: translateX(0) rotate(0); }
+    25% { transform: translateX(-30px) rotate(90deg); }
+    50% { transform: translateX(0) rotate(180deg); }
+    75% { transform: translateX(30px) rotate(270deg); }
+    100% { transform: translateX(0) rotate(360deg); }
+}
+
+/* --- Scrollbar Styling --- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border-medium);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-strong);
+}

@@ -1,0 +1,382 @@
+/* ── Shared ── */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+/* ── Shared radio circle ── */
+.radioCircle {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border-standard);
+    background: var(--color-bg-input);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.radioCircleSelected {
+    border-color: var(--color-lime);
+}
+
+.radioDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-lime);
+}
+
+/* ── Shared text ── */
+.itemTitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+}
+
+.itemSecondary {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    line-height: 1.4;
+}
+
+.itemDesc {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+}
+
+.itemPrice {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-left: auto;
+}
+
+/* ── Icon ── */
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.iconWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    flex-shrink: 0;
+    color: var(--color-text-secondary);
+}
+
+/* ── IconSimple variant ── */
+.iconSimpleItem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+}
+
+.iconSimpleItem:hover {
+    border-color: var(--color-border-lime-strong);
+}
+
+.iconSimpleItemSelected {
+    border-color: var(--color-lime);
+    background: var(--color-bg-lime-subtle);
+}
+
+.iconSimpleTop {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+.iconSimpleLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.iconSimpleText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.badgeWrap {
+    margin-top: 4px;
+}
+
+/* ── Checkbox variant ── */
+.checkboxItem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+}
+
+.checkboxItem:hover {
+    border-color: var(--color-border-lime-strong);
+}
+
+.checkboxItemSelected {
+    border-color: var(--color-lime);
+    background: var(--color-bg-lime-subtle);
+}
+
+.checkboxTop {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+}
+
+.checkboxBox {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border-standard);
+    background: var(--color-bg-input);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-top: 1px;
+}
+
+.checkboxBoxSelected {
+    background: var(--color-lime);
+    border-color: var(--color-lime);
+    color: var(--color-bg-primary);
+}
+
+.checkIcon {
+    width: 12px;
+    height: 12px;
+}
+
+.checkboxText {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.checkboxTitleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+/* ── Payment variant ── */
+.paymentItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+}
+
+.paymentItem:hover {
+    border-color: var(--color-border-lime-strong);
+}
+
+.paymentItemSelected {
+    border-color: var(--color-lime);
+    background: var(--color-bg-lime-subtle);
+}
+
+.paymentLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.paymentLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.paymentText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* ── Avatar variant ── */
+.avatarItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+}
+
+.avatarItem:hover {
+    border-color: var(--color-border-lime-strong);
+}
+
+.avatarItemSelected {
+    border-color: var(--color-lime);
+    background: var(--color-bg-lime-subtle);
+}
+
+.avatarLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatarImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.avatarText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.avatarNameRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.avatarUsername {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── IconCard variant ── */
+.iconCardItem {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.iconCardItem:hover {
+    border-color: var(--color-border-lime-strong);
+}
+
+.iconCardItemSelected {
+    border-color: var(--color-lime);
+    background: var(--color-bg-lime-subtle);
+}
+
+.iconCardHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.iconCardIconWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-secondary);
+}
+
+.iconCardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.iconCardPrice {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.priceValue {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1;
+    font-family: var(--font-display);
+}
+
+.iconCardBadge {
+    margin-top: 4px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--color-bg-lime-medium);
+    color: var(--color-lime);
+    border: 1px solid var(--color-border-lime-strong);
+}

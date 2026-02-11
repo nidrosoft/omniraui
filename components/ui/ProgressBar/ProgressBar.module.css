@@ -1,0 +1,180 @@
+/* ══════════════════════════════════════
+   Linear Progress Bar
+   ══════════════════════════════════════ */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.wrapper_right {
+    flex-direction: column;
+}
+
+.label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: 2px;
+}
+
+/* ── Bar row ── */
+.barRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* ── Track ── */
+.track {
+    flex: 1;
+    min-width: 0;
+    border-radius: 999px;
+    background: var(--color-border-medium);
+    overflow: hidden;
+    position: relative;
+}
+
+.track_sm { height: 6px; }
+.track_md { height: 10px; }
+.track_lg { height: 14px; }
+
+/* ── Fill ── */
+.fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+.fill_lime { background: var(--color-lime); stroke: var(--color-lime); }
+.fill_blue { background: #3b82f6; stroke: #3b82f6; }
+.fill_red { background: #ef4444; stroke: #ef4444; }
+.fill_orange { background: #f59e0b; stroke: #f59e0b; }
+
+/* ── Text positions ── */
+.textRight {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: right;
+}
+
+.textBottom {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-align: right;
+}
+
+/* ── Floating bubble ── */
+.floatingWrap {
+    position: relative;
+    width: 100%;
+    height: 28px;
+}
+
+.floatingBubble {
+    position: absolute;
+    transform: translateX(-50%);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-sm);
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    top: 0;
+}
+
+.floatingBubble::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--color-border-standard);
+}
+
+.floatingBubbleBottom {
+    top: auto;
+    bottom: 0;
+}
+
+.floatingBubbleBottom::after {
+    bottom: auto;
+    top: -5px;
+    border-top: none;
+    border-bottom: 5px solid var(--color-border-standard);
+}
+
+/* ══════════════════════════════════════
+   Circle Progress Bar
+   ══════════════════════════════════════ */
+
+.circleWrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circleTrack {
+    stroke: var(--color-border-medium);
+}
+
+.circleFill {
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.circleText {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+}
+
+.circlePct {
+    font-weight: 700;
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+    line-height: 1;
+}
+
+.circleLabel {
+    color: var(--color-text-tertiary);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* ══════════════════════════════════════
+   Half Circle Progress Bar
+   ══════════════════════════════════════ */
+
+.halfWrap {
+    position: relative;
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.halfText {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+}

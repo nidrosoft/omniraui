@@ -1,0 +1,214 @@
+/* --- Base BadgeGroup --- */
+.badgeGroup {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: var(--radius-full);
+    font-family: inherit;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    opacity: 0.85;
+}
+
+/* --- Sizes --- */
+.size-sm {
+    padding: 4px 10px 4px 4px;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.size-md {
+    padding: 4px 12px 4px 4px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.size-lg {
+    padding: 4px 14px 4px 4px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* --- Message text --- */
+.message {
+    font-weight: 500;
+    color: inherit;
+}
+
+/* --- Addon badge (inner pill) --- */
+.addon {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.addonIcon {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+}
+
+/* --- Theme: Modern (solid inner badge) --- */
+.addon-modern {
+    font-weight: 600;
+}
+
+/* --- Theme: Light (lighter inner badge) --- */
+.addon-light {
+    font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════
+   COLOR VARIANTS — Outer container
+   ═══════════════════════════════════════════ */
+
+/* Gray */
+.color-gray.theme-modern {
+    background: var(--color-bg-hover);
+    border: 1px solid var(--color-border-standard);
+    color: var(--color-text-secondary);
+}
+
+.color-gray.theme-light {
+    background: var(--color-bg-hover);
+    border: 1px solid var(--color-border-standard);
+    color: var(--color-text-secondary);
+}
+
+/* Brand */
+.color-brand.theme-modern {
+    background: var(--color-bg-lime-medium);
+    border: 1px solid var(--color-border-lime-medium);
+    color: var(--color-lime);
+}
+
+.color-brand.theme-light {
+    background: var(--color-bg-lime-medium);
+    border: 1px solid var(--color-border-lime-medium);
+    color: var(--color-lime);
+}
+
+/* Error */
+.color-error.theme-modern {
+    background: var(--color-error-bg);
+    border: 1px solid var(--color-error-border);
+    color: var(--color-error);
+}
+
+.color-error.theme-light {
+    background: var(--color-error-bg);
+    border: 1px solid var(--color-error-border);
+    color: var(--color-error);
+}
+
+/* Warning */
+.color-warning.theme-modern {
+    background: var(--color-warning-bg);
+    border: 1px solid var(--color-warning-border);
+    color: var(--color-warning);
+}
+
+.color-warning.theme-light {
+    background: var(--color-warning-bg);
+    border: 1px solid var(--color-warning-border);
+    color: var(--color-warning);
+}
+
+/* Success */
+.color-success.theme-modern {
+    background: var(--color-success-bg);
+    border: 1px solid var(--color-success-border);
+    color: var(--color-success);
+}
+
+.color-success.theme-light {
+    background: var(--color-success-bg);
+    border: 1px solid var(--color-success-border);
+    color: var(--color-success);
+}
+
+/* ═══════════════════════════════════════════
+   COLOR VARIANTS — Inner addon badge
+   ═══════════════════════════════════════════ */
+
+/* Gray — Modern: solid dark badge */
+.addon-gray.addon-modern {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-medium);
+}
+
+/* Gray — Light: subtle badge */
+.addon-gray.addon-light {
+    background: var(--color-bg-card);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border-standard);
+}
+
+/* Brand — Modern: solid lime badge */
+.addon-brand.addon-modern {
+    background: var(--color-lime);
+    color: var(--color-lime-text);
+    border: 1px solid transparent;
+}
+
+/* Brand — Light: subtle lime badge */
+.addon-brand.addon-light {
+    background: var(--color-bg-lime-medium);
+    color: var(--color-lime);
+    border: 1px solid var(--color-border-lime-medium);
+}
+
+/* Error — Modern: solid red badge */
+.addon-error.addon-modern {
+    background: var(--color-error);
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+/* Error — Light: subtle red badge */
+.addon-error.addon-light {
+    background: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+/* Warning — Modern: solid amber badge */
+.addon-warning.addon-modern {
+    background: var(--color-warning);
+    color: #1a1a1a;
+    border: 1px solid transparent;
+}
+
+/* Warning — Light: subtle amber badge */
+.addon-warning.addon-light {
+    background: var(--color-warning-bg);
+    color: var(--color-warning);
+    border: 1px solid var(--color-warning-border);
+}
+
+/* Success — Modern: solid green badge */
+.addon-success.addon-modern {
+    background: var(--color-success);
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+/* Success — Light: subtle green badge */
+.addon-success.addon-light {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success-border);
+}

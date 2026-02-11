@@ -1,0 +1,87 @@
+.storeButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #000000;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: inherit;
+    outline: none;
+    white-space: nowrap;
+}
+
+.storeButton:hover:not(:disabled) {
+    background: #1a1a1a;
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.storeButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- Sizes --- */
+.sm {
+    height: 40px;
+    padding: 0 14px;
+}
+
+.md {
+    height: 48px;
+    padding: 0 18px;
+}
+
+.lg {
+    height: 56px;
+    padding: 0 22px;
+}
+
+/* --- Text block --- */
+.textBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.title {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.sm .subtitle {
+    font-size: 8px;
+}
+
+.sm .title {
+    font-size: 14px;
+}
+
+.md .subtitle {
+    font-size: 9px;
+}
+
+.md .title {
+    font-size: 16px;
+}
+
+.lg .subtitle {
+    font-size: 10px;
+}
+
+.lg .title {
+    font-size: 19px;
+}

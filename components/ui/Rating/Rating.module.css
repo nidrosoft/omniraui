@@ -1,0 +1,99 @@
+/* ══════════════════════════════════════
+   Rating (interactive)
+   ══════════════════════════════════════ */
+
+.rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.readOnly {
+    pointer-events: none;
+}
+
+.star {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+    color: var(--color-border-medium);
+    transition: color 0.15s, transform 0.15s;
+    border-radius: var(--radius-sm);
+}
+
+.star:hover {
+    transform: scale(1.15);
+}
+
+.starFilled {
+    color: #f59e0b;
+}
+
+.starSvg {
+    display: block;
+}
+
+/* ── Sizes ── */
+.rating_sm .starSvg { width: 16px; height: 16px; }
+.rating_md .starSvg { width: 22px; height: 22px; }
+.rating_lg .starSvg { width: 28px; height: 28px; }
+
+/* ══════════════════════════════════════
+   Rating Badge
+   ══════════════════════════════════════ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    backdrop-filter: var(--blur-standard);
+}
+
+.badgeStars {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
+.badgeStar {
+    display: flex;
+    color: var(--color-border-medium);
+}
+
+.badgeStarFilled {
+    color: #f59e0b;
+}
+
+.badgeValue {
+    font-weight: 700;
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+}
+
+.badgeCount {
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Badge sizes ── */
+.badge_sm .badgeStar svg { width: 12px; height: 12px; }
+.badge_sm .badgeValue { font-size: 12px; }
+.badge_sm .badgeCount { font-size: 11px; }
+.badge_sm { padding: 4px 10px; gap: 6px; }
+
+.badge_md .badgeStar svg { width: 16px; height: 16px; }
+.badge_md .badgeValue { font-size: 14px; }
+.badge_md .badgeCount { font-size: 13px; }
+
+.badge_lg .badgeStar svg { width: 20px; height: 20px; }
+.badge_lg .badgeValue { font-size: 16px; }
+.badge_lg .badgeCount { font-size: 14px; }
+.badge_lg { padding: 8px 16px; gap: 10px; }

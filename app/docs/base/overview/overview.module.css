@@ -1,0 +1,53 @@
+.card {
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    padding: 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.card:hover {
+    border-color: var(--color-border-lime-subtle);
+    background: var(--color-bg-elevated);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.card:hover .iconBox {
+    background: var(--color-lime);
+    border-color: var(--color-lime);
+    color: #121212;
+}
+
+.iconBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-lime-subtle);
+    border: 1px solid var(--color-border-lime-subtle);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    color: var(--color-lime);
+}
+
+.cardTitle {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+}
+
+.cardDesc {
+    font-size: 12.5px;
+    color: var(--color-text-tertiary);
+    line-height: 1.5;
+}

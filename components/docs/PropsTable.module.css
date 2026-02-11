@@ -1,0 +1,81 @@
+.wrapper {
+    margin-bottom: 32px;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+}
+
+.tableContainer {
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--color-border-standard);
+    overflow: hidden;
+    background: var(--color-bg-secondary);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-tertiary);
+    background: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border-standard);
+}
+
+.table td {
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border-subtle);
+    vertical-align: top;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover td {
+    background: var(--color-bg-hover);
+}
+
+.propName {
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-lime);
+}
+
+.propType {
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    background: var(--color-bg-input);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.propDefault {
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+@media (max-width: 767px) {
+    .table {
+        display: block;
+        overflow-x: auto;
+    }
+}

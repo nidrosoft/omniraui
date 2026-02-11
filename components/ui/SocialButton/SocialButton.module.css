@@ -1,0 +1,223 @@
+.socialButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    outline: none;
+    white-space: nowrap;
+    border: 1.5px solid transparent;
+    width: 100%;
+}
+
+.socialButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- Sizes --- */
+.sm {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 13px;
+    border-radius: 10px;
+}
+
+.md {
+    height: 48px;
+    padding: 0 20px;
+    font-size: 14px;
+    border-radius: 12px;
+}
+
+.lg {
+    height: 56px;
+    padding: 0 24px;
+    font-size: 16px;
+    border-radius: 14px;
+}
+
+/* --- Icon --- */
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.label {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* --- Icon only --- */
+.iconOnly {
+    width: auto;
+    padding: 0;
+}
+
+.iconOnly.sm {
+    width: 40px;
+}
+
+.iconOnly.md {
+    width: 48px;
+}
+
+.iconOnly.lg {
+    width: 56px;
+}
+
+/* --- Theme: Brand --- */
+.theme-brand.social-google {
+    background: #ffffff;
+    color: #3c4043;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-brand.social-google:hover:not(:disabled) {
+    background: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-brand.social-facebook {
+    background: #1877F2;
+    color: #ffffff;
+}
+
+.theme-brand.social-facebook:hover:not(:disabled) {
+    background: #166fe5;
+    box-shadow: 0 2px 8px rgba(24, 119, 242, 0.4);
+}
+
+.theme-brand.social-apple {
+    background: #000000;
+    color: #ffffff;
+}
+
+.theme-brand.social-apple:hover:not(:disabled) {
+    background: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.theme-brand.social-github {
+    background: #24292f;
+    color: #ffffff;
+}
+
+.theme-brand.social-github:hover:not(:disabled) {
+    background: #32383f;
+    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.4);
+}
+
+.theme-brand.social-x {
+    background: #000000;
+    color: #ffffff;
+}
+
+.theme-brand.social-x:hover:not(:disabled) {
+    background: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.theme-brand.social-linkedin {
+    background: #0A66C2;
+    color: #ffffff;
+}
+
+.theme-brand.social-linkedin:hover:not(:disabled) {
+    background: #095baf;
+    box-shadow: 0 2px 8px rgba(10, 102, 194, 0.4);
+}
+
+.theme-brand.social-microsoft {
+    background: #ffffff;
+    color: #3c4043;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-brand.social-microsoft:hover:not(:disabled) {
+    background: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-brand.social-discord {
+    background: #5865F2;
+    color: #ffffff;
+}
+
+.theme-brand.social-discord:hover:not(:disabled) {
+    background: #4752c4;
+    box-shadow: 0 2px 8px rgba(88, 101, 242, 0.4);
+}
+
+.theme-brand.social-slack {
+    background: #4A154B;
+    color: #ffffff;
+}
+
+.theme-brand.social-slack:hover:not(:disabled) {
+    background: #3b1139;
+    box-shadow: 0 2px 8px rgba(74, 21, 75, 0.4);
+}
+
+.theme-brand.social-figma {
+    background: #ffffff;
+    color: #3c4043;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-brand.social-figma:hover:not(:disabled) {
+    background: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-brand.social-dribbble {
+    background: #EA4C89;
+    color: #ffffff;
+}
+
+.theme-brand.social-dribbble:hover:not(:disabled) {
+    background: #d63d7a;
+    box-shadow: 0 2px 8px rgba(234, 76, 137, 0.4);
+}
+
+.theme-brand.social-spotify {
+    background: #1DB954;
+    color: #ffffff;
+}
+
+.theme-brand.social-spotify:hover:not(:disabled) {
+    background: #1aa34a;
+    box-shadow: 0 2px 8px rgba(29, 185, 84, 0.4);
+}
+
+/* --- Theme: Color --- */
+.theme-color {
+    background: var(--color-bg-card);
+    border-color: var(--color-border-standard);
+    color: var(--color-text-primary);
+    backdrop-filter: var(--blur-standard);
+}
+
+.theme-color:hover:not(:disabled) {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border-medium);
+    box-shadow: var(--shadow-card-light);
+}
+
+/* --- Theme: Gray --- */
+.theme-gray {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-border-subtle);
+    color: var(--color-text-secondary);
+}
+
+.theme-gray:hover:not(:disabled) {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-standard);
+    color: var(--color-text-primary);
+}

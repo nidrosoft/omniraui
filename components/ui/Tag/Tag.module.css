@@ -1,0 +1,203 @@
+/* ── Tag Base ── */
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-standard);
+    color: var(--color-text-primary);
+    font-family: inherit;
+    white-space: nowrap;
+    transition: all 0.2s;
+    cursor: default;
+    user-select: none;
+}
+
+/* ── Sizes ── */
+.sm {
+    padding: 4px 10px;
+    font-size: 12px;
+    gap: 4px;
+}
+
+.md {
+    padding: 6px 12px;
+    font-size: 13px;
+    gap: 6px;
+}
+
+.lg {
+    padding: 8px 16px;
+    font-size: 14px;
+    gap: 8px;
+}
+
+/* ── Label ── */
+.label {
+    font-weight: 500;
+    line-height: 1;
+}
+
+/* ── Dot ── */
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-lime);
+    flex-shrink: 0;
+}
+
+.sm .dot {
+    width: 5px;
+    height: 5px;
+}
+
+.lg .dot {
+    width: 7px;
+    height: 7px;
+}
+
+/* ── Avatar ── */
+.avatar {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--color-border-subtle);
+}
+
+.sm .avatar {
+    width: 14px;
+    height: 14px;
+}
+
+.lg .avatar {
+    width: 22px;
+    height: 22px;
+}
+
+/* ── Count Badge ── */
+.count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    line-height: 1;
+}
+
+.sm .count {
+    min-width: 14px;
+    height: 14px;
+    padding: 0 3px;
+    font-size: 9px;
+}
+
+.lg .count {
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    font-size: 11px;
+}
+
+/* ── Remove Button (X) ── */
+.removeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0 -2px 0 0;
+    cursor: pointer;
+    color: var(--color-text-tertiary);
+    transition: color 0.2s;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.removeBtn:hover {
+    color: var(--color-text-primary);
+}
+
+.removeBtn:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+/* ── Checkbox ── */
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.checkable {
+    cursor: pointer;
+}
+
+.checkable:hover {
+    border-color: var(--color-border-medium);
+    background: var(--color-bg-hover);
+}
+
+.checked {
+    border-color: var(--color-border-lime-medium);
+    background: var(--color-bg-lime-subtle);
+}
+
+.checked:hover {
+    border-color: var(--color-border-lime-strong);
+    background: var(--color-bg-lime-medium);
+}
+
+/* ── Disabled ── */
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ── Tag Group ── */
+.tagGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tagGroupLabel {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.01em;
+}
+
+.labelsm {
+    font-size: 12px;
+}
+
+.labelmd {
+    font-size: 13px;
+}
+
+.labellg {
+    font-size: 14px;
+}
+
+/* ── Tag List ── */
+.tagList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}

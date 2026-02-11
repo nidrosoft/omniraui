@@ -1,0 +1,182 @@
+/* ── Root ── */
+.root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border-standard);
+    transition: border-color 0.25s;
+}
+
+.root:focus-within {
+    border-color: var(--color-border-lime-strong);
+}
+
+.root_sm {
+    font-size: 13px;
+}
+
+.root_md {
+    font-size: 14px;
+}
+
+/* ── Toolbar ── */
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    flex-wrap: wrap;
+}
+
+.toolbar_sm {
+    padding: 6px 10px;
+}
+
+.toolbar_md {
+    padding: 8px 12px;
+}
+
+.toolbarFloating {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border-standard);
+}
+
+.toolbarBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+}
+
+.toolbarBtn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.toolbarBtn:active {
+    background: var(--color-bg-lime-subtle);
+    color: var(--color-lime);
+}
+
+.toolbarDivider {
+    width: 1px;
+    height: 18px;
+    background: var(--color-border-subtle);
+    margin: 0 4px;
+    flex-shrink: 0;
+}
+
+/* ── Content ── */
+.content {
+    flex: 1;
+    padding: 14px 16px;
+    color: var(--color-text-primary);
+    line-height: 1.7;
+    outline: none;
+    overflow-y: auto;
+    min-height: 120px;
+    font-family: inherit;
+    word-break: break-word;
+}
+
+.content:empty::before {
+    content: "Start writing...";
+    color: var(--color-text-tertiary);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.content_sm {
+    padding: 10px 12px;
+    min-height: 100px;
+    max-height: 200px;
+    font-size: 13px;
+}
+
+.content_md {
+    padding: 14px 16px;
+    min-height: 180px;
+    max-height: 400px;
+    font-size: 14px;
+}
+
+/* Content formatting */
+.content p {
+    margin: 0 0 8px;
+}
+
+.content p:last-child {
+    margin-bottom: 0;
+}
+
+.content blockquote {
+    margin: 8px 0;
+    padding: 8px 16px;
+    border-left: 3px solid var(--color-border-lime-strong);
+    color: var(--color-text-secondary);
+    font-style: italic;
+}
+
+.content ul,
+.content ol {
+    margin: 8px 0;
+    padding-left: 24px;
+}
+
+.content li {
+    margin-bottom: 4px;
+}
+
+.content a {
+    color: var(--color-lime);
+    text-decoration: underline;
+}
+
+.content code {
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-elevated);
+    font-size: 0.9em;
+    font-family: monospace;
+}
+
+/* ── Hint Row ── */
+.hintRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+.hintText {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.charCount {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    margin-left: auto;
+    font-variant-numeric: tabular-nums;
+}
+
+.charCountOver {
+    color: var(--color-error);
+}

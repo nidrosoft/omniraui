@@ -1,0 +1,154 @@
+.wrapper {
+    position: relative;
+    display: inline-flex;
+}
+
+/* --- Base button --- */
+.utilityButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    outline: none;
+    font-family: inherit;
+    flex-shrink: 0;
+}
+
+.utilityButton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* --- Icon wrapper --- */
+.iconWrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+}
+
+/* --- Sizes --- */
+.size-xs {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+}
+
+.size-xs .iconWrap {
+    font-size: 14px;
+}
+
+.size-sm {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+}
+
+.size-sm .iconWrap {
+    font-size: 16px;
+}
+
+.size-md {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+}
+
+.size-md .iconWrap {
+    font-size: 18px;
+}
+
+.size-lg {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+}
+
+.size-lg .iconWrap {
+    font-size: 20px;
+}
+
+/* --- Color: Primary --- */
+.color-primary {
+    background: var(--color-lime);
+    color: var(--color-lime-text);
+    border-color: transparent;
+}
+
+.color-primary:hover:not(:disabled) {
+    background: var(--color-lime-hover);
+    box-shadow: var(--shadow-btn-primary);
+}
+
+/* --- Color: Secondary --- */
+.color-secondary {
+    background: var(--color-bg-card);
+    color: var(--color-text-secondary);
+    border-color: var(--color-border-standard);
+    backdrop-filter: var(--blur-standard);
+}
+
+.color-secondary:hover:not(:disabled) {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    border-color: var(--color-border-medium);
+    box-shadow: var(--shadow-card-light);
+}
+
+/* --- Color: Tertiary --- */
+.color-tertiary {
+    background: transparent;
+    color: var(--color-text-tertiary);
+    border-color: transparent;
+}
+
+.color-tertiary:hover:not(:disabled) {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+/* --- Color: Destructive --- */
+.color-destructive {
+    background: transparent;
+    color: var(--color-text-secondary);
+    border-color: var(--color-border-standard);
+}
+
+.color-destructive:hover:not(:disabled) {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* --- Tooltip --- */
+.tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-standard);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 50;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: tooltipIn 0.15s ease-out;
+}
+
+@keyframes tooltipIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}

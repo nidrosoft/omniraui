@@ -1,0 +1,60 @@
+.group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* ── Item ── */
+.item {
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.item:first-child {
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+.itemHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.itemHeader:hover {
+    color: var(--color-text-primary);
+}
+
+.itemTitle {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+    text-align: left;
+}
+
+.itemChevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+}
+
+.itemChevronOpen {
+    transform: rotate(180deg);
+}
+
+/* ── Content ── */
+.itemContent {
+    padding: 0 4px 20px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+}

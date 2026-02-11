@@ -1,0 +1,120 @@
+.player {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #000;
+    aspect-ratio: 16 / 9;
+    cursor: pointer;
+}
+
+.player_sm { max-width: 400px; }
+.player_md { max-width: 640px; }
+.player_lg { max-width: 960px; }
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── Thumbnail ── */
+.thumbnail {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.thumbnailImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.playBtnLarge {
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.playBtnLarge:hover {
+    transform: scale(1.1);
+}
+
+/* ── Controls ── */
+.controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    opacity: 0;
+    transition: opacity 0.25s;
+    z-index: 3;
+}
+
+.controlsVisible {
+    opacity: 1;
+}
+
+.controlBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s;
+    flex-shrink: 0;
+}
+
+.controlBtn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.time {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+    min-width: 32px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── Progress ── */
+.progressTrack {
+    flex: 1;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    position: relative;
+    transition: height 0.15s;
+}
+
+.progressTrack:hover {
+    height: 6px;
+}
+
+.progressFill {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--color-lime);
+    transition: width 0.1s linear;
+    pointer-events: none;
+}

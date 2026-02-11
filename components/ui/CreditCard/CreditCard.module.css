@@ -1,0 +1,117 @@
+.card {
+    position: relative;
+    width: 380px;
+    height: 240px;
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    font-family: var(--font-display);
+    user-select: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.8) 0%, transparent 50%),
+                       radial-gradient(circle at 80% 20%, rgba(255,255,255,0.6) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* ── Variants ── */
+.card_brand-dark {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+}
+
+.card_brand-light {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+    color: #1a1a2e;
+}
+
+.card_gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+}
+
+.card_minimal {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: var(--blur-standard);
+}
+
+/* ── Top row ── */
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+}
+
+.company {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.chip {
+    flex-shrink: 0;
+}
+
+/* ── Number ── */
+.number {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Bottom row ── */
+.bottom {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.fieldLabel {
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+}
+
+.fieldValue {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.network {
+    margin-left: auto;
+}
+
+/* ── Light variant overrides ── */
+.card_brand-light .pattern {
+    opacity: 0.03;
+}
+
+.card_brand-light .fieldLabel {
+    opacity: 0.5;
+}

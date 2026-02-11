@@ -1,0 +1,93 @@
+.lines {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    right: 40px;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Vertical lines (left + right rails) ── */
+.lines span {
+    width: 1px;
+    height: 100%;
+    background: var(--color-grid-line);
+}
+
+/* ── Top horizontal line ── */
+.lines::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    right: -100vw;
+    height: 1px;
+    background: var(--color-grid-line);
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 20%,
+        black 35%,
+        black 65%,
+        rgba(0, 0, 0, 0.15) 80%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 20%,
+        black 35%,
+        black 65%,
+        rgba(0, 0, 0, 0.15) 80%,
+        transparent 100%
+    );
+    pointer-events: none;
+}
+
+/* ── Bottom horizontal line ── */
+.lines::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+    right: -100vw;
+    height: 1px;
+    background: var(--color-grid-line);
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 20%,
+        black 35%,
+        black 65%,
+        rgba(0, 0, 0, 0.15) 80%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 20%,
+        black 35%,
+        black 65%,
+        rgba(0, 0, 0, 0.15) 80%,
+        transparent 100%
+    );
+    pointer-events: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1023px) {
+    .lines {
+        left: 32px;
+        right: 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    .lines {
+        left: 24px;
+        right: 24px;
+    }
+}
