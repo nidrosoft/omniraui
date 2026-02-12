@@ -1,13 +1,17 @@
 .lines {
     position: absolute;
     top: 0;
-    left: 40px;
-    right: 40px;
     bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 40px;
     display: flex;
     justify-content: space-between;
     pointer-events: none;
     z-index: 0;
+    box-sizing: border-box;
 }
 
 /* ── Vertical lines (left + right rails) ── */
@@ -80,14 +84,12 @@
 /* ── Responsive ── */
 @media (max-width: 1023px) {
     .lines {
-        left: 32px;
-        right: 32px;
+        padding: 0 32px;
     }
 }
 
 @media (max-width: 767px) {
     .lines {
-        left: 24px;
-        right: 24px;
+        padding: 0 20px;
     }
 }

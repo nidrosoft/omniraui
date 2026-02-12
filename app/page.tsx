@@ -2,14 +2,53 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { Component, Brush2, Sun1, ColorSwatch, Code1, Copy, CommandSquare, DocumentCode2, Layer, TickCircle } from "iconsax-react";
+import { Component, Brush2, Sun1, ColorSwatch, Code1, Copy, CommandSquare, DocumentCode2, Layer, TickCircle, ArrowDown2, MessageQuestion, Global, Sms, Lock1, Call, InfoCircle } from "iconsax-react";
 import { ThemeToggle } from "@/components/docs/ThemeToggle";
 import { Button } from "@/components/ui/Button";
+import { Badge } from "@/components/ui/Badge";
 import { BadgeGroup } from "@/components/ui/BadgeGroup";
+import { Input } from "@/components/ui/Input";
+import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/cn";
 import { GridLines } from "@/components/ui/GridLines";
 import { copyToClipboard } from "@/lib/copy-to-clipboard";
 import styles from "./page.module.css";
+
+const ACCENT_COLORS = [
+    { name: "Lime", hex: "#D2FE17" },
+    { name: "Blue", hex: "#2196F3" },
+    { name: "Cyan", hex: "#00BCD4" },
+    { name: "Teal", hex: "#009688" },
+    { name: "Green", hex: "#4CAF50" },
+    { name: "Purple", hex: "#9C27B0" },
+    { name: "Pink", hex: "#E91E63" },
+    { name: "Orange", hex: "#FF5722" },
+    { name: "Red", hex: "#F44336" },
+    { name: "Yellow", hex: "#FFEB3B" },
+];
+
+const FAQ_ITEMS = [
+    {
+        q: "Is Omnira UI free to use?",
+        a: "Yes. Omnira UI is open source and free for personal and commercial projects. Install the base design system and copy any components you need.",
+    },
+    {
+        q: "Does it work with Next.js, Remix, or Vite?",
+        a: "Absolutely. Omnira UI uses CSS Modules and CSS custom properties with zero framework lock-in. It works with any React-based framework out of the box.",
+    },
+    {
+        q: "How is this different from shadcn/ui or Radix?",
+        a: "Omnira UI is built around a glassmorphism design language — backdrop blur, inset shadows, and glass surfaces on every component. It ships with 10 accent color presets and a dark-first theme system.",
+    },
+    {
+        q: "Do I need Tailwind CSS?",
+        a: "No. Omnira UI is built entirely with CSS Modules and CSS custom properties. No Tailwind dependency — you have full control over every token.",
+    },
+    {
+        q: "Can I customize the accent color?",
+        a: "Yes. Run npx omnira-ui init to choose from 10 accent colors (Lime, Blue, Teal, Purple, Pink, and more). The CLI generates your config and CSS overrides automatically.",
+    },
+];
 
 const NAV_LINKS = [
     { label: "Features", href: "#features" },
@@ -33,6 +72,9 @@ export default function Home() {
     const scrolled = useScrolled();
     const [menuOpen, setMenuOpen] = useState(false);
     const [copied, setCopied] = useState(false);
+    const [formSubmitting, setFormSubmitting] = useState(false);
+    const [formSubmitted, setFormSubmitted] = useState(false);
+    const [copiedColor, setCopiedColor] = useState<string | null>(null);
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         if (href.startsWith("#")) {
@@ -47,6 +89,22 @@ export default function Home() {
         copyToClipboard("npx omnira-ui init");
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
+    }, []);
+
+    const handleFormSubmit = useCallback(() => {
+        if (formSubmitting || formSubmitted) return;
+        setFormSubmitting(true);
+        setTimeout(() => {
+            setFormSubmitting(false);
+            setFormSubmitted(true);
+            setTimeout(() => setFormSubmitted(false), 2500);
+        }, 1500);
+    }, [formSubmitting, formSubmitted]);
+
+    const handleColorCopy = useCallback((hex: string) => {
+        copyToClipboard(hex);
+        setCopiedColor(hex);
+        setTimeout(() => setCopiedColor(null), 1500);
     }, []);
 
     return (
@@ -151,6 +209,114 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* Component Preview */}
+            <section className={styles.componentPreview}>
+                <GridLines />
+                <h2 className={styles.showcaseTitle}>See It in Action</h2>
+                <p className={styles.showcaseDescription}>
+                    Real components, rendered live. Every element follows the glassmorphism design language.
+                </p>
+                <div className={styles.previewGrid}>
+                    {/* Buttons */}
+                    <div className={styles.previewCard}>
+                        <span className={styles.previewLabel}>Buttons</span>
+                        <div className={styles.previewContent}>
+                            <Button variant="primary" size="md">Get Started</Button>
+                            <Button variant="secondary" size="md">Learn More</Button>
+                            <Button variant="ghost" size="md">Cancel</Button>
+                            <Button variant="accent" size="sm">Upgrade</Button>
+                            <Button variant="primary" size="md" isLoading showTextWhileLoading>Loading</Button>
+                        </div>
+                    </div>
+
+                    {/* Badges */}
+                    <div className={styles.previewCard}>
+                        <span className={styles.previewLabel}>Badges</span>
+                        <div className={styles.previewContent}>
+                            <Badge variant="accent">New</Badge>
+                            <span className={styles.badgeGlow}>
+                                <Badge variant="success" dot>Active</Badge>
+                            </span>
+                            <Badge variant="warning">Beta</Badge>
+                            <Badge variant="section">Default</Badge>
+                            <Badge variant="error">Deprecated</Badge>
+                            <span className={styles.badgeInfoWrap}>
+                                <Badge variant="info">Info</Badge>
+                                <span className={styles.badgeTooltip}>
+                                    <InfoCircle size={12} variant="Bulk" color="var(--color-lime)" />
+                                    Informational status indicator
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Inputs + Form */}
+                    <div className={styles.previewCard}>
+                        <span className={styles.previewLabel}>Form</span>
+                        <div className={styles.previewForm}>
+                            <Input
+                                placeholder="you@example.com"
+                                inputSize="md"
+                                type="email"
+                                leadingIcon={<Sms size={18} variant="Bulk" color="var(--color-text-tertiary)" />}
+                            />
+                            <Input
+                                placeholder="••••••••"
+                                inputSize="md"
+                                type="password"
+                                leadingIcon={<Lock1 size={18} variant="Bulk" color="var(--color-text-tertiary)" />}
+                            />
+                            <Input
+                                placeholder="+1 (555) 000-0000"
+                                inputSize="md"
+                                type="tel"
+                                leadingIcon={<Call size={18} variant="Bulk" color="var(--color-text-tertiary)" />}
+                            />
+                            <Button
+                                variant="primary"
+                                size="md"
+                                fullWidth
+                                isLoading={formSubmitting}
+                                showTextWhileLoading
+                                onClick={handleFormSubmit}
+                            >
+                                {formSubmitted ? (
+                                    <span className={styles.submitSuccess}>
+                                        <TickCircle size={18} variant="Bulk" color="#121212" />
+                                        Submitted!
+                                    </span>
+                                ) : formSubmitting ? "Submitting…" : "Submit"}
+                            </Button>
+                        </div>
+                    </div>
+
+                    {/* Cards */}
+                    <div className={styles.previewCard}>
+                        <span className={styles.previewLabel}>Cards</span>
+                        <div className={styles.previewContent}>
+                            <Card variant="standard" padding="md" hoverable>
+                                <div className={styles.miniCardInner}>
+                                    <div className={styles.showcaseCardIcon}>
+                                        <Layer size={20} variant="Bulk" color="var(--color-lime)" />
+                                    </div>
+                                    <span className={styles.miniCardTitle}>Glass Card</span>
+                                    <span className={styles.miniCardText}>Backdrop blur, inset shadows, subtle borders.</span>
+                                </div>
+                            </Card>
+                            <Card variant="accent" padding="md" hoverable>
+                                <div className={styles.miniCardInner}>
+                                    <div className={styles.showcaseCardIcon}>
+                                        <ColorSwatch size={20} variant="Bulk" color="var(--color-lime)" />
+                                    </div>
+                                    <span className={styles.miniCardTitle}>Accent Card</span>
+                                    <span className={styles.miniCardText}>Lime-tinted glass with accent borders.</span>
+                                </div>
+                            </Card>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Quick Start */}
             <section id="quickstart" className={styles.quickStart}>
                 <GridLines />
@@ -242,20 +408,20 @@ export default function Home() {
             <section className={styles.stats}>
                 <GridLines />
                 <div className={styles.stat}>
-                    <span className={styles.statNumber}>500+</span>
+                    <span className={styles.statNumber}>70+</span>
                     <span className={styles.statLabel}>Components</span>
+                </div>
+                <div className={styles.stat}>
+                    <span className={styles.statNumber}>10</span>
+                    <span className={styles.statLabel}>Accent Colors</span>
                 </div>
                 <div className={styles.stat}>
                     <span className={styles.statNumber}>2</span>
                     <span className={styles.statLabel}>Theme Modes</span>
                 </div>
                 <div className={styles.stat}>
-                    <span className={styles.statNumber}>100%</span>
-                    <span className={styles.statLabel}>Modular</span>
-                </div>
-                <div className={styles.stat}>
-                    <span className={styles.statNumber}>CSS</span>
-                    <span className={styles.statLabel}>Modules Only</span>
+                    <span className={styles.statNumber}>0</span>
+                    <span className={styles.statLabel}>Dependencies</span>
                 </div>
             </section>
 
@@ -356,43 +522,122 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* Accent Colors */}
+            <section className={styles.accentColors}>
+                <GridLines />
+                <h2 className={styles.showcaseTitle}>Your Brand, Your Color</h2>
+                <p className={styles.showcaseDescription}>
+                    Choose from 10 built-in accent color presets. Every token, shadow, and border adapts instantly.
+                </p>
+                <div className={styles.colorGrid}>
+                    {ACCENT_COLORS.map((color) => (
+                        <div
+                            key={color.name}
+                            className={cn(styles.colorSwatch, copiedColor === color.hex && styles.colorSwatchCopied)}
+                            onClick={() => handleColorCopy(color.hex)}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => { if (e.key === "Enter") handleColorCopy(color.hex); }}
+                        >
+                            <div
+                                className={styles.colorDot}
+                                style={{ background: color.hex, boxShadow: `0 0 12px ${color.hex}40, 0 0 24px ${color.hex}20` }}
+                            />
+                            <span className={styles.colorName}>
+                                {copiedColor === color.hex ? "Copied!" : color.name}
+                            </span>
+                            <span className={styles.colorHex}>{color.hex}</span>
+                        </div>
+                    ))}
+                </div>
+                <div className={styles.colorCta}>
+                    <code className={styles.inlineCode}>npx omnira-ui init</code>
+                    <span className={styles.colorCtaText}>to pick your accent color</span>
+                </div>
+            </section>
+
+            {/* FAQ */}
+            <section className={styles.faq}>
+                <GridLines />
+                <h2 className={styles.showcaseTitle}>Frequently Asked Questions</h2>
+                <p className={styles.showcaseDescription}>
+                    Everything you need to know about Omnira UI.
+                </p>
+                <div className={styles.faqList}>
+                    {FAQ_ITEMS.map((item, i) => (
+                        <details key={i} className={styles.faqItem}>
+                            <summary className={styles.faqQuestion}>
+                                <span>{item.q}</span>
+                                <ArrowDown2 size={18} variant="Bold" color="var(--color-text-tertiary)" className={styles.faqArrow} />
+                            </summary>
+                            <p className={styles.faqAnswer}>{item.a}</p>
+                        </details>
+                    ))}
+                </div>
+            </section>
+
+            {/* Open Source CTA */}
+            <section className={styles.openSource}>
+                <GridLines />
+                <div className={styles.openSourceInner}>
+                    <div className={styles.openSourceIcon}>
+                        <Global size={32} variant="Bulk" color="var(--color-lime)" />
+                    </div>
+                    <h2 className={styles.openSourceTitle}>Open Source & Free</h2>
+                    <p className={styles.openSourceDescription}>
+                        Omnira UI is open source, free forever, and built for the community.
+                        Star us on GitHub, contribute components, or just copy what you need.
+                    </p>
+                    <div className={styles.openSourceCtas}>
+                        <a href="https://github.com/nidrosoft/omniraui" target="_blank" rel="noopener noreferrer">
+                            <Button variant="primary" size="lg">Star on GitHub</Button>
+                        </a>
+                        <Link href="/docs/getting-started">
+                            <Button variant="ghost" size="lg">Read the Docs</Button>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
             {/* Footer */}
             <footer className={styles.footer}>
                 <GridLines />
-                <div className={styles.footerTop}>
-                    <div className={styles.footerBrand}>
-                        <Link href="/" className={styles.footerLogoLink}>
-                            <div className={styles.footerLogoIcon}>O</div>
-                            <span className={styles.footerLogoText}>
-                                Omnira <span className={styles.logoAccent}>UI</span>
-                            </span>
-                        </Link>
-                        <p className={styles.footerTagline}>
-                            The premium glassmorphism design system for modern web applications.
-                        </p>
+                <div className={styles.footerInner}>
+                    <div className={styles.footerTop}>
+                        <div className={styles.footerBrand}>
+                            <Link href="/" className={styles.footerLogoLink}>
+                                <div className={styles.footerLogoIcon}>O</div>
+                                <span className={styles.footerLogoText}>
+                                    Omnira <span className={styles.logoAccent}>UI</span>
+                                </span>
+                            </Link>
+                            <p className={styles.footerTagline}>
+                                The premium glassmorphism design system for modern web applications.
+                            </p>
+                        </div>
+                        <div className={styles.footerLinks}>
+                            <Link href="/docs/getting-started" className={styles.footerLink}>Documentation</Link>
+                            <Link href="/docs/base/overview" className={styles.footerLink}>Components</Link>
+                            <a href="https://github.com/nidrosoft/omniraui" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>GitHub</a>
+                        </div>
                     </div>
-                    <div className={styles.footerLinks}>
-                        <Link href="/docs/getting-started" className={styles.footerLink}>Documentation</Link>
-                        <Link href="/docs/base/overview" className={styles.footerLink}>Components</Link>
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>GitHub</a>
+                    <div className={styles.footerBottom}>
+                        <span className={styles.footerText}>
+                            &copy; {new Date().getFullYear()} Omnira UI. All rights reserved.
+                        </span>
+                        <span className={styles.footerDivider}>·</span>
+                        <span className={styles.footerCredit}>
+                            Created by{" "}
+                            <a
+                                href="https://www.linkedin.com/in/cyriac-zeh/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.footerCreditLink}
+                            >
+                                Cyriac Zeh
+                            </a>
+                        </span>
                     </div>
-                </div>
-                <div className={styles.footerBottom}>
-                    <span className={styles.footerText}>
-                        &copy; {new Date().getFullYear()} Omnira UI. All rights reserved.
-                    </span>
-                    <span className={styles.footerDivider}>·</span>
-                    <span className={styles.footerCredit}>
-                        Created by{" "}
-                        <a
-                            href="https://www.linkedin.com/in/cyriac-zeh/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.footerCreditLink}
-                        >
-                            Cyriac Zeh
-                        </a>
-                    </span>
                 </div>
             </footer>
         </div>
