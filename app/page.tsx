@@ -98,19 +98,18 @@ export default function Home() {
 
                         <div className={styles.headerRight}>
                             <ThemeToggle />
-                            <Link href="/docs/getting-started">
+                            <Link href="/docs/getting-started" className={styles.headerCta}>
                                 <Button variant="primary" size="sm">Get Started</Button>
                             </Link>
+                            <button
+                                className={cn(styles.burger, menuOpen && styles.burgerOpen)}
+                                onClick={() => setMenuOpen(!menuOpen)}
+                                aria-label="Toggle menu"
+                            >
+                                <span className={styles.burgerLine} />
+                                <span className={styles.burgerLine} />
+                            </button>
                         </div>
-
-                        <button
-                            className={cn(styles.burger, menuOpen && styles.burgerOpen)}
-                            onClick={() => setMenuOpen(!menuOpen)}
-                            aria-label="Toggle menu"
-                        >
-                            <span className={styles.burgerLine} />
-                            <span className={styles.burgerLine} />
-                        </button>
 
                         <div className={cn(styles.overlay, scrolled && styles.overlayVisible)} />
                     </div>
@@ -134,7 +133,8 @@ export default function Home() {
                     Omnira UI is now available — Get started in seconds
                 </BadgeGroup>
                 <h1 className={styles.heroTitle}>
-                    The Glassmorphism{" "}
+                    The Glassmorphism
+                    <br />
                     <span className={styles.heroTitleAccent}>Design System</span>
                 </h1>
                 <p className={styles.heroDescription}>

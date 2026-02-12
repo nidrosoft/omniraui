@@ -748,12 +748,16 @@
         display: none;
     }
 
-    .headerRight > a {
+    .headerCta {
         display: none;
     }
 
     .burger {
         display: flex;
+    }
+
+    .headerRight {
+        gap: 6px;
     }
 
     .overlay {
@@ -797,20 +801,27 @@
 
 @media (max-width: 767px) {
     .headerContainer {
-        height: 76px;
-        padding: 0 24px;
+        height: 68px;
+        padding: 0 20px;
     }
 
     .hero {
-        padding: 120px 24px 60px;
+        padding: 110px 20px 56px;
+    }
+
+    .hero > :nth-child(2) {
+        max-width: 100%;
+        transform: scale(0.85);
     }
 
     .heroTitle {
-        font-size: 36px;
+        font-size: 34px;
+        max-width: 100%;
     }
 
     .heroDescription {
-        font-size: 16px;
+        font-size: 15px;
+        max-width: 100%;
     }
 
     .heroCtas {
@@ -818,57 +829,184 @@
         width: 100%;
     }
 
+    .heroCtas a,
+    .heroCtas button {
+        width: 100%;
+        min-height: 48px;
+    }
+
     .quickStart {
-        padding: 40px 24px;
+        padding: 40px 20px;
+    }
+
+    .quickStartTitle {
+        font-size: 22px;
     }
 
     .terminal {
         border-radius: var(--radius-lg);
     }
 
+    .terminalHeader {
+        padding: 10px 14px;
+    }
+
+    .terminalBody {
+        padding: 16px 14px;
+        overflow-x: auto;
+    }
+
     .terminalLine {
-        font-size: 12px;
+        font-size: 11.5px;
+        gap: 6px;
+        white-space: nowrap;
+    }
+
+    .terminalDots span {
+        width: 10px;
+        height: 10px;
     }
 
     .showcaseGrid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .showcaseTitle {
+        font-size: 32px;
+    }
+
+    .showcaseDescription {
+        font-size: 15px;
+        margin-bottom: 36px;
+    }
+
+    .showcaseCard {
+        padding: 24px;
+    }
+
+    .showcaseCardTitle {
+        font-size: 18px;
     }
 
     .stepsGrid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .stepCard {
+        padding: 24px;
     }
 
     .howItWorks {
-        padding: 60px 24px;
+        padding: 56px 20px;
     }
 
     .stats {
-        flex-direction: column;
-        gap: 24px;
-        padding: 40px 24px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 40px 20px;
+    }
+
+    .statNumber {
+        font-size: 28px;
     }
 
     .showcase {
-        padding: 60px 24px;
+        padding: 56px 20px;
     }
 
     .footer {
-        padding: 40px 24px 24px;
+        padding: 40px 20px 24px;
     }
 
     .footerTop {
         flex-direction: column;
         align-items: flex-start;
+        gap: 24px;
     }
 
     .footerBottom {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 6px;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
         text-align: center;
+    }
+
+    .footerDivider {
+        display: none;
     }
 
     .footerLinks {
         flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .footerLink {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .mobileNavLink {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* --- Extra small screens (≤ 380px) --- */
+@media (max-width: 380px) {
+    .headerContainer {
+        padding: 0 16px;
+    }
+
+    .hero {
+        padding: 100px 16px 48px;
+    }
+
+    .heroTitle {
+        font-size: 28px;
+    }
+
+    .heroDescription {
+        font-size: 14px;
+    }
+
+    .quickStart {
+        padding: 32px 16px;
+    }
+
+    .quickStartTitle {
+        font-size: 20px;
+    }
+
+    .terminalLine {
+        font-size: 10.5px;
+    }
+
+    .stats {
+        padding: 32px 16px;
+    }
+
+    .statNumber {
+        font-size: 24px;
+    }
+
+    .showcase {
+        padding: 48px 16px;
+    }
+
+    .showcaseTitle {
+        font-size: 26px;
+    }
+
+    .howItWorks {
+        padding: 48px 16px;
+    }
+
+    .footer {
+        padding: 32px 16px 20px;
     }
 }
