@@ -1,9 +1,39 @@
 {
   "name": "omnira-ui",
   "version": "0.1.0",
-  "private": true,
+  "description": "A premium glassmorphism design system — dark-first, glass-forward. 30+ base components, sidebar navigation, feature cards, and a CLI to scaffold your project.",
+  "keywords": [
+    "design-system",
+    "glassmorphism",
+    "dark-mode",
+    "ui-components",
+    "react",
+    "nextjs",
+    "css-modules",
+    "component-library",
+    "accessibility",
+    "typescript"
+  ],
+  "author": "Siri <siri@intraopic.com>",
+  "license": "MIT",
+  "homepage": "https://ui.omnira.space",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nidrosoft/omniraui.git"
+  },
   "bin": {
     "omnira-ui": "./cli/omnira-init.mjs"
+  },
+  "files": [
+    "cli/",
+    "components/ui/",
+    "lib/cn.ts",
+    "lib/copy-to-clipboard.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
   },
   "scripts": {
     "dev": "next dev",
