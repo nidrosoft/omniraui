@@ -1,0 +1,92 @@
+{
+    "items": [
+        {
+            "id": "3682",
+            "date": "2024-01-13",
+            "status": "paid",
+            "customer": {
+                "name": "Olivia Rhye",
+                "email": "olivia@omnira.space",
+                "avatarUrl": "https://i.pravatar.cc/150?u=olivia-rhye"
+            },
+            "purchase": "Basic Plan — Jan 2024"
+        },
+        {
+            "id": "3681",
+            "date": "2024-01-13",
+            "status": "paid",
+            "customer": {
+                "name": "Phoenix Baker",
+                "email": "phoenix@omnira.space",
+                "avatarUrl": "https://i.pravatar.cc/150?u=phoenix-baker"
+            },
+            "purchase": "Business Plan — Dec 2023"
+        },
+        {
+            "id": "3680",
+            "date": "2024-01-12",
+            "status": "refunded",
+            "customer": {
+                "name": "Lana Steiner",
+                "email": "lana@omnira.space",
+                "avatarUrl": "https://i.pravatar.cc/150?u=lana-steiner"
+            },
+            "purchase": "Basic Plan — Dec 2023"
+        },
+        {
+            "id": "3679",
+            "date": "2024-01-12",
+            "status": "cancelled",
+            "customer": {
+                "name": "Demi Wilkinson",
+                "email": "demi@omnira.space",
+                "avatarUrl": "https://i.pravatar.cc/150?u=demi-wilkinson"
+            },
+            "purchase": "Business Plan — Dec 2023"
+        },
+        {
+            "id": "3678",
+            "date": "2024-01-11",
+            "status": "paid",
+            "customer": {
+                "name": "Candice Wu",
+                "email": "candice@omnira.space",
+                "avatarUrl": "https://i.pravatar.cc/150?u=candice-wu"
+            },
+            "purchase": "Basic Plan — Dec 2023"
+        },
+        {
+            "id": "3677",
+            "date": "2024-01-10",
+            "status": "paid",
+            "customer": {
+                "name": "Natali Craig",
+                "email": "natali@omnira.space",
+                "avatarUrl": "https://i.pravatar.cc/150?u=natali-craig"
+            },
+            "purchase": "Enterprise Plan — Dec 2023"
+        },
+        {
+            "id": "3676",
+            "date": "2024-01-10",
+            "status": "cancelled",
+            "customer": {
+                "name": "Drew Cano",
+                "email": "drew@omnira.space",
+                "avatarUrl": "https://i.pravatar.cc/150?u=drew-cano"
+            },
+            "purchase": "Basic Plan — Nov 2023"
+        },
+        {
+            "id": "3675",
+            "date": "2024-01-09",
+            "status": "paid",
+            "customer": {
+                "name": "Orlando Diggs",
+                "email": "orlando@omnira.space",
+                "avatarUrl": "https://i.pravatar.cc/150?u=orlando-diggs"
+            },
+            "purchase": "Business Plan — Nov 2023"
+        }
+    ]
+}

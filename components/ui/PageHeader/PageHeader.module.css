@@ -1,0 +1,128 @@
+/* ============================================
+   Page Header — Glassmorphism Styles
+   ============================================ */
+
+.pageHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: var(--blur-standard);
+}
+
+/* ── Left content ── */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--color-text-tertiary);
+}
+
+.breadcrumbLink {
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+    cursor: pointer;
+}
+
+.breadcrumbLink:hover {
+    color: var(--color-text-primary);
+}
+
+.breadcrumbSeparator {
+    color: var(--color-text-tertiary);
+    opacity: 0.5;
+    font-size: 12px;
+}
+
+.breadcrumbCurrent {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.description {
+    font-size: 14px;
+    color: var(--color-text-tertiary);
+    line-height: 1.5;
+    max-width: 560px;
+}
+
+/* ── Right actions ── */
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* ── Tabs variant ── */
+
+.tabsWrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 16px;
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: 16px;
+}
+
+.tab {
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+    border: none;
+    background: transparent;
+    color: var(--color-text-tertiary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.15s ease, background 0.2s ease;
+    outline: none;
+    font-family: inherit;
+}
+
+.tab:hover {
+    color: var(--color-text-secondary);
+}
+
+.tabActive {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+/* ── With divider ── */
+
+.withDivider {
+    border-bottom: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}

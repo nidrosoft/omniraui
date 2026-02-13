@@ -1,0 +1,130 @@
+{
+    "items": [
+        {
+            "name": "Olivia Rhye",
+            "username": "olivia-rhye",
+            "email": "olivia@omnira.space",
+            "avatarUrl": "https://i.pravatar.cc/150?u=olivia-rhye",
+            "role": "Product Designer",
+            "status": "active",
+            "teams": [
+                { "name": "Design", "color": "accent" },
+                { "name": "Product", "color": "info" },
+                { "name": "Marketing", "color": "warning" }
+            ]
+        },
+        {
+            "name": "Phoenix Baker",
+            "username": "phoenix-baker",
+            "email": "phoenix@omnira.space",
+            "avatarUrl": "https://i.pravatar.cc/150?u=phoenix-baker",
+            "role": "Software Engineer",
+            "status": "active",
+            "teams": [
+                { "name": "Engineering", "color": "success" },
+                { "name": "Product", "color": "info" }
+            ]
+        },
+        {
+            "name": "Lana Steiner",
+            "username": "lana-steiner",
+            "email": "lana@omnira.space",
+            "avatarUrl": "https://i.pravatar.cc/150?u=lana-steiner",
+            "role": "VP of Sales",
+            "status": "active",
+            "teams": [
+                { "name": "Sales", "color": "error" },
+                { "name": "Marketing", "color": "warning" },
+                { "name": "Finance", "color": "info" },
+                { "name": "Ops", "color": "success" }
+            ]
+        },
+        {
+            "name": "Demi Wilkinson",
+            "username": "demi-wilkinson",
+            "email": "demi@omnira.space",
+            "avatarUrl": "https://i.pravatar.cc/150?u=demi-wilkinson",
+            "role": "Frontend Developer",
+            "status": "inactive",
+            "teams": [
+                { "name": "Engineering", "color": "success" },
+                { "name": "Design", "color": "accent" }
+            ]
+        },
+        {
+            "name": "Candice Wu",
+            "username": "candice-wu",
+            "email": "candice@omnira.space",
+            "avatarUrl": "https://i.pravatar.cc/150?u=candice-wu",
+            "role": "Backend Developer",
+            "status": "active",
+            "teams": [
+                { "name": "Engineering", "color": "success" },
+                { "name": "Product", "color": "info" },
+                { "name": "DevOps", "color": "warning" }
+            ]
+        },
+        {
+            "name": "Natali Craig",
+            "username": "natali-craig",
+            "email": "natali@omnira.space",
+            "avatarUrl": "https://i.pravatar.cc/150?u=natali-craig",
+            "role": "Product Manager",
+            "status": "active",
+            "teams": [
+                { "name": "Product", "color": "info" },
+                { "name": "Design", "color": "accent" },
+                { "name": "Marketing", "color": "warning" }
+            ]
+        },
+        {
+            "name": "Drew Cano",
+            "username": "drew-cano",
+            "email": "drew@omnira.space",
+            "avatarUrl": "https://i.pravatar.cc/150?u=drew-cano",
+            "role": "UX Researcher",
+            "status": "active",
+            "teams": [
+                { "name": "Design", "color": "accent" },
+                { "name": "Product", "color": "info" }
+            ]
+        },
+        {
+            "name": "Orlando Diggs",
+            "username": "orlando-diggs",
+            "email": "orlando@omnira.space",
+            "avatarUrl": "https://i.pravatar.cc/150?u=orlando-diggs",
+            "role": "DevOps Engineer",
+            "status": "inactive",
+            "teams": [
+                { "name": "Engineering", "color": "success" },
+                { "name": "DevOps", "color": "warning" }
+            ]
+        },
+        {
+            "name": "Andi Lane",
+            "username": "andi-lane",
+            "email": "andi@omnira.space",
+            "avatarUrl": "https://i.pravatar.cc/150?u=andi-lane",
+            "role": "Data Analyst",
+            "status": "active",
+            "teams": [
+                { "name": "Product", "color": "info" },
+                { "name": "Finance", "color": "info" },
+                { "name": "Engineering", "color": "success" }
+            ]
+        },
+        {
+            "name": "Kate Morrison",
+            "username": "kate-morrison",
+            "email": "kate@omnira.space",
+            "avatarUrl": "https://i.pravatar.cc/150?u=kate-morrison",
+            "role": "Marketing Lead",
+            "status": "active",
+            "teams": [
+                { "name": "Marketing", "color": "warning" },
+                { "name": "Sales", "color": "error" }
+            ]
+        }
+    ]
+}

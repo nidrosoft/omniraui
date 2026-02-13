@@ -76,6 +76,8 @@ export const sidebarConfig: SidebarSection[] = [
         icon: "Monitor",
         items: [
             { name: "Card", href: "/docs/application-ui/card" },
+            { name: "Card Headers", href: "/docs/application-ui/card-header", status: "new" },
+            { name: "Page Headers", href: "/docs/application-ui/page-header", status: "new" },
             { name: "Section Header", href: "/docs/application-ui/section-header" },
             { name: "Section Footer", href: "/docs/application-ui/section-footer" },
             { name: "Sidebar Navigation", href: "/docs/application-ui/sidebar-navigation" },
@@ -85,6 +87,8 @@ export const sidebarConfig: SidebarSection[] = [
             { name: "Line & Bar Chart", href: "/docs/application-ui/line-bar-chart" },
             { name: "Pie Chart", href: "/docs/application-ui/pie-chart" },
             { name: "Radar Chart", href: "/docs/application-ui/radar-chart" },
+            { name: "Activity Gauges", href: "/docs/application-ui/activity-gauge", status: "new" },
+            { name: "Metrics", href: "/docs/application-ui/metrics", status: "new" },
             { name: "Matrix", href: "/docs/application-ui/matrix" },
             { name: "Slide Out", href: "/docs/application-ui/slide-out" },
             { name: "Inline CTA", href: "/docs/application-ui/inline-cta" },
@@ -104,6 +108,7 @@ export const sidebarConfig: SidebarSection[] = [
             { name: "Content Divider", href: "/docs/application-ui/content-divider" },
             { name: "Loading Indicator", href: "/docs/application-ui/loading-indicator" },
             { name: "Code Snippet", href: "/docs/application-ui/code-snippet" },
+            { name: "Empty States", href: "/docs/application-ui/empty-state", status: "new" },
         ],
     },
     {

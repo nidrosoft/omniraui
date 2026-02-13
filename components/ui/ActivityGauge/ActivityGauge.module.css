@@ -1,0 +1,109 @@
+/* ============================================
+   Activity Gauge — Glassmorphism Styles
+   ============================================ */
+
+.gaugeCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: var(--blur-standard);
+}
+
+/* ── SVG Gauge ── */
+
+.gaugeWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gaugeSvg {
+    transform: rotate(-90deg);
+}
+
+.gaugeTrack {
+    fill: none;
+    stroke: var(--color-bg-elevated);
+    stroke-linecap: round;
+}
+
+.gaugeFill {
+    fill: none;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.6s ease;
+}
+
+.gaugeFillLime {
+    stroke: var(--color-lime);
+}
+
+.gaugeFillInfo {
+    stroke: var(--color-info);
+}
+
+.gaugeFillWarning {
+    stroke: var(--color-warning);
+}
+
+.gaugeFillError {
+    stroke: var(--color-error);
+}
+
+.gaugeFillSuccess {
+    stroke: var(--color-success);
+}
+
+/* ── Center label ── */
+
+.gaugeCenter {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.gaugeValue {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1;
+}
+
+.gaugeUnit {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    margin-top: 2px;
+}
+
+/* ── Footer ── */
+
+.gaugeLabel {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+.gaugeDescription {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    text-align: center;
+    margin-top: -8px;
+}
+
+/* ── Grid layout for demos ── */
+
+.gaugeGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}

@@ -84,7 +84,7 @@ function DefaultDemo() {
             <Input
                 label="Email"
                 hint="This is a hint text to help user."
-                placeholder="olivia@untitledui.com"
+                placeholder="olivia@omnira.space"
                 required
                 type="email"
             />
@@ -98,7 +98,7 @@ function DisabledDemo() {
         <div style={demoWrap}>
             <Input
                 label="Email"
-                placeholder="olivia@untitledui.com"
+                placeholder="olivia@omnira.space"
                 disabled
             />
         </div>
@@ -111,7 +111,7 @@ function InvalidDemo() {
         <div style={demoWrap}>
             <Input
                 label="Email"
-                placeholder="olivia@untitledui.com"
+                placeholder="olivia@omnira.space"
                 error="Please enter a valid email address."
                 required
                 defaultValue="not-an-email"
@@ -137,7 +137,7 @@ function LeadingIconDemo() {
         <div style={demoWrap}>
             <Input
                 label="Email"
-                placeholder="olivia@untitledui.com"
+                placeholder="olivia@omnira.space"
                 hint="Input with a leading icon."
                 leadingIcon={<Sms size={16} variant="Bulk" color="var(--color-text-tertiary)" />}
             />
@@ -421,7 +421,7 @@ export default function InputPage() {
                 code={`<Input
     label="Email"
     hint="This is a hint text to help user."
-    placeholder="olivia@untitledui.com"
+    placeholder="olivia@omnira.space"
     required
     type="email"
 />`}
@@ -437,7 +437,7 @@ export default function InputPage() {
                 title="Disabled"
                 code={`<Input
     label="Email"
-    placeholder="olivia@untitledui.com"
+    placeholder="olivia@omnira.space"
     disabled
 />`}
             >
@@ -452,7 +452,7 @@ export default function InputPage() {
                 title="Error State"
                 code={`<Input
     label="Email"
-    placeholder="olivia@untitledui.com"
+    placeholder="olivia@omnira.space"
     error="Please enter a valid email address."
     required
     defaultValue="not-an-email"
@@ -482,7 +482,7 @@ export default function InputPage() {
                 title="Leading Icon"
                 code={`<Input
     label="Email"
-    placeholder="olivia@untitledui.com"
+    placeholder="olivia@omnira.space"
     leadingIcon={<Sms size={16} variant="Bulk" color="var(--color-text-tertiary)" />}
 />`}
             >

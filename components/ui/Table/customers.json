@@ -1,0 +1,74 @@
+{
+    "items": [
+        {
+            "name": "Catalog",
+            "website": "catalogapp.io",
+            "logoUrl": "https://i.pravatar.cc/150?u=catalog-co",
+            "status": "Customer",
+            "aboutTitle": "Content curating app",
+            "aboutDescription": "Brings all your news into one place",
+            "users": 5,
+            "licenseUse": 80
+        },
+        {
+            "name": "Circooles",
+            "website": "getcircooles.com",
+            "logoUrl": "https://i.pravatar.cc/150?u=circooles-co",
+            "status": "Customer",
+            "aboutTitle": "Design software",
+            "aboutDescription": "Super lightweight design app",
+            "users": 5,
+            "licenseUse": 65
+        },
+        {
+            "name": "Command+R",
+            "website": "cmdr.ai",
+            "logoUrl": "https://i.pravatar.cc/150?u=commandr-co",
+            "status": "Customer",
+            "aboutTitle": "Data prediction",
+            "aboutDescription": "AI and machine learning",
+            "users": 5,
+            "licenseUse": 92
+        },
+        {
+            "name": "Hourglass",
+            "website": "hourglass.app",
+            "logoUrl": "https://i.pravatar.cc/150?u=hourglass-co",
+            "status": "Churned",
+            "aboutTitle": "Productivity app",
+            "aboutDescription": "Time management and planning",
+            "users": 5,
+            "licenseUse": 40
+        },
+        {
+            "name": "Layers",
+            "website": "getlayers.io",
+            "logoUrl": "https://i.pravatar.cc/150?u=layers-co",
+            "status": "Customer",
+            "aboutTitle": "Web app integrations",
+            "aboutDescription": "Connect your apps seamlessly",
+            "users": 5,
+            "licenseUse": 55
+        },
+        {
+            "name": "Quotient",
+            "website": "quotient.co",
+            "logoUrl": "https://i.pravatar.cc/150?u=quotient-co",
+            "status": "Customer",
+            "aboutTitle": "Sales CRM",
+            "aboutDescription": "Web-based sales doc management",
+            "users": 5,
+            "licenseUse": 70
+        },
+        {
+            "name": "Sisyphus",
+            "website": "sisyphus.com",
+            "logoUrl": "https://i.pravatar.cc/150?u=sisyphus-co",
+            "status": "Customer",
+            "aboutTitle": "Automation and workflow",
+            "aboutDescription": "Workflow automation made easy",
+            "users": 5,
+            "licenseUse": 48
+        }
+    ]
+}

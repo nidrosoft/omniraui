@@ -1,0 +1,444 @@
+/* ============================================
+   Omnira UI — Table Component
+   ============================================ */
+
+/* ── TableCard Root ── */
+.cardRoot {
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-standard);
+    box-shadow: var(--shadow-card-light);
+    backdrop-filter: var(--blur-standard);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.cardRootSm {
+    border-radius: var(--radius-md);
+}
+
+/* ── TableCard Header ── */
+.cardHeader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.cardHeaderSm .cardHeader {
+    padding: 16px 20px;
+}
+
+.cardTitle {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+}
+
+.cardDescription {
+    font-size: 14px;
+    color: var(--color-text-tertiary);
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
+.cardBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-lime-subtle);
+    border: 1px solid var(--color-border-lime-subtle);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-lime);
+}
+
+/* ── Table ── */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+/* ── Table Header ── */
+.thead {
+    border-bottom: 1px solid var(--color-border-standard);
+}
+
+.thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    user-select: none;
+    position: relative;
+    background: var(--color-bg-hover);
+}
+
+.thead th:first-child {
+    padding-left: 24px;
+}
+
+.thead th:last-child {
+    padding-right: 24px;
+}
+
+/* ── Sortable Header ── */
+.sortableHead {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.sortableHead:hover {
+    color: var(--color-text-primary);
+}
+
+.headInner {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sortIcon {
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.4;
+    transition: opacity 0.2s, transform 0.2s;
+    font-size: 12px;
+    line-height: 0;
+}
+
+.sortableHead:hover .sortIcon {
+    opacity: 0.7;
+}
+
+.sortIconActive {
+    opacity: 1;
+    color: var(--color-lime);
+}
+
+.sortIconDesc {
+    transform: rotate(180deg);
+}
+
+/* ── Tooltip on header ── */
+.headTooltipWrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.headTooltipIcon {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-tertiary);
+    opacity: 0.5;
+    cursor: help;
+    transition: opacity 0.2s;
+    line-height: 0;
+}
+
+.headTooltipIcon:hover {
+    opacity: 1;
+}
+
+.headTooltipBubble {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 50;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    animation: tooltipFadeIn 0.15s ease-out;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* ── Table Body ── */
+.tbody tr {
+    border-bottom: 1px solid var(--color-border-subtle);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tbody tr:last-child {
+    border-bottom: none;
+}
+
+.tbody tr:hover {
+    background: var(--color-bg-hover);
+}
+
+.tbody tr:hover td:first-child {
+    box-shadow: inset 3px 0 0 0 var(--color-lime);
+}
+
+/* ── Selected row ── */
+.rowSelected {
+    background: var(--color-bg-lime-subtle) !important;
+}
+
+.rowSelected td:first-child {
+    box-shadow: inset 3px 0 0 0 var(--color-lime) !important;
+}
+
+/* ── Table Cell ── */
+.td {
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    vertical-align: middle;
+    transition: box-shadow 0.2s ease;
+}
+
+.td:first-child {
+    padding-left: 24px;
+}
+
+.td:last-child {
+    padding-right: 24px;
+}
+
+/* ── Checkbox column ── */
+.checkboxCell {
+    width: 44px;
+    padding-right: 0 !important;
+}
+
+.rowCheckbox {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    background: var(--color-bg-input);
+    border: 1.5px solid var(--color-border-standard);
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+    color: var(--color-bg-primary);
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.rowCheckbox:hover {
+    border-color: var(--color-border-lime-strong);
+}
+
+.rowCheckbox:checked {
+    background: var(--color-lime);
+    border-color: var(--color-lime);
+}
+
+/* ── Header checkbox (select all) ── */
+.headerCheckbox {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    background: var(--color-bg-input);
+    border: 1.5px solid var(--color-border-standard);
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+    color: var(--color-bg-primary);
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.headerCheckboxIndeterminate {
+    background: var(--color-lime);
+    border-color: var(--color-lime);
+}
+
+/* ── Pagination footer ── */
+.paginationFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px 16px;
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+.paginationFooterRight {
+    justify-content: flex-end;
+}
+
+.paginationInfo {
+    font-size: 13px;
+    color: var(--color-text-tertiary);
+}
+
+.paginationActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.paginationBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+    line-height: 0;
+}
+
+.paginationBtn:hover:not(:disabled) {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    border-color: var(--color-border-medium);
+}
+
+.paginationBtn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* ── Row actions dropdown ── */
+.rowActionsWrap {
+    position: relative;
+    display: inline-flex;
+}
+
+.rowActionsBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border: 1.5px solid transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+    line-height: 0;
+}
+
+.rowActionsBtn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.rowActionsMenu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    min-width: 160px;
+    background: var(--color-bg-overlay);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: var(--blur-standard);
+    padding: 4px;
+    z-index: 50;
+    animation: menuSlideIn 0.15s ease-out;
+}
+
+@keyframes menuSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rowActionsMenuItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    font-family: inherit;
+}
+
+.rowActionsMenuItem:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.rowActionsMenuItemDestructive:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.rowActionsMenuItemIcon {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+    flex-shrink: 0;
+}
+
+.rowActionsSeparator {
+    height: 1px;
+    background: var(--color-border-subtle);
+    margin: 4px 0;
+}
+
+/* ── Responsive: scroll wrapper ── */
+.scrollWrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ── Empty state ── */
+.emptyState {
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--color-text-tertiary);
+    font-size: 14px;
+}

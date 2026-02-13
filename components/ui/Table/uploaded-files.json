@@ -1,0 +1,53 @@
+{
+    "items": [
+        {
+            "name": "Tech design requirements.pdf",
+            "size": "200 KB",
+            "uploadedAt": "Jan 4, 2024",
+            "updatedAt": "Jan 4, 2024",
+            "uploadedBy": "Natali Craig"
+        },
+        {
+            "name": "Dashboard screenshot.jpg",
+            "size": "720 KB",
+            "uploadedAt": "Jan 4, 2024",
+            "updatedAt": "Jan 6, 2024",
+            "uploadedBy": "Drew Cano"
+        },
+        {
+            "name": "Dashboard prototype recording.mp4",
+            "size": "16 MB",
+            "uploadedAt": "Jan 2, 2024",
+            "updatedAt": "Jan 3, 2024",
+            "uploadedBy": "Orlando Diggs"
+        },
+        {
+            "name": "Branding guidelines.pdf",
+            "size": "480 KB",
+            "uploadedAt": "Dec 20, 2023",
+            "updatedAt": "Dec 24, 2023",
+            "uploadedBy": "Kate Morrison"
+        },
+        {
+            "name": "Financial projections.xls",
+            "size": "120 KB",
+            "uploadedAt": "Dec 18, 2023",
+            "updatedAt": "Dec 22, 2023",
+            "uploadedBy": "Olivia Rhye"
+        },
+        {
+            "name": "App icon.svg",
+            "size": "32 KB",
+            "uploadedAt": "Dec 15, 2023",
+            "updatedAt": "Dec 18, 2023",
+            "uploadedBy": "Candice Wu"
+        },
+        {
+            "name": "API documentation.pdf",
+            "size": "1.2 MB",
+            "uploadedAt": "Dec 12, 2023",
+            "updatedAt": "Dec 14, 2023",
+            "uploadedBy": "Phoenix Baker"
+        }
+    ]
+}
