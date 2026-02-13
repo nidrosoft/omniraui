@@ -2,10 +2,10 @@
 
 import { useState, useCallback } from "react";
 import { CloseCircle, Copy, TickCircle, Calendar, Star1, Flash, MessageText1, Scan, Gift, Headphones, Crown1, Clock } from "iconsax-react";
-import { cn } from "../../../lib/cn";
-import { Button } from "../Button";
-import { Badge } from "../Badge";
-import { copyToClipboard } from "../../../lib/copy-to-clipboard";
+import { cn } from "@/lib/cn";
+import { Button } from "@/components/ui/Button";
+import { Badge } from "@/components/ui/Badge";
+import { copyToClipboard } from "@/lib/copy-to-clipboard";
 import styles from "./SidebarFeatureCard.module.css";
 
 /* ── 1. Progress ── */

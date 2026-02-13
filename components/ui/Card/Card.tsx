@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { cn } from "../../../lib/cn";
+import { cn } from "@/lib/cn";
 import styles from "./Card.module.css";
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {

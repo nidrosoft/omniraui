@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
-import { cn } from "../../../lib/cn";
+import { cn } from "@/lib/cn";
 import styles from "./Tooltip.module.css";
 
 export interface TooltipProps {

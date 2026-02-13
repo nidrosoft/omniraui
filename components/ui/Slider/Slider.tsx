@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect, forwardRef } from "react";
-import { cn } from "../../../lib/cn";
+import { cn } from "@/lib/cn";
 import styles from "./Slider.module.css";
 
 export interface SliderProps {

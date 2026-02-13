@@ -10,33 +10,55 @@ A premium glassmorphism design system — dark-first, glass-forward, no compromi
 
 ## Quick Start
 
-### 1. Install
-
-```bash
-npm install omnira-ui
-# or
-pnpm add omnira-ui
-```
-
-### 2. Initialize your project
+### 1. Scaffold your project
 
 ```bash
 npx omnira-ui init
 ```
 
-The CLI walks you through:
-- **Project name**
+The CLI scaffolds the full design system into your project:
+
+- **32 base components** → `components/ui/`
+- **Utility helpers** → `lib/cn.ts`, `lib/copy-to-clipboard.ts`
+- **Theme provider** → `lib/theme-context.tsx` (system preference detection + toggle)
+- **Design tokens** → `app/globals.css` (all CSS custom properties)
+- **Accent overrides** → `omnira-overrides.css` (if non-default color)
+- **Config file** → `omnira.config.ts`
+
+You choose:
 - **Accent color** — 10 presets: Lime (default), Blue, Cyan, Green, Orange, Pink, Purple, Red, Teal, Yellow
-- **Theme mode** — Dark-first or Light-first
+- **Theme mode** — Dark-first or Light-first (respects system preference)
 
-It generates `omnira.config.ts` and `omnira-overrides.css` ready to import in your root layout.
+### 2. Install peer dependencies
 
-### 3. Use components
+```bash
+npm install iconsax-react
+```
+
+### 3. Set up your layout
 
 ```tsx
-import { Button } from "omnira-ui/components/ui/Button";
-import { Badge } from "omnira-ui/components/ui/Badge";
-import { Input } from "omnira-ui/components/ui/Input";
+// app/layout.tsx
+import "./globals.css";
+import { Providers } from "./providers";
+
+export default function RootLayout({ children }) {
+    return (
+        <html data-theme="dark">
+            <body>
+                <Providers>{children}</Providers>
+            </body>
+        </html>
+    );
+}
+```
+
+### 4. Use components
+
+```tsx
+import { Button } from "@/components/ui/Button";
+import { Badge } from "@/components/ui/Badge";
+import { Input } from "@/components/ui/Input";
 
 export default function MyPage() {
     return (
@@ -48,6 +70,12 @@ export default function MyPage() {
     );
 }
 ```
+
+### 5. Need more components?
+
+Browse the full library and copy advanced components (Sidebar, Feature Cards, etc.) directly from the docs:
+
+**[ui.omnira.space →](https://ui.omnira.space)**
 
 ---
 

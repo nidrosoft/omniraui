@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, useState, useCallback } from "react";
-import { cn } from "../../../lib/cn";
+import { cn } from "@/lib/cn";
 import styles from "./Toggle.module.css";
 
 export interface ToggleProps {

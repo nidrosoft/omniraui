@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, forwardRef } from "react";
-import { cn } from "../../../lib/cn";
+import { cn } from "@/lib/cn";
 import styles from "./Avatar.module.css";
 
 export interface AvatarProps {

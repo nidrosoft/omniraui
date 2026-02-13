@@ -10,21 +10,35 @@ interface ThemeContextType {
     setTheme: (theme: Theme) => void;
 }
 
+interface ThemeProviderProps {
+    children: React.ReactNode;
+    defaultTheme?: Theme;
+}
+
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const STORAGE_KEY = "omnira-ui-theme";
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [theme, setThemeState] = useState<Theme>("dark");
+function getSystemTheme(): Theme {
+    if (typeof window !== "undefined" && window.matchMedia) {
+        return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    }
+    return "dark";
+}
+
+export function ThemeProvider({ children, defaultTheme }: ThemeProviderProps) {
+    const [theme, setThemeState] = useState<Theme>(defaultTheme ?? "dark");
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
         if (stored === "dark" || stored === "light") {
             setThemeState(stored);
+        } else {
+            setThemeState(defaultTheme ?? getSystemTheme());
         }
         setMounted(true);
-    }, []);
+    }, [defaultTheme]);
 
     useEffect(() => {
         if (mounted) {

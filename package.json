@@ -1,6 +1,6 @@
 {
   "name": "omnira-ui",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A premium glassmorphism design system — dark-first, glass-forward. 30+ base components, sidebar navigation, feature cards, and a CLI to scaffold your project.",
   "keywords": [
     "design-system",
@@ -29,6 +29,8 @@
     "components/ui/",
     "lib/cn.ts",
     "lib/copy-to-clipboard.ts",
+    "lib/theme-context.tsx",
+    "app/globals.css",
     "README.md",
     "LICENSE"
   ],

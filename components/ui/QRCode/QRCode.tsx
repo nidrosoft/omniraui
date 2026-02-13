@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, forwardRef } from "react";
-import { cn } from "../../../lib/cn";
+import { cn } from "@/lib/cn";
 import styles from "./QRCode.module.css";
 
 export interface QRCodeProps {

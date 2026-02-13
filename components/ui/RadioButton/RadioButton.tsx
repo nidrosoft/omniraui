@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useCallback, forwardRef, useId } from "react";
-import { cn } from "../../../lib/cn";
+import { cn } from "@/lib/cn";
 import styles from "./RadioButton.module.css";
 
 /* ── Group Context ── */

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, forwardRef } from "react";
-import { cn } from "../../../lib/cn";
+import { cn } from "@/lib/cn";
 import styles from "./Rating.module.css";
 
 /* ══════════════════════════════════════

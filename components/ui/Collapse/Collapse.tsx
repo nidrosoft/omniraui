@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, createContext, useContext, forwardRef } from "react";
-import { cn } from "../../../lib/cn";
+import { cn } from "@/lib/cn";
 import styles from "./Collapse.module.css";
 
 /* ══════════════════════════════════════

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { ArrowDown2, SearchNormal1, ExportSquare, ArrowUp2, User, Setting2, Book1, LogoutCurve, AddCircle } from "iconsax-react";
-import { cn } from "../../../lib/cn";
+import { cn } from "@/lib/cn";
 import type { NavItemType, NavItemDividerType, NavSubItem } from "./types";
 import styles from "./SidebarNavigation.module.css";
 
