@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { cn } from "@/lib/cn";
+import { cn } from "../../../lib/cn";
 import type { NavItemType, NavItemDividerType } from "./types";
 import { isDivider, NavRow, SidebarSearchBar, SidebarUserCard } from "./SidebarParts";
 import type { UserCardProps } from "./SidebarParts";

@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/cn";
+import { cn } from "../../../lib/cn";
 import type { NavSectionType } from "./types";
 import { isDivider, NavRow, SidebarSearchBar, SidebarUserCard } from "./SidebarParts";
 import type { UserCardProps } from "./SidebarParts";

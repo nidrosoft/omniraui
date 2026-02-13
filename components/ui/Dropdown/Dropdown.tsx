@@ -10,7 +10,7 @@ import {
     forwardRef,
 } from "react";
 import { TickSquare, MinusSquare, Record as RadioIcon, ArrowRight2 } from "iconsax-react";
-import { cn } from "@/lib/cn";
+import { cn } from "../../../lib/cn";
 import styles from "./Dropdown.module.css";
 
 /* ── Context ── */

@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, useState, useCallback, useId } from "react";
-import { cn } from "@/lib/cn";
+import { cn } from "../../../lib/cn";
 import styles from "./Checkbox.module.css";
 
 export interface CheckboxProps {

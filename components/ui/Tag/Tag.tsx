@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { CloseCircle, TickSquare, MinusSquare } from "iconsax-react";
-import { cn } from "@/lib/cn";
+import { cn } from "../../../lib/cn";
 import styles from "./Tag.module.css";
 
 export type TagSize = "sm" | "md" | "lg";

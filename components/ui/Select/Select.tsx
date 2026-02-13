@@ -7,7 +7,7 @@ import {
     useCallback,
 } from "react";
 import { ArrowDown2, SearchNormal1, CloseCircle, TickCircle } from "iconsax-react";
-import { cn } from "@/lib/cn";
+import { cn } from "../../../lib/cn";
 import styles from "./Select.module.css";
 
 /* ── Types ── */

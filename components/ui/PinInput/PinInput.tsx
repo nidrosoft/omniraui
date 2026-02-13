@@ -8,7 +8,7 @@ import {
     useCallback,
     forwardRef,
 } from "react";
-import { cn } from "@/lib/cn";
+import { cn } from "../../../lib/cn";
 import styles from "./PinInput.module.css";
 
 /* ── Context ── */

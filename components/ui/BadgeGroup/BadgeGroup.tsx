@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef } from "react";
-import { cn } from "@/lib/cn";
+import { cn } from "../../../lib/cn";
 import { ArrowRight2 } from "iconsax-react";
 import styles from "./BadgeGroup.module.css";
 
