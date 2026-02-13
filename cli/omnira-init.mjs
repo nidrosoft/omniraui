@@ -1,20 +1,16 @@
 #!/usr/bin/env node
 
 /**
- * Omnira UI — Project Scaffolding CLI
+ * Omnira UI — CLI
  *
- * Usage:  npx omnira-ui init
+ * Commands:
+ *   npx omnira-ui init              Full project scaffolding
+ *   npx omnira-ui add <Component>   Copy a single component into your project
+ *   npx omnira-ui add               List all available components
  *
- * Scaffolds the full Omnira UI design system into your project:
- *   - All base components → components/ui/
- *   - Utility helpers     → lib/
- *   - Theme provider      → lib/theme-context.tsx
- *   - Design tokens CSS   → app/globals.css
- *   - Accent overrides    → omnira-overrides.css (if non-default)
- *   - Config file         → omnira.config.ts
- *
- * Advanced components (Sidebar, Feature Cards, etc.) can be copied
- * from the documentation site: https://ui.omnira.space
+ * The `add` command copies only the requested component folder into
+ * components/ui/ and ensures required lib utilities (cn.ts, etc.)
+ * and globals.css are present. No full scaffolding needed.
  */
 
 import * as readline from "node:readline";
@@ -362,7 +358,192 @@ async function main() {
     blank();
 }
 
-main().catch((err) => {
-    console.error(err);
-    process.exit(1);
-});
+// ── Add command — copy a single component ───────────────────────────
+
+function getAvailableComponents() {
+    const componentsDir = path.join(PKG_ROOT, "components", "ui");
+    if (!fs.existsSync(componentsDir)) return [];
+    return fs.readdirSync(componentsDir, { withFileTypes: true })
+        .filter((d) => d.isDirectory())
+        .map((d) => d.name)
+        .sort();
+}
+
+function listComponents() {
+    const components = getAvailableComponents();
+
+    blank();
+    log(`  ${BOLD}${GREEN}✦${RESET} ${BOLD}${WHITE}Omnira UI — Available Components${RESET}`);
+    log(`  ${DIM}Copy individual components into your project${RESET}`);
+    blank();
+
+    if (components.length === 0) {
+        log(`  ${RED}✗${RESET} No components found. This may happen when running locally.`);
+        blank();
+        return;
+    }
+
+    const cols = 3;
+    const rows = Math.ceil(components.length / cols);
+    const colWidth = 22;
+
+    for (let r = 0; r < rows; r++) {
+        let line = "    ";
+        for (let c = 0; c < cols; c++) {
+            const idx = r + c * rows;
+            if (idx < components.length) {
+                line += components[idx].padEnd(colWidth);
+            }
+        }
+        log(line);
+    }
+
+    blank();
+    log(`  ${DIM}Usage:${RESET}  ${CYAN}npx omnira-ui add <Component>${RESET}`);
+    log(`  ${DIM}Example:${RESET} ${CYAN}npx omnira-ui add Table${RESET}`);
+    log(`  ${DIM}Multiple:${RESET} ${CYAN}npx omnira-ui add Table Button Badge${RESET}`);
+    blank();
+}
+
+function ensureLibDeps(cwd) {
+    const libFiles = ["cn.ts", "copy-to-clipboard.ts", "theme-context.tsx"];
+    const libDest = path.join(cwd, "lib");
+    let copied = 0;
+
+    for (const file of libFiles) {
+        const dest = path.join(libDest, file);
+        if (!fs.existsSync(dest)) {
+            const src = path.join(PKG_ROOT, "lib", file);
+            if (copyFile(src, dest)) {
+                log(`  ${GREEN}✓${RESET} Copied ${BOLD}lib/${file}${RESET} ${DIM}(dependency)${RESET}`);
+                copied++;
+            }
+        }
+    }
+
+    // Ensure globals.css exists
+    const globalsDest = path.join(cwd, "app", "globals.css");
+    if (!fs.existsSync(globalsDest)) {
+        const globalsSrc = path.join(PKG_ROOT, "app", "globals.css");
+        if (copyFile(globalsSrc, globalsDest)) {
+            log(`  ${GREEN}✓${RESET} Copied ${BOLD}app/globals.css${RESET} ${DIM}(design tokens)${RESET}`);
+            copied++;
+        }
+    }
+
+    return copied;
+}
+
+function addComponents(componentNames) {
+    const cwd = process.cwd();
+    const available = getAvailableComponents();
+    const availableLower = available.map((c) => c.toLowerCase());
+
+    blank();
+    log(`  ${BOLD}${GREEN}✦${RESET} ${BOLD}${WHITE}Omnira UI — Add Components${RESET}`);
+    blank();
+
+    let totalFiles = 0;
+    const added = [];
+    const notFound = [];
+
+    for (const name of componentNames) {
+        // Case-insensitive match
+        const idx = availableLower.indexOf(name.toLowerCase());
+        if (idx === -1) {
+            notFound.push(name);
+            continue;
+        }
+
+        const actualName = available[idx];
+        const src = path.join(PKG_ROOT, "components", "ui", actualName);
+        const dest = path.join(cwd, "components", "ui", actualName);
+
+        const count = copyDirRecursive(src, dest);
+        log(`  ${GREEN}✓${RESET} Copied ${BOLD}${actualName}${RESET} ${DIM}(${count} files)${RESET} → ${DIM}components/ui/${actualName}/${RESET}`);
+        totalFiles += count;
+        added.push(actualName);
+    }
+
+    for (const name of notFound) {
+        log(`  ${RED}✗${RESET} Component "${name}" not found.`);
+    }
+
+    // Ensure lib dependencies are present
+    if (added.length > 0) {
+        blank();
+        log(`  ${DIM}Checking dependencies...${RESET}`);
+        ensureLibDeps(cwd);
+    }
+
+    blank();
+    log(`  ${DIM}─────────────────────────────────────${RESET}`);
+    blank();
+
+    if (added.length > 0) {
+        log(`  ${GREEN}✓${RESET} ${BOLD}${WHITE}Added ${added.length} component${added.length > 1 ? "s" : ""} (${totalFiles} files)${RESET}`);
+        blank();
+        log(`  ${BOLD}${WHITE}Usage:${RESET}`);
+        blank();
+        for (const name of added) {
+            log(`    ${MAGENTA}import${RESET} { ${name} } ${MAGENTA}from${RESET} ${WHITE}"@/components/ui/${name}"${RESET};`);
+        }
+        blank();
+
+        if (!fs.existsSync(path.join(cwd, "app", "globals.css"))) {
+            log(`  ${YELLOW}!${RESET} Don't forget to import ${BOLD}globals.css${RESET} in your root layout.`);
+            blank();
+        }
+    }
+
+    if (notFound.length > 0) {
+        log(`  ${YELLOW}!${RESET} Run ${CYAN}npx omnira-ui add${RESET} to see all available components.`);
+        blank();
+    }
+}
+
+// ── Help ─────────────────────────────────────────────────────────────
+
+function showHelp() {
+    blank();
+    log(`  ${BOLD}${GREEN}✦${RESET} ${BOLD}${WHITE}Omnira UI — CLI${RESET}`);
+    log(`  ${DIM}The premium glassmorphism design system${RESET}`);
+    blank();
+    log(`  ${BOLD}${WHITE}Commands:${RESET}`);
+    blank();
+    log(`    ${CYAN}npx omnira-ui init${RESET}              Scaffold the full design system`);
+    log(`    ${CYAN}npx omnira-ui add <Component>${RESET}   Add a single component`);
+    log(`    ${CYAN}npx omnira-ui add${RESET}               List all available components`);
+    log(`    ${CYAN}npx omnira-ui help${RESET}              Show this help message`);
+    blank();
+    log(`  ${BOLD}${WHITE}Examples:${RESET}`);
+    blank();
+    log(`    ${CYAN}npx omnira-ui add Table${RESET}`);
+    log(`    ${CYAN}npx omnira-ui add Button Badge Input${RESET}`);
+    log(`    ${CYAN}npx omnira-ui init${RESET}`);
+    blank();
+}
+
+// ── Command router ──────────────────────────────────────────────────
+
+const args = process.argv.slice(2);
+const command = args[0]?.toLowerCase();
+
+if (!command || command === "init") {
+    main().catch((err) => {
+        console.error(err);
+        process.exit(1);
+    });
+} else if (command === "add") {
+    const componentNames = args.slice(1);
+    if (componentNames.length === 0) {
+        listComponents();
+    } else {
+        addComponents(componentNames);
+    }
+} else if (command === "help" || command === "--help" || command === "-h") {
+    showHelp();
+} else {
+    log(`\n  ${RED}✗${RESET} Unknown command: "${command}"\n`);
+    showHelp();
+}
