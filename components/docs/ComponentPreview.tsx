@@ -11,9 +11,10 @@ interface ComponentPreviewProps {
     description?: string;
     children: React.ReactNode;
     code?: string;
+    previewClassName?: string;
 }
 
-export function ComponentPreview({ title, description, children, code }: ComponentPreviewProps) {
+export function ComponentPreview({ title, description, children, code, previewClassName }: ComponentPreviewProps) {
     const [showCode, setShowCode] = useState(false);
 
     return (
@@ -45,7 +46,7 @@ export function ComponentPreview({ title, description, children, code }: Compone
                 </div>
             )}
             {!showCode && (
-                <div className={styles.preview}>
+                <div className={cn(styles.preview, previewClassName)}>
                     {children}
                 </div>
             )}
