@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function HeaderNavigationPage() {
     return (
@@ -12,6 +13,8 @@ export default function HeaderNavigationPage() {
                     { label: "Header Navigation" },
                 ]}
             />
+
+            <InstallBlock slug="header-navigation" components={["Button","Avatar","Badge","Dropdown"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

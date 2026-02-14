@@ -2,6 +2,7 @@
 
 import { FolderOpen, SearchNormal1, DocumentText, AddCircle, Cloud } from "iconsax-react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -144,6 +145,8 @@ export default function EmptyStatePage() {
                     { label: "Empty States" },
                 ]}
             />
+
+            <InstallBlock slug="empty-state" components={["EmptyState","Button"]} />
 
             <ComponentPreview
                 title="Empty State — Simple"

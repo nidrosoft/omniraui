@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { Calendar } from "@/components/ui/Calendar/Calendar";
@@ -79,6 +80,8 @@ export default function CalendarPage() {
                     { label: "Calendar" },
                 ]}
             />
+
+            <InstallBlock slug="calendar" components={["Calendar","Button"]} />
 
             <ComponentPreview
                 title="Calendar — Month View"

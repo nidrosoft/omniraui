@@ -1,0 +1,130 @@
+/* ============================================
+   Install Block — CLI Installation Section
+   ============================================ */
+
+.installBlock {
+    margin-bottom: 32px;
+}
+
+.installTitle {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 6px;
+}
+
+.installDescription {
+    font-size: 14px;
+    color: var(--color-text-tertiary);
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.tabContainer {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-standard);
+    background: var(--color-bg-elevated);
+    overflow: hidden;
+}
+
+.tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--color-border-standard);
+    background: var(--color-bg-card);
+}
+
+.tab {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    color: var(--color-text-secondary);
+}
+
+.tabActive {
+    color: var(--color-lime);
+    border-bottom-color: var(--color-lime);
+}
+
+.cliBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 20px;
+    font-family: var(--font-mono, "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace);
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.cliCommand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.cliPrompt {
+    color: var(--color-lime);
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.cliText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.copyBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.copyBtn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+    border-color: var(--color-border-medium);
+}
+
+.manualContent {
+    padding: 20px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.manualContent p {
+    margin: 0 0 8px;
+}
+
+.manualContent code {
+    font-family: var(--font-mono, "SF Mono", "Fira Code", monospace);
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-primary);
+}

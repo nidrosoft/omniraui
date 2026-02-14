@@ -2,6 +2,7 @@
 
 import { Home2, Chart21, RowVertical, FolderOpen, Diagram, Setting2, MessageQuestion, Global, Category, Briefcase, Profile2User, Notification } from "iconsax-react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { CodeBlock } from "@/components/docs/CodeBlock";
@@ -182,6 +183,8 @@ export default function SidebarNavigationPage() {
                     { label: "Sidebar Navigation" },
                 ]}
             />
+
+            <InstallBlock slug="sidebar-navigation" components={["SidebarNavigation","Button","Avatar","Badge","Dropdown","Toggle","Tooltip"]} />
 
             {/* Simple */}
             <ComponentPreview

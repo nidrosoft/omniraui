@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function DatePickerPage() {
     return (
@@ -12,6 +13,8 @@ export default function DatePickerPage() {
                     { label: "Date Picker" },
                 ]}
             />
+
+            <InstallBlock slug="date-picker" components={["Button","Input"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

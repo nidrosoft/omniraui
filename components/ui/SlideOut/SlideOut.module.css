@@ -1,0 +1,1420 @@
+/* ============================================
+   SlideOut — Glassmorphism Styles
+   ============================================ */
+
+/* ── Overlay ── */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+/* ── Panel ── */
+
+.panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: var(--color-bg-card);
+    border-left: 1px solid var(--color-border-standard);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.25s ease;
+    overflow: hidden;
+}
+
+/* ── Sizes ── */
+
+.size-sm { max-width: 360px; }
+.size-md { max-width: 440px; }
+.size-lg { max-width: 560px; }
+.size-xl { max-width: 720px; }
+
+/* ── Close button ── */
+
+.closeBtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.closeBtn:hover {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+}
+
+/* ── Preview override for ComponentPreview ── */
+
+.previewScreen {
+    padding: 12px !important;
+    justify-content: stretch !important;
+}
+
+/* ── Laptop screen container (for docs) ── */
+
+.laptopScreen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+}
+
+
+/* Panel docked right inside the screen */
+.staticPanel {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    animation: slideIn 0.25s ease;
+}
+
+@media (max-width: 900px) {
+    .staticPanel {
+        width: 280px;
+    }
+}
+
+@media (max-width: 600px) {
+    .laptopScreen {
+        aspect-ratio: 4 / 3;
+    }
+    .staticPanel {
+        width: 260px;
+    }
+}
+
+/* ── Header ── */
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px 0;
+}
+
+.headerIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.headerText {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1;
+    min-width: 0;
+    padding-right: 28px;
+}
+
+.headerTitle {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    margin: 0;
+}
+
+.headerDescription {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ── Content ── */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 16px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* ── Footer ── */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 10px 16px;
+    border-top: 1px solid var(--color-border-subtle);
+    margin-top: auto;
+}
+
+/* ── Cover image (for profile slideouts) ── */
+
+.coverImage {
+    width: 100%;
+    height: 72px;
+    object-fit: cover;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    display: block;
+}
+
+.coverGradient {
+    width: 100%;
+    height: 72px;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    display: block;
+}
+
+/* ── Profile section ── */
+
+.profileSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 16px;
+    margin-top: -24px;
+    position: relative;
+}
+
+.profileAvatar {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    border: 2px solid var(--color-bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.profileName {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.profileNameText {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+}
+
+.profileHandle {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.verifiedBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: var(--color-info);
+    flex-shrink: 0;
+}
+
+.onlineDot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-success);
+    flex-shrink: 0;
+}
+
+/* ── Stats row ── */
+
+.statsRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.statLabel {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.statValue {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.statDivider {
+    width: 1px;
+    height: 28px;
+    background: var(--color-border-subtle);
+    border: none;
+    flex-shrink: 0;
+}
+
+/* ── Dotted divider ── */
+
+.dottedDivider {
+    width: 100%;
+    height: 2px;
+    border: none;
+    background-image: radial-gradient(circle, var(--color-border-standard) 1px, transparent 1px);
+    background-size: 8px 2px;
+    background-repeat: repeat-x;
+    margin: 4px 0;
+}
+
+/* ── Form layout ── */
+
+.formGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.formRow {
+    display: flex;
+    gap: 10px;
+}
+
+.formRow > * {
+    flex: 1;
+}
+
+/* ── Tags row ── */
+
+.tagsRow {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* ── Section block ── */
+
+.sectionBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sectionTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.sectionText {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    line-height: 1.5;
+}
+
+/* ── Placeholder block ── */
+
+.placeholderBlock {
+    width: 100%;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+}
+
+/* ── Info row (icon + text) ── */
+
+.infoRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.infoIcon {
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+}
+
+/* ── Experience item ── */
+
+.expItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 2px 0;
+}
+
+.expLogo {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 13px;
+}
+
+.expInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.expTitle {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.expCompany {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+}
+
+.expDate {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Tabs bar ── */
+
+.tabsBar {
+    display: flex;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+}
+
+.tab {
+    flex: 1;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.tab:not(:last-child) {
+    border-right: 1px solid var(--color-border-standard);
+}
+
+.tabActive {
+    color: var(--color-text-primary);
+    background: var(--color-bg-elevated);
+    font-weight: 600;
+}
+
+/* ── Message item ── */
+
+.messageItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+}
+
+.messageAvatar {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    font-size: 13px;
+    font-weight: 600;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.messageOnline {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-full);
+    background: var(--color-success);
+    border: 2px solid var(--color-bg-card);
+}
+
+.messageBody {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+}
+
+.messageMeta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.messageName {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.messageHandle {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.messageTime {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    margin-left: auto;
+}
+
+.messageBubble {
+    padding: 6px 10px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.messageBubbleOwn {
+    margin-left: auto;
+    background: var(--color-bg-card);
+}
+
+/* ── Chat date separator ── */
+
+.dateSeparator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+}
+
+.dateSeparator::before,
+.dateSeparator::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-subtle);
+}
+
+.dateSeparatorText {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+}
+
+/* ── Chat input bar ── */
+
+.chatInputBar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-top: 1px solid var(--color-border-subtle);
+    margin-top: auto;
+}
+
+.chatInput {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-standard);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    font-size: 13px;
+    outline: none;
+}
+
+.chatInput::placeholder {
+    color: var(--color-text-tertiary);
+}
+
+.chatSendBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-standard);
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    flex-shrink: 0;
+}
+
+.chatSendBtn:hover {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+}
+
+/* ── File attachment ── */
+
+.fileAttachment {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    width: fit-content;
+}
+
+.fileIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: var(--color-error-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--color-error);
+    flex-shrink: 0;
+}
+
+.fileInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.fileName {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.fileSize {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Radio card (payment, plan selection) ── */
+
+.radioGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radioCard {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-standard);
+    background: var(--color-bg-card);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.radioCard:hover {
+    border-color: var(--color-border-hover);
+}
+
+.radioCardSelected {
+    border-color: var(--color-accent);
+    background: var(--color-accent-bg, rgba(210, 254, 23, 0.06));
+}
+
+.radioCircle {
+    width: 18px;
+    height: 18px;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-border-standard);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.15s;
+}
+
+.radioCircleSelected {
+    border-color: var(--color-accent);
+}
+
+.radioCircleInner {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+}
+
+.radioCardIcon {
+    width: 40px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+}
+
+.radioCardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1;
+    min-width: 0;
+}
+
+.radioCardTitle {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.radioCardDesc {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Plan card ── */
+
+.planCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-standard);
+    background: var(--color-bg-card);
+    cursor: pointer;
+    transition: border-color 0.15s;
+}
+
+.planCard:hover {
+    border-color: var(--color-border-hover);
+}
+
+.planCardSelected {
+    border-color: var(--color-accent);
+}
+
+.planCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.planCardName {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.planCardPrice {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.planCardPricePeriod {
+    font-weight: 400;
+    color: var(--color-text-tertiary);
+}
+
+.planCardFeatures {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.planCardFeature {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.planCardCheck {
+    color: var(--color-success);
+    flex-shrink: 0;
+}
+
+/* ── Team member row ── */
+
+.memberRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+}
+
+.memberInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1;
+    min-width: 0;
+}
+
+.memberName {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.memberEmail {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.memberRole {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    white-space: nowrap;
+}
+
+/* ── Filter controls ── */
+
+.filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filterLabel {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.filterChips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.filterChip {
+    padding: 5px 12px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border-standard);
+    background: transparent;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.filterChip:hover {
+    border-color: var(--color-border-hover);
+}
+
+.filterChipActive {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg-card);
+}
+
+.filterRange {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filterRangeInput {
+    flex: 1;
+    padding: 6px 10px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-standard);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    font-size: 13px;
+    outline: none;
+    text-align: center;
+}
+
+.filterRangeSep {
+    font-size: 13px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Upload zone ── */
+
+.uploadZone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px 14px;
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--color-border-standard);
+    background: var(--color-bg-elevated);
+    cursor: pointer;
+    transition: border-color 0.15s;
+    text-align: center;
+}
+
+.uploadZone:hover {
+    border-color: var(--color-accent);
+}
+
+.uploadIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+}
+
+.uploadText {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.uploadTextAccent {
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+.uploadHint {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+}
+
+.uploadFileItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-card);
+}
+
+.uploadFileInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.uploadFileName {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.uploadFileSize {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+}
+
+.uploadFileProgress {
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--color-bg-elevated);
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.uploadFileProgressBar {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--color-accent);
+    transition: width 0.3s;
+}
+
+.uploadFileRemove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* ── Label item ── */
+
+.labelItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+}
+
+.labelDot {
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+}
+
+.labelName {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    flex: 1;
+}
+
+.labelCount {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Notification item ── */
+
+.notifItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.notifDot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.notifDotRead {
+    background: transparent;
+}
+
+.notifBody {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.notifText {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+}
+
+.notifTextBold {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.notifTime {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+}
+
+.notifIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+}
+
+/* ── Notification settings row ── */
+
+.settingsRow {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.settingsRowInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.settingsRowTitle {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.settingsRowDesc {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    line-height: 1.4;
+}
+
+/* ── Checkbox ── */
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-border-standard);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.checkboxChecked {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+/* ── Order summary ── */
+
+.orderRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+}
+
+.orderThumb {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.orderInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1;
+    min-width: 0;
+}
+
+.orderName {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.orderQty {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.orderPrice {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+}
+
+.summaryLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.summaryLabel {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.summaryValue {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.summaryTotal {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* ── Calendar event ── */
+
+.calendarEventColor {
+    width: 4px;
+    border-radius: 2px;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+
+.calendarEventBody {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+}
+
+.calendarEventTitle {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.calendarEventTime {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.calendarEventMeta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.calendarAvatarStack {
+    display: flex;
+}
+
+.calendarAvatarStackItem {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    border: 2px solid var(--color-bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    margin-left: -6px;
+}
+
+.calendarAvatarStackItem:first-child {
+    margin-left: 0;
+}
+
+/* ── AI chat ── */
+
+.aiBubble {
+    padding: 8px 12px;
+    border-radius: var(--radius-lg);
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    max-width: 90%;
+}
+
+.aiBubbleAssistant {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    align-self: flex-start;
+}
+
+.aiBubbleUser {
+    background: var(--color-accent);
+    color: var(--color-bg-card);
+    align-self: flex-end;
+    border: none;
+}
+
+.aiInputBar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-top: 1px solid var(--color-border-subtle);
+    margin-top: auto;
+}
+
+/* ── Solid divider ── */
+
+.solidDivider {
+    width: 100%;
+    height: 1px;
+    background: var(--color-border-subtle);
+    border: none;
+    margin: 4px 0;
+}
+
+/* ── Toggle switch (simple CSS) ── */
+
+.toggleSwitch {
+    width: 36px;
+    height: 20px;
+    border-radius: 10px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-standard);
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+
+.toggleSwitchOn {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.toggleKnob {
+    width: 16px;
+    height: 16px;
+    border-radius: var(--radius-full);
+    background: white;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.toggleSwitchOn .toggleKnob {
+    transform: translateX(16px);
+}
+
+/* ── Project detail row ── */
+
+.detailRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 4px 0;
+}
+
+.detailLabel {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    width: 90px;
+    flex-shrink: 0;
+}
+
+.detailValue {
+    font-size: 13px;
+    color: var(--color-text-primary);
+    flex: 1;
+}
+
+/* ── Progress bar ── */
+
+.progressBar {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--color-bg-elevated);
+    overflow: hidden;
+}
+
+.progressBarFill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--color-accent);
+    transition: width 0.3s;
+}

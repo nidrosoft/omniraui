@@ -2,6 +2,7 @@
 
 import { Setting2, ExportSquare, AddCircle } from "iconsax-react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { PageHeader } from "@/components/ui/PageHeader";
@@ -147,6 +148,8 @@ export default function PageHeaderPage() {
                     { label: "Page Headers" },
                 ]}
             />
+
+            <InstallBlock slug="page-header" components={["PageHeader","Button","Badge"]} />
 
             <ComponentPreview
                 title="Page Header — With Actions"

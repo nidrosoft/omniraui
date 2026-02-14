@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function SectionFooterPage() {
     return (
@@ -12,6 +13,8 @@ export default function SectionFooterPage() {
                     { label: "Section Footer" },
                 ]}
             />
+
+            <InstallBlock slug="section-footer" components={["Button"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

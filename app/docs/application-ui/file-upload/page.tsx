@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function FileUploadPage() {
     return (
@@ -12,6 +13,8 @@ export default function FileUploadPage() {
                     { label: "File Upload" },
                 ]}
             />
+
+            <InstallBlock slug="file-upload" components={["Button","ProgressBar"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

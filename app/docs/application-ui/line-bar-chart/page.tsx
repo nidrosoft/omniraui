@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function LineandBarChartPage() {
     return (
@@ -12,6 +13,8 @@ export default function LineandBarChartPage() {
                     { label: "Line and Bar Chart" },
                 ]}
             />
+
+            <InstallBlock slug="line-bar-chart" components={["Card"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

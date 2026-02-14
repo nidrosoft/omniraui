@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { Edit, Trash, DocumentText, Gallery, VideoPlay, DocumentText1, Chart, TickCircle, ArrowLeft, CloseCircle, DocumentUpload, Eye, Copy, ArchiveBook } from "iconsax-react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import {
@@ -1210,6 +1211,8 @@ export default function TablePage() {
                     { label: "Table" },
                 ]}
             />
+
+            <InstallBlock slug="table" components={["Table","Avatar","Badge","Button","ButtonUtility","Dropdown","ProgressBar"]} />
 
             <ComponentPreview
                 title="Table — Divider Line (sm)"

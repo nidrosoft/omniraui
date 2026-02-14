@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function CodeSnippetPage() {
     return (
@@ -12,6 +13,8 @@ export default function CodeSnippetPage() {
                     { label: "Code Snippet" },
                 ]}
             />
+
+            <InstallBlock slug="code-snippet" components={["Button"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

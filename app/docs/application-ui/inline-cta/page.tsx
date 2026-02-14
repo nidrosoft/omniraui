@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function InlineCTAPage() {
     return (
@@ -12,6 +13,8 @@ export default function InlineCTAPage() {
                     { label: "Inline CTA" },
                 ]}
             />
+
+            <InstallBlock slug="inline-cta" components={["Button","Badge","Input"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

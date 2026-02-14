@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function PieChartPage() {
     return (
@@ -12,6 +13,8 @@ export default function PieChartPage() {
                     { label: "Pie Chart" },
                 ]}
             />
+
+            <InstallBlock slug="pie-chart" components={["Card"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

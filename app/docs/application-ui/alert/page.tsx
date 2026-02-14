@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function AlertPage() {
     return (
@@ -12,6 +13,8 @@ export default function AlertPage() {
                     { label: "Alert" },
                 ]}
             />
+
+            <InstallBlock slug="alert" components={["Button","Badge"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

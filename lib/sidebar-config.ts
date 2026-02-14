@@ -109,6 +109,7 @@ export const sidebarConfig: SidebarSection[] = [
             { name: "Loading Indicator", href: "/docs/application-ui/loading-indicator" },
             { name: "Code Snippet", href: "/docs/application-ui/code-snippet" },
             { name: "Empty States", href: "/docs/application-ui/empty-state", status: "new" },
+            { name: "Agent Thinking", href: "/docs/application-ui/agent-thinking", status: "new" },
         ],
     },
     {

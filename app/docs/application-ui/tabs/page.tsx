@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function TabsPage() {
     return (
@@ -12,6 +13,8 @@ export default function TabsPage() {
                     { label: "Tabs" },
                 ]}
             />
+
+            <InstallBlock slug="tabs" components={["Button","Badge"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

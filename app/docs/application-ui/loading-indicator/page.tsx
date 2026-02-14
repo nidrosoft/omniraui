@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function LoadingIndicatorPage() {
     return (
@@ -12,6 +13,8 @@ export default function LoadingIndicatorPage() {
                     { label: "Loading Indicator" },
                 ]}
             />
+
+            <InstallBlock slug="loading-indicator" components={["ProgressBar"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

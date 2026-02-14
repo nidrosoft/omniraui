@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function ActivityFeedPage() {
     return (
@@ -12,6 +13,8 @@ export default function ActivityFeedPage() {
                     { label: "Activity Feed" },
                 ]}
             />
+
+            <InstallBlock slug="activity-feed" components={["Avatar","Badge","Button"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

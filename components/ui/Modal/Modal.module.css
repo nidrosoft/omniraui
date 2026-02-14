@@ -1,0 +1,402 @@
+/* ============================================
+   Modal — Glassmorphism Styles
+   ============================================ */
+
+/* ── Overlay ── */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Panel ── */
+
+.panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: calc(100vh - 48px);
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    box-shadow: var(--shadow-card), 0 24px 48px rgba(0, 0, 0, 0.3);
+    backdrop-filter: var(--blur-standard);
+    animation: slideUp 0.25s ease;
+    overflow: hidden;
+}
+
+/* ── Sizes ── */
+
+.size-sm { max-width: 400px; }
+.size-md { max-width: 520px; }
+.size-lg { max-width: 680px; }
+.size-xl { max-width: 860px; }
+.size-full { max-width: 100%; }
+
+/* ── Static inline preview (for docs) ── */
+
+.staticPreview {
+    position: relative;
+    animation: none;
+    box-shadow: var(--shadow-card);
+    max-height: none;
+}
+
+/* ── Close button ── */
+
+.closeBtn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.closeBtn:hover {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+}
+
+/* ── Icon container ── */
+
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    margin: 24px 24px 0;
+    flex-shrink: 0;
+}
+
+.intent-default {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-secondary);
+}
+
+.intent-warning {
+    background: var(--color-warning-bg);
+    border: 1px solid var(--color-warning-border);
+    color: var(--color-warning);
+}
+
+.intent-destructive {
+    background: var(--color-error-bg);
+    border: 1px solid var(--color-error-border);
+    color: var(--color-error);
+}
+
+.intent-success {
+    background: var(--color-success-bg);
+    border: 1px solid var(--color-success-border);
+    color: var(--color-success);
+}
+
+/* ── Header ── */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 24px 0;
+}
+
+.iconContainer + .header {
+    padding-top: 12px;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    margin: 0;
+    padding-right: 32px;
+}
+
+.description {
+    font-size: 14px;
+    color: var(--color-text-tertiary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ── Body ── */
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 24px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* ── Footer ── */
+
+.footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+/* ── Utility: footer alignment helpers ── */
+
+.footerRight {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+}
+
+.footerSpread {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+/* ── Utility: form layout inside modal body ── */
+
+.formGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.formRow {
+    display: flex;
+    gap: 12px;
+}
+
+.formRow > * {
+    flex: 1;
+}
+
+.formLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: var(--color-border-subtle);
+    border: none;
+    margin: 4px 0;
+}
+
+/* ── Utility: user row for invite/team modals ── */
+
+.userRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+.userAvatar {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    font-size: 14px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1;
+    min-width: 0;
+}
+
+.userName {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.userEmail {
+    font-size: 13px;
+    color: var(--color-text-tertiary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ── Utility: upload zone ── */
+
+.uploadZone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 32px 24px;
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--color-border-standard);
+    background: var(--color-bg-elevated);
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.uploadZone:hover {
+    border-color: var(--color-lime);
+    background: var(--color-bg-lime-subtle);
+}
+
+.uploadIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-tertiary);
+}
+
+.uploadText {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.uploadHint {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Utility: plan cards ── */
+
+.planGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.planCard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-standard);
+    background: var(--color-bg-elevated);
+    cursor: pointer;
+    transition: border-color 0.15s;
+}
+
+.planCard:hover,
+.planCardActive {
+    border-color: var(--color-lime);
+}
+
+.planCardActive {
+    background: var(--color-bg-lime-subtle);
+}
+
+.planName {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.planPrice {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1;
+}
+
+.planPeriod {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-text-tertiary);
+}
+
+.planFeature {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ── Utility: settings avatar ── */
+
+.settingsAvatar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.avatarCircle {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    border: 2px solid var(--color-border-standard);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    font-size: 24px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.avatarActions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}

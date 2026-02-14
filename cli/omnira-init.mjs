@@ -25,6 +25,28 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PKG_ROOT = path.resolve(__dirname, "..");
 
+// ── Detect src/ directory structure ─────────────────────────────────
+
+function detectSrcDir(cwd) {
+    const srcDir = path.join(cwd, "src");
+    if (fs.existsSync(srcDir)) {
+        // If src/ contains app/, components/, or lib/, it's a src-based project
+        if (
+            fs.existsSync(path.join(srcDir, "app")) ||
+            fs.existsSync(path.join(srcDir, "components")) ||
+            fs.existsSync(path.join(srcDir, "lib"))
+        ) {
+            return "src";
+        }
+    }
+    return "";
+}
+
+function getProjectBase(cwd) {
+    const srcPrefix = detectSrcDir(cwd);
+    return srcPrefix ? path.join(cwd, srcPrefix) : cwd;
+}
+
 // ── ANSI helpers ─────────────────────────────────────────────────────
 
 const RESET = "\x1b[0m";
@@ -266,13 +288,21 @@ async function main() {
 
     const cwd = process.cwd();
 
+    // ── Detect project structure ──
+    const base = getProjectBase(cwd);
+    const srcPrefix = detectSrcDir(cwd);
+    if (srcPrefix) {
+        log(`  ${DIM}Detected ${BOLD}${srcPrefix}/${RESET}${DIM} directory structure${RESET}`);
+        blank();
+    }
+
     // ── 1. Copy all base components ──
     const componentsSrc = path.join(PKG_ROOT, "components", "ui");
-    const componentsDest = path.join(cwd, "components", "ui");
+    const componentsDest = path.join(base, "components", "ui");
 
     if (fs.existsSync(componentsSrc)) {
         const count = copyDirRecursive(componentsSrc, componentsDest);
-        log(`  ${GREEN}✓${RESET} Copied ${BOLD}${count} files${RESET} → ${DIM}components/ui/${RESET}`);
+        log(`  ${GREEN}✓${RESET} Copied ${BOLD}${count} files${RESET} → ${DIM}${srcPrefix ? srcPrefix + "/" : ""}components/ui/${RESET}`);
     } else {
         log(`  ${RED}✗${RESET} Components source not found at ${componentsSrc}`);
         log(`    ${DIM}This may happen when running locally. Components are bundled in the npm package.${RESET}`);
@@ -280,7 +310,7 @@ async function main() {
 
     // ── 2. Copy lib utilities ──
     const libFiles = ["cn.ts", "copy-to-clipboard.ts", "theme-context.tsx"];
-    const libDest = path.join(cwd, "lib");
+    const libDest = path.join(base, "lib");
     fs.mkdirSync(libDest, { recursive: true });
 
     for (const file of libFiles) {
@@ -293,7 +323,7 @@ async function main() {
 
     // ── 3. Copy globals.css (design system tokens) ──
     const globalsSrc = path.join(PKG_ROOT, "app", "globals.css");
-    const appDir = path.join(cwd, "app");
+    const appDir = path.join(base, "app");
     fs.mkdirSync(appDir, { recursive: true });
 
     if (copyFile(globalsSrc, path.join(appDir, "globals.css"))) {
@@ -311,7 +341,7 @@ async function main() {
     log(`  ${GREEN}✓${RESET} Created ${BOLD}omnira-overrides.css${RESET}`);
 
     // ── 6. Generate providers.tsx ──
-    const providersPath = path.join(appDir, "providers.tsx");
+    const providersPath = path.join(base, "app", "providers.tsx");
     if (!fs.existsSync(providersPath)) {
         fs.writeFileSync(providersPath, generateProviders(themeMode), "utf-8");
         log(`  ${GREEN}✓${RESET} Created ${BOLD}app/providers.tsx${RESET} ${DIM}(ThemeProvider wrapper)${RESET}`);
@@ -358,6 +388,88 @@ async function main() {
     blank();
 }
 
+// ── Page bundles — map page slugs to all required components ────────
+
+const PAGE_BUNDLES = {
+    // Card Headers
+    "card-header":        ["CardHeader", "Button", "Badge", "Avatar", "Dropdown"],
+    "card-headers":       ["CardHeader", "Button", "Badge", "Avatar", "Dropdown"],
+    // Page Headers
+    "page-header":        ["PageHeader", "Button", "Badge"],
+    "page-headers":       ["PageHeader", "Button", "Badge"],
+    // Section Headers
+    "section-header":     ["Button", "Badge"],
+    "section-headers":    ["Button", "Badge"],
+    // Section Footers
+    "section-footer":     ["Button"],
+    "section-footers":    ["Button"],
+    // Navigation
+    "sidebar-navigation": ["SidebarNavigation", "Button", "Avatar", "Badge", "Dropdown", "Toggle", "Tooltip"],
+    "header-navigation":  ["Button", "Avatar", "Badge", "Dropdown"],
+    // Modals
+    "modal":              ["Modal", "Button", "Badge", "Input", "Toggle", "Checkbox"],
+    "modals":             ["Modal", "Button", "Badge", "Input", "Toggle", "Checkbox"],
+    // Command Menus
+    "command-menu":       ["Button", "Input", "Badge"],
+    "command-menus":      ["Button", "Input", "Badge"],
+    // Charts
+    "line-bar-chart":     ["Card"],
+    "line-bar-charts":    ["Card"],
+    "activity-gauge":     ["ActivityGauge"],
+    "activity-gauges":    ["ActivityGauge"],
+    "pie-chart":          ["Card"],
+    "pie-charts":         ["Card"],
+    "radar-chart":        ["Card"],
+    "radar-charts":       ["Card"],
+    // Metrics
+    "metrics":            ["Metric", "Button"],
+    // Slide Out
+    "slide-out":          ["SlideOut", "Button", "Input", "Badge"],
+    // Inline CTA
+    "inline-cta":         ["Button", "Badge", "Input"],
+    // Pagination
+    "pagination":         ["Button", "ButtonUtility"],
+    // Carousel
+    "carousel":           ["Button", "ButtonUtility"],
+    // Progress Steps
+    "progress-steps":     ["ProgressBar", "Badge"],
+    // Activity Feed
+    "activity-feed":      ["Avatar", "Badge", "Button"],
+    // Messaging
+    "messaging":          ["Avatar", "Button", "Input"],
+    // Tabs
+    "tabs":               ["Button", "Badge"],
+    // Table
+    "table":              ["Table", "Avatar", "Badge", "Button", "ButtonUtility", "Dropdown", "ProgressBar"],
+    // Breadcrumbs
+    "breadcrumbs":        ["Button"],
+    // Alerts
+    "alert":              ["Button", "Badge"],
+    "alerts":             ["Button", "Badge"],
+    // Notifications
+    "notification":       ["Button", "Avatar", "Badge"],
+    "notifications":      ["Button", "Avatar", "Badge"],
+    // Date Picker
+    "date-picker":        ["Button", "Input"],
+    // Calendar
+    "calendar":           ["Calendar", "Button"],
+    // File Upload
+    "file-upload":        ["Button", "ProgressBar"],
+    // Content Divider
+    "content-divider":    ["Button"],
+    // Loading Indicator
+    "loading-indicator":  ["ProgressBar"],
+    // Empty States
+    "empty-state":        ["EmptyState", "Button"],
+    "empty-states":       ["EmptyState", "Button"],
+    // Code Snippet
+    "code-snippet":       ["Button"],
+    // Card
+    "card":               ["Card", "Button", "Badge"],
+    // Matrix
+    "matrix":             ["Card"],
+};
+
 // ── Add command — copy a single component ───────────────────────────
 
 function getAvailableComponents() {
@@ -371,10 +483,11 @@ function getAvailableComponents() {
 
 function listComponents() {
     const components = getAvailableComponents();
+    const bundles = Object.keys(PAGE_BUNDLES).sort();
 
     blank();
     log(`  ${BOLD}${GREEN}✦${RESET} ${BOLD}${WHITE}Omnira UI — Available Components${RESET}`);
-    log(`  ${DIM}Copy individual components into your project${RESET}`);
+    log(`  ${DIM}Copy individual components or full page bundles into your project${RESET}`);
     blank();
 
     if (components.length === 0) {
@@ -382,6 +495,9 @@ function listComponents() {
         blank();
         return;
     }
+
+    log(`  ${BOLD}${WHITE}Individual Components:${RESET}`);
+    blank();
 
     const cols = 3;
     const rows = Math.ceil(components.length / cols);
@@ -399,15 +515,38 @@ function listComponents() {
     }
 
     blank();
-    log(`  ${DIM}Usage:${RESET}  ${CYAN}npx omnira-ui add <Component>${RESET}`);
-    log(`  ${DIM}Example:${RESET} ${CYAN}npx omnira-ui add Table${RESET}`);
-    log(`  ${DIM}Multiple:${RESET} ${CYAN}npx omnira-ui add Table Button Badge${RESET}`);
+    log(`  ${BOLD}${WHITE}Page Bundles:${RESET} ${DIM}(installs all components needed for a page)${RESET}`);
+    blank();
+
+    const bCols = 3;
+    const bRows = Math.ceil(bundles.length / bCols);
+
+    for (let r = 0; r < bRows; r++) {
+        let line = "    ";
+        for (let c = 0; c < bCols; c++) {
+            const idx = r + c * bRows;
+            if (idx < bundles.length) {
+                const slug = bundles[idx];
+                const count = PAGE_BUNDLES[slug].length;
+                line += `${slug} ${DIM}(${count})${RESET}`.padEnd(colWidth + 10);
+            }
+        }
+        log(line);
+    }
+
+    blank();
+    log(`  ${BOLD}${WHITE}Usage:${RESET}`);
+    blank();
+    log(`    ${CYAN}npx omnira-ui add Table${RESET}            ${DIM}Single component${RESET}`);
+    log(`    ${CYAN}npx omnira-ui add card-headers${RESET}     ${DIM}All components for Card Headers page${RESET}`);
+    log(`    ${CYAN}npx omnira-ui add Button Badge${RESET}     ${DIM}Multiple components${RESET}`);
     blank();
 }
 
 function ensureLibDeps(cwd) {
+    const base = getProjectBase(cwd);
     const libFiles = ["cn.ts", "copy-to-clipboard.ts", "theme-context.tsx"];
-    const libDest = path.join(cwd, "lib");
+    const libDest = path.join(base, "lib");
     let copied = 0;
 
     for (const file of libFiles) {
@@ -422,7 +561,7 @@ function ensureLibDeps(cwd) {
     }
 
     // Ensure globals.css exists
-    const globalsDest = path.join(cwd, "app", "globals.css");
+    const globalsDest = path.join(base, "app", "globals.css");
     if (!fs.existsSync(globalsDest)) {
         const globalsSrc = path.join(PKG_ROOT, "app", "globals.css");
         if (copyFile(globalsSrc, globalsDest)) {
@@ -434,39 +573,78 @@ function ensureLibDeps(cwd) {
     return copied;
 }
 
-function addComponents(componentNames) {
-    const cwd = process.cwd();
+function resolveNames(inputNames) {
+    // Expand page bundle aliases into individual component names
+    const resolved = new Set();
+    const unknown = [];
+
     const available = getAvailableComponents();
     const availableLower = available.map((c) => c.toLowerCase());
 
+    for (const name of inputNames) {
+        const lower = name.toLowerCase();
+
+        // Check page bundles first
+        if (PAGE_BUNDLES[lower]) {
+            for (const comp of PAGE_BUNDLES[lower]) {
+                resolved.add(comp);
+            }
+            continue;
+        }
+
+        // Check individual component (case-insensitive)
+        const idx = availableLower.indexOf(lower);
+        if (idx !== -1) {
+            resolved.add(available[idx]);
+            continue;
+        }
+
+        unknown.push(name);
+    }
+
+    return { resolved: [...resolved], unknown };
+}
+
+function addComponents(componentNames) {
+    const cwd = process.cwd();
+    const base = getProjectBase(cwd);
+    const srcPrefix = detectSrcDir(cwd);
+    const available = getAvailableComponents();
+
+    // Resolve page bundles and individual names
+    const { resolved, unknown } = resolveNames(componentNames);
+
+    // Check if any input was a page bundle for nicer messaging
+    const isBundle = componentNames.some((n) => PAGE_BUNDLES[n.toLowerCase()]);
+
     blank();
     log(`  ${BOLD}${GREEN}✦${RESET} ${BOLD}${WHITE}Omnira UI — Add Components${RESET}`);
+    if (isBundle) {
+        log(`  ${DIM}Installing page bundle: ${componentNames.filter((n) => PAGE_BUNDLES[n.toLowerCase()]).join(", ")}${RESET}`);
+    }
+    if (srcPrefix) {
+        log(`  ${DIM}Detected ${BOLD}${srcPrefix}/${RESET}${DIM} directory structure${RESET}`);
+    }
     blank();
 
     let totalFiles = 0;
     const added = [];
-    const notFound = [];
+    const destPrefix = srcPrefix ? srcPrefix + "/" : "";
 
-    for (const name of componentNames) {
-        // Case-insensitive match
-        const idx = availableLower.indexOf(name.toLowerCase());
-        if (idx === -1) {
-            notFound.push(name);
-            continue;
-        }
-
-        const actualName = available[idx];
+    for (const actualName of resolved) {
         const src = path.join(PKG_ROOT, "components", "ui", actualName);
-        const dest = path.join(cwd, "components", "ui", actualName);
+        const dest = path.join(base, "components", "ui", actualName);
+
+        if (!fs.existsSync(src)) continue;
 
         const count = copyDirRecursive(src, dest);
-        log(`  ${GREEN}✓${RESET} Copied ${BOLD}${actualName}${RESET} ${DIM}(${count} files)${RESET} → ${DIM}components/ui/${actualName}/${RESET}`);
+        log(`  ${GREEN}✓${RESET} Copied ${BOLD}${actualName}${RESET} ${DIM}(${count} files)${RESET} → ${DIM}${destPrefix}components/ui/${actualName}/${RESET}`);
         totalFiles += count;
         added.push(actualName);
     }
 
-    for (const name of notFound) {
-        log(`  ${RED}✗${RESET} Component "${name}" not found.`);
+    for (const name of unknown) {
+        log(`  ${RED}✗${RESET} "${name}" is not a component or page bundle.`);
     }
 
     // Ensure lib dependencies are present
@@ -490,13 +668,14 @@ function addComponents(componentNames) {
         }
         blank();
 
-        if (!fs.existsSync(path.join(cwd, "app", "globals.css"))) {
+        const globalsPath = path.join(base, "app", "globals.css");
+        if (!fs.existsSync(globalsPath)) {
             log(`  ${YELLOW}!${RESET} Don't forget to import ${BOLD}globals.css${RESET} in your root layout.`);
             blank();
         }
     }
 
-    if (notFound.length > 0) {
+    if (unknown.length > 0) {
         log(`  ${YELLOW}!${RESET} Run ${CYAN}npx omnira-ui add${RESET} to see all available components.`);
         blank();
     }
@@ -512,15 +691,16 @@ function showHelp() {
     log(`  ${BOLD}${WHITE}Commands:${RESET}`);
     blank();
     log(`    ${CYAN}npx omnira-ui init${RESET}              Scaffold the full design system`);
-    log(`    ${CYAN}npx omnira-ui add <Component>${RESET}   Add a single component`);
-    log(`    ${CYAN}npx omnira-ui add${RESET}               List all available components`);
+    log(`    ${CYAN}npx omnira-ui add <name>${RESET}        Add a component or page bundle`);
+    log(`    ${CYAN}npx omnira-ui add${RESET}               List all components & page bundles`);
     log(`    ${CYAN}npx omnira-ui help${RESET}              Show this help message`);
     blank();
     log(`  ${BOLD}${WHITE}Examples:${RESET}`);
     blank();
-    log(`    ${CYAN}npx omnira-ui add Table${RESET}`);
-    log(`    ${CYAN}npx omnira-ui add Button Badge Input${RESET}`);
-    log(`    ${CYAN}npx omnira-ui init${RESET}`);
+    log(`    ${CYAN}npx omnira-ui add Table${RESET}            ${DIM}Single component${RESET}`);
+    log(`    ${CYAN}npx omnira-ui add card-headers${RESET}     ${DIM}All components for Card Headers page${RESET}`);
+    log(`    ${CYAN}npx omnira-ui add Button Badge${RESET}     ${DIM}Multiple components${RESET}`);
+    log(`    ${CYAN}npx omnira-ui init${RESET}                 ${DIM}Full project scaffolding${RESET}`);
     blank();
 }
 

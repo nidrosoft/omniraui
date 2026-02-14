@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function ContentDividerPage() {
     return (
@@ -12,6 +13,8 @@ export default function ContentDividerPage() {
                     { label: "Content Divider" },
                 ]}
             />
+
+            <InstallBlock slug="content-divider" components={["Button"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

@@ -1,17 +1,29 @@
 /* ============================================
    Metric — Glassmorphism Styles
+   6 distinct visual variants
    ============================================ */
+
+/* ── Base card ── */
 
 .metricCard {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 24px;
     border-radius: var(--radius-lg);
     background: var(--color-bg-card);
     border: 1px solid var(--color-border-standard);
     box-shadow: var(--shadow-card);
     backdrop-filter: var(--blur-standard);
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 24px;
+}
+
+.hasFooter .body {
+    padding-bottom: 12px;
 }
 
 /* ── Header ── */
@@ -23,21 +35,28 @@
 }
 
 .label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    color: var(--color-text-secondary);
+    color: var(--color-text-tertiary);
 }
 
 .iconWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: var(--radius-md);
     background: var(--color-bg-elevated);
     border: 1px solid var(--color-border-subtle);
     color: var(--color-text-secondary);
+}
+
+.actionsInline {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
 }
 
 /* ── Value ── */
@@ -45,12 +64,13 @@
 .valueRow {
     display: flex;
     align-items: baseline;
-    gap: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .value {
     font-family: var(--font-display);
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 700;
     color: var(--color-text-primary);
     line-height: 1;
@@ -62,10 +82,10 @@
 .change {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     padding: 2px 8px;
     border-radius: var(--radius-full);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     line-height: 1.4;
 }
@@ -90,7 +110,14 @@
 /* ── Description ── */
 
 .description {
-    font-size: 13px;
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.descriptionInline {
+    font-size: 12px;
     color: var(--color-text-tertiary);
     line-height: 1.4;
 }
@@ -98,12 +125,12 @@
 /* ── Progress bar ── */
 
 .progressWrapper {
-    margin-top: 4px;
+    margin-top: 2px;
 }
 
 .progressTrack {
     width: 100%;
-    height: 6px;
+    height: 5px;
     border-radius: var(--radius-full);
     background: var(--color-bg-elevated);
     overflow: hidden;
@@ -120,21 +147,246 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 6px;
-    font-size: 12px;
+    margin-top: 4px;
+    font-size: 11px;
     color: var(--color-text-tertiary);
 }
 
-/* ── Sparkline ── */
+/* ── Chart / Sparkline ── */
 
-.sparkline {
-    margin-top: 4px;
+.chartWrapper {
+    margin-top: 2px;
+    width: 100%;
+    overflow: hidden;
 }
 
-/* ── Grid layout for demos ── */
+.chartWrapper svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ── Footer ── */
+
+.footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+/* ============================================
+   VARIANT: Compact
+   Single-row, minimal height, wide rectangle
+   ============================================ */
+
+.variantCompact .body {
+    gap: 4px;
+    padding: 16px 24px;
+}
+
+.compactTop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.compactBottom {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.valueCompact {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1;
+    letter-spacing: -0.3px;
+}
+
+.iconSmall {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-tertiary);
+}
+
+/* ============================================
+   VARIANT: Tab ("folder" style)
+   Label sits as a tab above the card body
+   ============================================ */
+
+.variantTab {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabLabel {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    border-bottom: none;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: var(--blur-standard);
+}
+
+.tabBody {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: var(--blur-standard);
+}
+
+.tabContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 24px;
+}
+
+.tabValueRow {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.variantTab .footer {
+    border-top: 1px solid var(--color-border-subtle);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ============================================
+   VARIANT: Inline
+   Horizontal layout — large icon left, stats right
+   ============================================ */
+
+.variantInline .body {
+    padding: 20px 24px;
+}
+
+.inlineLayout {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.inlineContent {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.iconLarge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-lime-subtle);
+    border: 1px solid var(--color-border-lime-medium);
+    color: var(--color-lime);
+    flex-shrink: 0;
+}
+
+/* ============================================
+   VARIANT: Accent
+   Colored left border strip
+   ============================================ */
+
+.variantAccent {
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.accentStrip {
+    width: 4px;
+    flex-shrink: 0;
+    background: var(--color-lime);
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.variantAccent .body {
+    flex: 1;
+}
+
+.variantAccent .footer {
+    flex: 1;
+}
+
+/* ============================================
+   VARIANT: Split
+   Two-column — stats left, chart right
+   ============================================ */
+
+.variantSplit .body {
+    padding: 20px 24px;
+}
+
+.splitLayout {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.splitLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+}
+
+.splitRight {
+    flex: 1;
+    min-width: 0;
+    max-width: 50%;
+}
+
+.splitRight svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ── Grid layouts for demos ── */
 
 .metricGrid {
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.metricGrid4 {
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.metricGrid3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
 }

@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function CarouselPage() {
     return (
@@ -12,6 +13,8 @@ export default function CarouselPage() {
                     { label: "Carousel" },
                 ]}
             />
+
+            <InstallBlock slug="carousel" components={["Button","ButtonUtility"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

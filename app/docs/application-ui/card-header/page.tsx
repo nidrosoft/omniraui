@@ -2,6 +2,7 @@
 
 import { Setting2, More, People, Chart, Edit2, Copy, Trash, Link1, ExportSquare } from "iconsax-react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import previewStyles from "@/components/docs/ComponentPreview.module.css";
@@ -367,6 +368,8 @@ export default function CardHeaderPage() {
                     { label: "Card Headers" },
                 ]}
             />
+
+            <InstallBlock slug="card-header" components={["CardHeader","Button","Badge","Avatar","Dropdown"]} />
 
             <ComponentPreview
                 title="Card Header — Badge + Actions + Dropdown"

@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function MatrixPage() {
     return (
@@ -12,6 +13,8 @@ export default function MatrixPage() {
                     { label: "Matrix" },
                 ]}
             />
+
+            <InstallBlock slug="matrix" components={["Card"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",

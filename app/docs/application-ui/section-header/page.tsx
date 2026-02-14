@@ -1,4 +1,5 @@
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 
 export default function SectionHeaderPage() {
     return (
@@ -12,6 +13,8 @@ export default function SectionHeaderPage() {
                     { label: "Section Header" },
                 ]}
             />
+
+            <InstallBlock slug="section-header" components={["Button","Badge"]} />
             <div style={{
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-bg-card)",
