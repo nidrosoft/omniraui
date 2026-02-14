@@ -180,37 +180,37 @@
 .eventLime {
     background: var(--color-bg-lime-medium);
     color: var(--color-lime);
-    border-left: 2px solid var(--color-lime);
+    border: 1px solid var(--color-lime);
 }
 
 .eventInfo {
     background: var(--color-info-bg);
     color: var(--color-info);
-    border-left: 2px solid var(--color-info);
+    border: 1px solid var(--color-info);
 }
 
 .eventWarning {
     background: var(--color-warning-bg);
     color: var(--color-warning);
-    border-left: 2px solid var(--color-warning);
+    border: 1px solid var(--color-warning);
 }
 
 .eventError {
     background: var(--color-error-bg);
     color: var(--color-error);
-    border-left: 2px solid var(--color-error);
+    border: 1px solid var(--color-error);
 }
 
 .eventSuccess {
     background: var(--color-success-bg);
     color: var(--color-success);
-    border-left: 2px solid var(--color-success);
+    border: 1px solid var(--color-success);
 }
 
 .eventAccent {
     background: var(--color-bg-lime-subtle);
     color: var(--color-text-primary);
-    border-left: 2px solid var(--color-border-lime-strong);
+    border: 1px solid var(--color-border-lime-strong);
 }
 
 /* ── Week View ── */
@@ -453,12 +453,18 @@
     font-weight: 600;
     font-size: 13px;
     line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dayEventTime {
     font-size: 11px;
     opacity: 0.8;
     margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dayEventDescription {
@@ -466,6 +472,11 @@
     opacity: 0.7;
     margin-top: 4px;
     line-height: 1.3;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 /* ── Current Time Indicator ── */
@@ -489,4 +500,222 @@
     height: 8px;
     border-radius: 50%;
     background: var(--color-error);
+}
+
+/* ── Calendar with Detail Panel Layout ── */
+
+.calendarWithPanel {
+    display: flex;
+    gap: 0;
+    width: 100%;
+}
+
+.calendarMain {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ── Event Detail Panel ── */
+
+.detailPanel {
+    width: 320px;
+    flex-shrink: 0;
+    border-left: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-secondary);
+    display: flex;
+    flex-direction: column;
+    animation: detailSlideIn 0.2s ease;
+}
+
+@keyframes detailSlideIn {
+    from { opacity: 0; transform: translateX(12px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.detailHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.detailColorBar {
+    width: 4px;
+    height: 20px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-right: 12px;
+    margin-top: 2px;
+}
+
+.detailTitleRow {
+    display: flex;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 0;
+}
+
+.detailTitle {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.detailCloseBtn {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    margin-left: 8px;
+    font-size: 16px;
+    font-family: var(--font-body);
+}
+
+.detailCloseBtn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.detailBody {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.detailRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.detailRowIcon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--color-text-tertiary);
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detailRowContent {
+    flex: 1;
+    min-width: 0;
+}
+
+.detailRowLabel {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.detailRowValue {
+    font-size: 13px;
+    color: var(--color-text-primary);
+    line-height: 1.5;
+}
+
+.detailRowLink {
+    font-size: 13px;
+    color: var(--color-lime);
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.detailRowLink:hover {
+    text-decoration: underline;
+}
+
+.detailDivider {
+    height: 1px;
+    background: var(--color-border-subtle);
+}
+
+/* ── Guests ── */
+
+.detailGuests {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detailGuestsSummary {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    margin-bottom: 4px;
+}
+
+.detailGuest {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.detailGuestAvatar {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.detailGuestName {
+    font-size: 13px;
+    color: var(--color-text-primary);
+    flex: 1;
+}
+
+.detailGuestStatus {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+}
+
+.detailGuestAccepted {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+}
+
+.detailGuestDeclined {
+    background: var(--color-error-bg);
+    color: var(--color-error);
+}
+
+.detailGuestPending {
+    background: var(--color-warning-bg);
+    color: var(--color-warning);
+}
+
+/* ── About section ── */
+
+.detailAbout {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
 }

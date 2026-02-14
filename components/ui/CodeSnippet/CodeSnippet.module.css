@@ -1,0 +1,158 @@
+/* ============================================
+   CodeSnippet — Glassmorphism Styles
+   ============================================ */
+
+.wrapper {
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-elevated);
+    overflow: hidden;
+    font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
+}
+
+/* ── Header ── */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-card);
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lang {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.fileName {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.copyBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-tertiary);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.copyBtn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-secondary);
+    border-color: var(--color-border-medium);
+}
+
+.copyBtnCopied {
+    color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+/* ── Code Body ── */
+
+.body {
+    padding: 16px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+}
+
+.table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.lineRow {
+    display: table-row;
+}
+
+.lineNumber {
+    display: table-cell;
+    text-align: right;
+    padding-right: 16px;
+    user-select: none;
+    color: var(--color-text-tertiary);
+    opacity: 0.5;
+    font-size: 12px;
+    min-width: 32px;
+    vertical-align: top;
+}
+
+.lineContent {
+    display: table-cell;
+    white-space: pre;
+    padding-left: 0;
+}
+
+/* ── No line numbers ── */
+
+.codeBlock {
+    white-space: pre;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Syntax colors ── */
+
+.tokenKeyword {
+    color: var(--color-lime);
+    font-weight: 600;
+}
+
+.tokenString {
+    color: var(--color-info);
+}
+
+.tokenComment {
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.tokenFunction {
+    color: var(--color-warning);
+}
+
+.tokenNumber {
+    color: var(--color-error);
+}
+
+.tokenPunctuation {
+    color: var(--color-text-tertiary);
+}
+
+.tokenTag {
+    color: var(--color-error);
+}
+
+.tokenAttr {
+    color: var(--color-lime);
+}
+
+.tokenAttrValue {
+    color: var(--color-info);
+}

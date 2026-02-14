@@ -1,0 +1,134 @@
+/* ============================================
+   Breadcrumbs — Glassmorphism Styles
+   ============================================ */
+
+/* ── Base ── */
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+/* ── List ── */
+
+.list {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+/* ── Item ── */
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+/* ── Separator ── */
+
+.separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    padding: 0 6px;
+    user-select: none;
+    font-size: 13px;
+}
+
+.separatorLine {
+    width: 1px;
+    height: 14px;
+    background: var(--color-border-medium);
+    transform: rotate(15deg);
+    margin: 0 8px;
+}
+
+/* ── Link ── */
+
+.link {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    transition: color 0.15s;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: var(--color-text-primary);
+}
+
+/* ── Current (last item) ── */
+
+.current {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+}
+
+/* ── Button variant ── */
+
+.btnLink {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+
+.btnLink:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.btnCurrent {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    padding: 4px 10px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    white-space: nowrap;
+}
+
+/* ── Ellipsis ── */
+
+.ellipsis {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-text-tertiary);
+    padding: 0 2px;
+    user-select: none;
+}
+
+/* ── Home Icon ── */
+
+.homeIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    transition: color 0.15s;
+}
+
+.homeIcon:hover {
+    color: var(--color-text-primary);
+}

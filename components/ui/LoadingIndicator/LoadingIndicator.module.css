@@ -1,0 +1,381 @@
+/* ============================================
+   LoadingIndicator — Glassmorphism Styles
+   ============================================ */
+
+/* ── Wrapper ── */
+
+.wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.wrapperInline {
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* ── Label ── */
+
+.label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+}
+
+.labelSm {
+    font-size: 11px;
+}
+
+.labelLg {
+    font-size: 15px;
+}
+
+/* ══════════════════════════════════════════════
+   Line Simple — Indeterminate progress bar
+   ══════════════════════════════════════════════ */
+
+.lineTrack {
+    width: 100%;
+    min-width: 120px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    overflow: hidden;
+    position: relative;
+}
+
+.lineTrackSm {
+    height: 3px;
+    min-width: 100px;
+}
+
+.lineTrackMd {
+    height: 4px;
+    min-width: 120px;
+}
+
+.lineTrackLg {
+    height: 6px;
+    min-width: 160px;
+}
+
+/* Indeterminate animation */
+.lineFillIndeterminate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 40%;
+    border-radius: var(--radius-full);
+    background: var(--color-lime);
+    animation: lineSlide 1.4s ease-in-out infinite;
+}
+
+@keyframes lineSlide {
+    0% { left: -40%; }
+    100% { left: 100%; }
+}
+
+/* Determinate fill */
+.lineFillDeterminate {
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--color-lime);
+    transition: width 0.3s ease;
+}
+
+/* Line wrapper with label */
+.lineWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+    min-width: 120px;
+}
+
+.lineWrapperSm {
+    min-width: 100px;
+}
+
+.lineWrapperLg {
+    min-width: 160px;
+}
+
+.lineLabelRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.lineLabel {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.lineLabelSm {
+    font-size: 11px;
+}
+
+.lineLabelLg {
+    font-size: 15px;
+}
+
+.linePercent {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    font-variant-numeric: tabular-nums;
+}
+
+.linePercentSm {
+    font-size: 10px;
+}
+
+.linePercentLg {
+    font-size: 14px;
+}
+
+/* ══════════════════════════════════════════════
+   Line Spinner — Circular spinning ring
+   ══════════════════════════════════════════════ */
+
+.spinner {
+    display: inline-block;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: var(--color-bg-elevated);
+    border-top-color: var(--color-lime);
+    animation: spinnerRotate 0.75s linear infinite;
+    flex-shrink: 0;
+}
+
+.spinnerSm {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+}
+
+.spinnerMd {
+    width: 28px;
+    height: 28px;
+    border-width: 3px;
+}
+
+.spinnerLg {
+    width: 40px;
+    height: 40px;
+    border-width: 4px;
+}
+
+@keyframes spinnerRotate {
+    to { transform: rotate(360deg); }
+}
+
+/* ══════════════════════════════════════════════
+   Dot Circle — Dots animating in a circle
+   ══════════════════════════════════════════════ */
+
+.dotCircle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.dotCircleSm {
+    width: 20px;
+    height: 20px;
+}
+
+.dotCircleMd {
+    width: 28px;
+    height: 28px;
+}
+
+.dotCircleLg {
+    width: 40px;
+    height: 40px;
+}
+
+.dot {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--color-lime);
+    animation: dotPulse 1.2s ease-in-out infinite;
+}
+
+.dotSm {
+    width: 3px;
+    height: 3px;
+}
+
+.dotMd {
+    width: 4px;
+    height: 4px;
+}
+
+.dotLg {
+    width: 6px;
+    height: 6px;
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ══════════════════════════════════════════════
+   Dot Bounce — Horizontal bouncing dots
+   ══════════════════════════════════════════════ */
+
+.dotBounce {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.dotBounceSm {
+    gap: 3px;
+}
+
+.dotBounceLg {
+    gap: 6px;
+}
+
+.bounceDot {
+    border-radius: 50%;
+    background: var(--color-lime);
+    animation: dotBounceAnim 1.4s ease-in-out infinite;
+}
+
+.bounceDotSm {
+    width: 4px;
+    height: 4px;
+}
+
+.bounceDotMd {
+    width: 6px;
+    height: 6px;
+}
+
+.bounceDotLg {
+    width: 8px;
+    height: 8px;
+}
+
+@keyframes dotBounceAnim {
+    0%, 80%, 100% { opacity: 0.3; transform: scale(0.6); }
+    40% { opacity: 1; transform: scale(1); }
+}
+
+/* ══════════════════════════════════════════════
+   Pulse — Pulsing circle
+   ══════════════════════════════════════════════ */
+
+.pulse {
+    border-radius: 50%;
+    background: var(--color-lime);
+    animation: pulseAnim 1.5s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+.pulseSm {
+    width: 12px;
+    height: 12px;
+}
+
+.pulseMd {
+    width: 16px;
+    height: 16px;
+}
+
+.pulseLg {
+    width: 24px;
+    height: 24px;
+}
+
+@keyframes pulseAnim {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* ══════════════════════════════════════════════
+   Color variants
+   ══════════════════════════════════════════════ */
+
+.colorLime .lineFillIndeterminate,
+.colorLime .lineFillDeterminate,
+.colorLime .dot,
+.colorLime .bounceDot,
+.colorLime .pulse {
+    background: var(--color-lime);
+}
+.colorLime .spinner {
+    border-top-color: var(--color-lime);
+}
+
+.colorWhite .lineFillIndeterminate,
+.colorWhite .lineFillDeterminate,
+.colorWhite .dot,
+.colorWhite .bounceDot,
+.colorWhite .pulse {
+    background: var(--color-text-primary);
+}
+.colorWhite .spinner {
+    border-top-color: var(--color-text-primary);
+}
+
+.colorInfo .lineFillIndeterminate,
+.colorInfo .lineFillDeterminate,
+.colorInfo .dot,
+.colorInfo .bounceDot,
+.colorInfo .pulse {
+    background: var(--color-info);
+}
+.colorInfo .spinner {
+    border-top-color: var(--color-info);
+}
+
+.colorSuccess .lineFillIndeterminate,
+.colorSuccess .lineFillDeterminate,
+.colorSuccess .dot,
+.colorSuccess .bounceDot,
+.colorSuccess .pulse {
+    background: var(--color-success);
+}
+.colorSuccess .spinner {
+    border-top-color: var(--color-success);
+}
+
+.colorWarning .lineFillIndeterminate,
+.colorWarning .lineFillDeterminate,
+.colorWarning .dot,
+.colorWarning .bounceDot,
+.colorWarning .pulse {
+    background: var(--color-warning);
+}
+.colorWarning .spinner {
+    border-top-color: var(--color-warning);
+}
+
+.colorError .lineFillIndeterminate,
+.colorError .lineFillDeterminate,
+.colorError .dot,
+.colorError .bounceDot,
+.colorError .pulse {
+    background: var(--color-error);
+}
+.colorError .spinner {
+    border-top-color: var(--color-error);
+}

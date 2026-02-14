@@ -1,0 +1,322 @@
+/* ============================================
+   FileUpload — Glassmorphism Styles
+   ============================================ */
+
+/* ── Drop Zone ── */
+
+.dropZone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 24px 16px;
+    border-radius: var(--radius-xl);
+    border: 2px dashed var(--color-border-standard);
+    background: var(--color-bg-card);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    user-select: none;
+    position: relative;
+}
+
+.dropZone:hover {
+    border-color: var(--color-border-medium);
+    background: var(--color-bg-hover);
+}
+
+.dropZoneActive {
+    border-color: var(--color-lime);
+    background: var(--color-bg-lime-subtle);
+    box-shadow: 0 0 0 4px var(--color-bg-lime-subtle);
+}
+
+.dropZoneError {
+    border-color: var(--color-error);
+    background: var(--color-error-bg);
+}
+
+.dropZoneDisabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.dropZoneInput {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.dropZoneDisabled .dropZoneInput {
+    cursor: not-allowed;
+}
+
+/* ── Drop Zone Content ── */
+
+.dropIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    margin-bottom: 4px;
+}
+
+.dropText {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.dropTextAction {
+    color: var(--color-lime);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dropTextAction:hover {
+    text-decoration: underline;
+}
+
+.dropHint {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.dropError {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-error);
+    font-weight: 500;
+}
+
+/* ── File List ── */
+
+.fileList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+/* ── File Item ── */
+
+.fileItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-card);
+    position: relative;
+    transition: all 0.15s;
+}
+
+.fileItemError {
+    border-color: var(--color-error);
+    background: var(--color-error-bg);
+}
+
+/* ── File Icon ── */
+
+.fileIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+}
+
+.fileIconError {
+    background: var(--color-error-bg);
+    border-color: var(--color-error);
+    color: var(--color-error);
+}
+
+/* ── File Info ── */
+
+.fileInfo {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fileNameRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.fileName {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fileSize {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Status Row ── */
+
+.statusRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.statusText {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.statusUploading {
+    color: var(--color-text-secondary);
+}
+
+.statusComplete {
+    color: var(--color-success);
+    font-weight: 500;
+}
+
+.statusFailed {
+    color: var(--color-error);
+    font-weight: 500;
+}
+
+.statusPercent {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    font-variant-numeric: tabular-nums;
+    margin-left: auto;
+}
+
+/* ── Progress Bar ── */
+
+.progressTrack {
+    width: 100%;
+    height: 4px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--color-lime);
+    transition: width 0.3s ease;
+}
+
+.progressFillComplete {
+    background: var(--color-success);
+}
+
+.progressFillError {
+    background: var(--color-error);
+    width: 100% !important;
+}
+
+/* ── Progress Fill variant (background fill on the file item) ── */
+
+.fileItemFill {
+    position: relative;
+    overflow: hidden;
+}
+
+.fileItemFillBg {
+    position: absolute;
+    inset: 0;
+    background: var(--color-bg-lime-subtle);
+    transition: width 0.3s ease;
+    border-radius: var(--radius-lg);
+    z-index: 0;
+}
+
+.fileItemFillBgComplete {
+    background: var(--color-success-bg);
+}
+
+.fileItemFillBgError {
+    background: var(--color-error-bg);
+    width: 100% !important;
+}
+
+.fileItemFillContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+}
+
+/* ── Remove Button ── */
+
+.removeBtn {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.removeBtn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+/* ── Retry Button ── */
+
+.retryBtn {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-lime);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+}
+
+.retryBtn:hover {
+    text-decoration: underline;
+}

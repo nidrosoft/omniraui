@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
-import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
+import { ArrowLeft2, ArrowRight2, Calendar as CalendarIcon, Clock, Location, Link21, Notification, CloseCircle, People } from "iconsax-react";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/Button";
-import type { CalendarEvent } from "./config";
+import type { CalendarEvent, CalendarGuest } from "./config";
 import styles from "./Calendar.module.css";
 
 /* ── Types ── */
@@ -17,6 +17,8 @@ export interface CalendarProps {
     defaultDate?: Date;
     onViewChange?: (view: CalendarView) => void;
     onDateChange?: (date: Date) => void;
+    onEventClick?: (event: CalendarEvent) => void;
+    showDetailPanel?: boolean;
     className?: string;
 }
 
@@ -116,6 +118,161 @@ function getNowOffset(): number {
     return now.getHours() * 60 + now.getMinutes();
 }
 
+function getEventColorValue(color?: string): string {
+    switch (color) {
+        case "lime": return "var(--color-lime)";
+        case "info": return "var(--color-info)";
+        case "warning": return "var(--color-warning)";
+        case "error": return "var(--color-error)";
+        case "success": return "var(--color-success)";
+        case "accent": return "var(--color-border-lime-strong)";
+        default: return "var(--color-lime)";
+    }
+}
+
+function formatEventDate(d: Date) {
+    return d.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric", year: "numeric" });
+}
+
+function formatEventTime(d: Date) {
+    return d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+}
+
+function getInitials(name: string) {
+    return name.split(" ").map((w) => w[0]).join("").toUpperCase().slice(0, 2);
+}
+
+/* ── Event Detail Panel ── */
+
+interface EventDetailPanelProps {
+    event: CalendarEvent;
+    onClose: () => void;
+}
+
+function EventDetailPanel({ event, onClose }: EventDetailPanelProps) {
+    const accepted = event.guests?.filter((g) => g.status === "accepted").length ?? 0;
+    const pending = event.guests?.filter((g) => g.status === "pending").length ?? 0;
+    const declined = event.guests?.filter((g) => g.status === "declined").length ?? 0;
+
+    return (
+        <div className={styles.detailPanel}>
+            <div className={styles.detailHeader}>
+                <div className={styles.detailTitleRow}>
+                    <div
+                        className={styles.detailColorBar}
+                        style={{ background: getEventColorValue(event.color) }}
+                    />
+                    <span className={styles.detailTitle}>{event.title}</span>
+                </div>
+                <button type="button" className={styles.detailCloseBtn} onClick={onClose} aria-label="Close">
+                    <CloseCircle size={18} variant="Linear" color="currentColor" />
+                </button>
+            </div>
+            <div className={styles.detailBody}>
+                {/* Date & Time */}
+                <div className={styles.detailRow}>
+                    <span className={styles.detailRowIcon}>
+                        <CalendarIcon size={16} variant="Bulk" color="currentColor" />
+                    </span>
+                    <div className={styles.detailRowContent}>
+                        <div className={styles.detailRowValue}>{formatEventDate(event.start)}</div>
+                        <div className={styles.detailRowValue}>
+                            {formatEventTime(event.start)} – {formatEventTime(event.end)}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Reminder */}
+                {event.reminder && (
+                    <div className={styles.detailRow}>
+                        <span className={styles.detailRowIcon}>
+                            <Notification size={16} variant="Bulk" color="currentColor" />
+                        </span>
+                        <div className={styles.detailRowContent}>
+                            <div className={styles.detailRowValue}>{event.reminder}</div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Location */}
+                {event.location && (
+                    <div className={styles.detailRow}>
+                        <span className={styles.detailRowIcon}>
+                            <Location size={16} variant="Bulk" color="currentColor" />
+                        </span>
+                        <div className={styles.detailRowContent}>
+                            <div className={styles.detailRowValue}>{event.location}</div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Link */}
+                {event.link && (
+                    <div className={styles.detailRow}>
+                        <span className={styles.detailRowIcon}>
+                            <Link21 size={16} variant="Bulk" color="currentColor" />
+                        </span>
+                        <div className={styles.detailRowContent}>
+                            <a href={event.link} target="_blank" rel="noopener noreferrer" className={styles.detailRowLink}>
+                                {event.link}
+                            </a>
+                        </div>
+                    </div>
+                )}
+
+                {/* Guests */}
+                {event.guests && event.guests.length > 0 && (
+                    <>
+                        <div className={styles.detailDivider} />
+                        <div className={styles.detailRow}>
+                            <span className={styles.detailRowIcon}>
+                                <People size={16} variant="Bulk" color="currentColor" />
+                            </span>
+                            <div className={styles.detailRowContent}>
+                                <div className={styles.detailRowLabel}>
+                                    {event.guests.length} guest{event.guests.length !== 1 ? "s" : ""}
+                                </div>
+                                <div className={styles.detailGuestsSummary}>
+                                    {accepted > 0 && `${accepted} yes`}
+                                    {pending > 0 && `${accepted > 0 ? " · " : ""}${pending} awaiting`}
+                                    {declined > 0 && `${accepted > 0 || pending > 0 ? " · " : ""}${declined} declined`}
+                                </div>
+                                <div className={styles.detailGuests}>
+                                    {event.guests.map((g, i) => (
+                                        <div key={i} className={styles.detailGuest}>
+                                            <div className={styles.detailGuestAvatar}>{getInitials(g.name)}</div>
+                                            <span className={styles.detailGuestName}>{g.name}</span>
+                                            <span className={cn(
+                                                styles.detailGuestStatus,
+                                                g.status === "accepted" && styles.detailGuestAccepted,
+                                                g.status === "declined" && styles.detailGuestDeclined,
+                                                g.status === "pending" && styles.detailGuestPending,
+                                            )}>
+                                                {g.status === "accepted" ? "Yes" : g.status === "declined" ? "No" : "Pending"}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+
+                {/* About */}
+                {event.description && (
+                    <>
+                        <div className={styles.detailDivider} />
+                        <div>
+                            <div className={styles.detailRowLabel}>About this event</div>
+                            <p className={styles.detailAbout}>{event.description}</p>
+                        </div>
+                    </>
+                )}
+            </div>
+        </div>
+    );
+}
+
 /* ── Toolbar ── */
 
 interface ToolbarProps {
@@ -175,9 +332,10 @@ function Toolbar({ title, view, onViewChange, onPrev, onNext, onToday }: Toolbar
 interface MonthViewProps {
     currentDate: Date;
     events: CalendarEvent[];
+    onEventClick?: (event: CalendarEvent) => void;
 }
 
-function MonthView({ currentDate, events }: MonthViewProps) {
+function MonthView({ currentDate, events, onEventClick }: MonthViewProps) {
     const days = useMemo(
         () => getMonthDays(currentDate.getFullYear(), currentDate.getMonth()),
         [currentDate],
@@ -204,7 +362,11 @@ function MonthView({ currentDate, events }: MonthViewProps) {
                             {date.getDate()}
                         </span>
                         {dayEvents.slice(0, 3).map((ev) => (
-                            <div key={ev.id} className={cn(styles.monthEvent, getEventColorClass(ev.color))}>
+                            <div
+                                key={ev.id}
+                                className={cn(styles.monthEvent, getEventColorClass(ev.color))}
+                                onClick={(e) => { e.stopPropagation(); onEventClick?.(ev); }}
+                            >
                                 {ev.title}
                             </div>
                         ))}
@@ -223,9 +385,10 @@ function MonthView({ currentDate, events }: MonthViewProps) {
 interface WeekViewProps {
     currentDate: Date;
     events: CalendarEvent[];
+    onEventClick?: (event: CalendarEvent) => void;
 }
 
-function WeekView({ currentDate, events }: WeekViewProps) {
+function WeekView({ currentDate, events, onEventClick }: WeekViewProps) {
     const weekStart = useMemo(() => getWeekStart(currentDate), [currentDate]);
 
     const weekDays = useMemo(() => {
@@ -288,6 +451,7 @@ function WeekView({ currentDate, events }: WeekViewProps) {
                                             top: `${startMin}px`,
                                             height: `${Math.max(endMin - startMin, 20)}px`,
                                         }}
+                                        onClick={(e) => { e.stopPropagation(); onEventClick?.(ev); }}
                                     >
                                         <div className={styles.weekEventTitle}>{ev.title}</div>
                                         <div className={styles.weekEventTime}>
@@ -309,9 +473,10 @@ function WeekView({ currentDate, events }: WeekViewProps) {
 interface DayViewProps {
     currentDate: Date;
     events: CalendarEvent[];
+    onEventClick?: (event: CalendarEvent) => void;
 }
 
-function DayView({ currentDate, events }: DayViewProps) {
+function DayView({ currentDate, events, onEventClick }: DayViewProps) {
     const dayEvents = useMemo(() => getEventsForDay(events, currentDate), [events, currentDate]);
     const today = isToday(currentDate);
     const nowMinutes = getNowOffset();
@@ -356,6 +521,7 @@ function DayView({ currentDate, events }: DayViewProps) {
                                     top: `${startMin}px`,
                                     height: `${Math.max(endMin - startMin, 30)}px`,
                                 }}
+                                onClick={(e) => { e.stopPropagation(); onEventClick?.(ev); }}
                             >
                                 <div className={styles.dayEventTitle}>{ev.title}</div>
                                 <div className={styles.dayEventTime}>
@@ -381,10 +547,13 @@ export function Calendar({
     defaultDate,
     onViewChange,
     onDateChange,
+    onEventClick,
+    showDetailPanel = false,
     className,
 }: CalendarProps) {
     const [view, setView] = useState<CalendarView>(defaultView);
     const [currentDate, setCurrentDate] = useState<Date>(defaultDate ?? new Date());
+    const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
 
     const handleViewChange = useCallback(
         (v: CalendarView) => {
@@ -400,6 +569,16 @@ export function Calendar({
             onDateChange?.(d);
         },
         [onDateChange],
+    );
+
+    const handleEventClick = useCallback(
+        (event: CalendarEvent) => {
+            if (showDetailPanel) {
+                setSelectedEvent((prev) => prev?.id === event.id ? null : event);
+            }
+            onEventClick?.(event);
+        },
+        [showDetailPanel, onEventClick],
     );
 
     const navigate = useCallback(
@@ -427,8 +606,8 @@ export function Calendar({
         return getDayLabel(currentDate);
     }, [view, currentDate]);
 
-    return (
-        <div className={cn(styles.calendarRoot, className)}>
+    const calendarContent = (
+        <>
             <Toolbar
                 title={title}
                 view={view}
@@ -437,9 +616,31 @@ export function Calendar({
                 onNext={() => navigate(1)}
                 onToday={goToToday}
             />
-            {view === "month" && <MonthView currentDate={currentDate} events={events} />}
-            {view === "week" && <WeekView currentDate={currentDate} events={events} />}
-            {view === "day" && <DayView currentDate={currentDate} events={events} />}
+            {view === "month" && <MonthView currentDate={currentDate} events={events} onEventClick={handleEventClick} />}
+            {view === "week" && <WeekView currentDate={currentDate} events={events} onEventClick={handleEventClick} />}
+            {view === "day" && <DayView currentDate={currentDate} events={events} onEventClick={handleEventClick} />}
+        </>
+    );
+
+    if (showDetailPanel) {
+        return (
+            <div className={cn(styles.calendarRoot, styles.calendarWithPanel, className)}>
+                <div className={styles.calendarMain}>
+                    {calendarContent}
+                </div>
+                {selectedEvent && (
+                    <EventDetailPanel
+                        event={selectedEvent}
+                        onClose={() => setSelectedEvent(null)}
+                    />
+                )}
+            </div>
+        );
+    }
+
+    return (
+        <div className={cn(styles.calendarRoot, className)}>
+            {calendarContent}
         </div>
     );
 }

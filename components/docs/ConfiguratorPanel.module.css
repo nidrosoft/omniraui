@@ -1,0 +1,330 @@
+/* ============================================
+   Configurator Panel — CSS Module
+   ============================================ */
+
+/* ── Toggle button (floating) ── */
+
+.toggleBtn {
+    position: fixed;
+    right: 20px;
+    bottom: 24px;
+    z-index: 1000;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-standard);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: all 0.25s ease;
+}
+
+.toggleBtn:hover {
+    background: var(--color-lime);
+    color: var(--color-lime-text);
+    border-color: var(--color-lime);
+    transform: scale(1.05);
+}
+
+.toggleBtnActive {
+    background: var(--color-lime);
+    color: var(--color-lime-text);
+    border-color: var(--color-lime);
+    right: 296px;
+}
+
+/* ── Panel ── */
+
+.panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 999;
+    background: var(--color-bg-secondary);
+    border-left: 1px solid var(--color-border-standard);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.panelOpen {
+    transform: translateX(0);
+}
+
+/* ── Header ── */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    flex-shrink: 0;
+}
+
+.headerTitle {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+}
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.headerBtn {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    transition: all 0.2s;
+}
+
+.headerBtn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+/* ── Scrollable body ── */
+
+.body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 18px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ── Section ── */
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sectionLabel {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-tertiary);
+}
+
+.sectionValue {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-left: auto;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ── Color swatches ── */
+
+.swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.swatch:hover {
+    transform: scale(1.1);
+}
+
+.swatchActive {
+    border-color: var(--color-text-primary);
+    box-shadow: 0 0 0 2px var(--color-bg-secondary), 0 0 0 4px var(--color-text-primary);
+}
+
+.swatchCheck {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ── Pill selectors (radius, gray) ── */
+
+.pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.pill {
+    padding: 5px 10px;
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-standard);
+    color: var(--color-text-secondary);
+    transition: all 0.2s;
+}
+
+.pill:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-primary);
+}
+
+.pillActive {
+    background: var(--color-lime);
+    color: var(--color-lime-text);
+    border-color: var(--color-lime);
+}
+
+.pillActive:hover {
+    background: var(--color-lime);
+    color: var(--color-lime-text);
+    border-color: var(--color-lime);
+    opacity: 0.9;
+}
+
+/* ── Font list ── */
+
+.fontList {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.fontItem {
+    padding: 7px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--color-text-secondary);
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+}
+
+.fontItem:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.fontItemActive {
+    background: var(--color-bg-lime-subtle);
+    border-color: var(--color-border-lime-subtle);
+    color: var(--color-lime);
+    font-weight: 600;
+}
+
+/* ── Footer ── */
+
+.footer {
+    padding: 12px 18px;
+    border-top: 1px solid var(--color-border-subtle);
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.footerBtn {
+    flex: 1;
+    padding: 7px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.resetBtn {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-standard);
+    color: var(--color-text-secondary);
+}
+
+.resetBtn:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-primary);
+}
+
+.copyBtn {
+    background: var(--color-lime);
+    border: 1px solid var(--color-lime);
+    color: var(--color-lime-text);
+}
+
+.copyBtn:hover {
+    opacity: 0.9;
+}
+
+/* ── Radius preview ── */
+
+.radiusPreview {
+    width: 100%;
+    height: 32px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-lime-subtle);
+    border: 1px solid var(--color-border-lime-subtle);
+    transition: border-radius 0.3s ease;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1023px) {
+    .toggleBtn {
+        right: 16px;
+        bottom: 16px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .panel {
+        width: 260px;
+    }
+}
+
+@media (max-width: 600px) {
+    .panel {
+        width: 100%;
+    }
+}

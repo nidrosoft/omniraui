@@ -1,0 +1,224 @@
+/* ============================================
+   Alert — Glassmorphism Styles
+   ============================================ */
+
+/* ── Base ── */
+
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-card);
+    position: relative;
+}
+
+/* ── Full Width ── */
+
+.fullWidth {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    width: 100%;
+}
+
+/* ── Icon ── */
+
+.iconWrap {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* ── Content ── */
+
+.content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.title {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+}
+
+.description {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+/* ── Actions ── */
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.actionBtn {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.actionPrimary {
+    background: var(--color-lime);
+    color: var(--color-bg-primary);
+}
+
+.actionPrimary:hover {
+    opacity: 0.9;
+}
+
+.actionSecondary {
+    background: transparent;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border-subtle);
+}
+
+.actionSecondary:hover {
+    background: var(--color-bg-hover);
+}
+
+/* ── Close Button ── */
+
+.closeBtn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    border: none;
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+    transition: all 0.15s;
+}
+
+.closeBtn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+/* ══════════════════════════════════════════════
+   Color Variants
+   ══════════════════════════════════════════════ */
+
+/* Default */
+.colorDefault {
+    border-color: var(--color-border-subtle);
+    background: var(--color-bg-card);
+}
+
+.colorDefault .iconWrap {
+    color: var(--color-text-tertiary);
+}
+
+/* Brand */
+.colorBrand {
+    border-color: var(--color-lime);
+    background: var(--color-bg-lime-subtle);
+}
+
+.colorBrand .iconWrap {
+    color: var(--color-lime);
+}
+
+.colorBrand .title {
+    color: var(--color-lime);
+}
+
+.colorBrand .actionPrimary {
+    background: var(--color-lime);
+    color: var(--color-bg-primary);
+}
+
+/* Gray */
+.colorGray {
+    border-color: var(--color-border-medium);
+    background: var(--color-bg-elevated);
+}
+
+.colorGray .iconWrap {
+    color: var(--color-text-tertiary);
+}
+
+/* Error */
+.colorError {
+    border-color: var(--color-error);
+    background: var(--color-error-bg);
+}
+
+.colorError .iconWrap {
+    color: var(--color-error);
+}
+
+.colorError .title {
+    color: var(--color-error);
+}
+
+.colorError .actionPrimary {
+    background: var(--color-error);
+    color: #fff;
+}
+
+/* Warning */
+.colorWarning {
+    border-color: var(--color-warning);
+    background: var(--color-warning-bg);
+}
+
+.colorWarning .iconWrap {
+    color: var(--color-warning);
+}
+
+.colorWarning .title {
+    color: var(--color-warning);
+}
+
+.colorWarning .actionPrimary {
+    background: var(--color-warning);
+    color: var(--color-bg-primary);
+}
+
+/* Success */
+.colorSuccess {
+    border-color: var(--color-success);
+    background: var(--color-success-bg);
+}
+
+.colorSuccess .iconWrap {
+    color: var(--color-success);
+}
+
+.colorSuccess .title {
+    color: var(--color-success);
+}
+
+.colorSuccess .actionPrimary {
+    background: var(--color-success);
+    color: #fff;
+}

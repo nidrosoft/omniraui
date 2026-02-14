@@ -1,0 +1,214 @@
+/* ============================================
+   ContentDivider — Glassmorphism Styles
+   ============================================ */
+
+/* ── Base ── */
+
+.divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+}
+
+.dividerVertical {
+    flex-direction: column;
+    width: auto;
+    height: 100%;
+    gap: 12px;
+}
+
+/* ── Lines ── */
+
+.line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-subtle);
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lineVertical {
+    flex: 1;
+    width: 1px;
+    height: auto;
+    background: var(--color-border-subtle);
+}
+
+/* ── Dual Line ── */
+
+.dualLineWrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.dualLineWrapVertical {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+}
+
+.dualLine {
+    height: 1px;
+    background: var(--color-border-subtle);
+}
+
+.dualLineVertical {
+    width: 1px;
+    flex: 1;
+    background: var(--color-border-subtle);
+}
+
+/* ── Background Fill ── */
+
+.fillDivider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    background: var(--color-bg-elevated);
+    border-top: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.fillDividerVertical {
+    flex-direction: column;
+    width: auto;
+    height: 100%;
+    padding: 0 10px;
+    border-top: none;
+    border-bottom: none;
+    border-left: 1px solid var(--color-border-subtle);
+    border-right: 1px solid var(--color-border-subtle);
+}
+
+/* ── Label ── */
+
+.label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.labelSm {
+    font-size: 11px;
+}
+
+.labelLg {
+    font-size: 15px;
+}
+
+/* ── Icon ── */
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+}
+
+/* ── Spacing variants ── */
+
+.spacingSm {
+    gap: 8px;
+}
+
+.spacingMd {
+    gap: 12px;
+}
+
+.spacingLg {
+    gap: 16px;
+}
+
+/* ── Color variants ── */
+
+.colorDefault .line,
+.colorDefault .dualLine,
+.colorDefault .dualLineVertical,
+.colorDefault .lineVertical {
+    background: var(--color-border-subtle);
+}
+
+.colorMedium .line,
+.colorMedium .dualLine,
+.colorMedium .dualLineVertical,
+.colorMedium .lineVertical {
+    background: var(--color-border-medium);
+}
+
+.colorStrong .line,
+.colorStrong .dualLine,
+.colorStrong .dualLineVertical,
+.colorStrong .lineVertical {
+    background: var(--color-border-standard);
+}
+
+.colorAccent .line,
+.colorAccent .dualLine,
+.colorAccent .dualLineVertical,
+.colorAccent .lineVertical {
+    background: var(--color-lime);
+    opacity: 0.3;
+}
+
+/* ── Fill color variants ── */
+
+.colorMedium.fillDivider {
+    border-color: var(--color-border-medium);
+}
+
+.colorStrong.fillDivider {
+    border-color: var(--color-border-standard);
+}
+
+.colorAccent.fillDivider {
+    border-color: var(--color-lime);
+    background: var(--color-bg-lime-subtle);
+}
+
+/* ── Alignment ── */
+
+.alignStart {
+    justify-content: flex-start;
+}
+
+.alignCenter {
+    justify-content: center;
+}
+
+.alignEnd {
+    justify-content: flex-end;
+}
+
+/* ── Fill label ── */
+
+.fillLabel {
+    padding: 0 16px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.fillLabelSm {
+    font-size: 11px;
+    padding: 0 12px;
+}
+
+.fillLabelLg {
+    font-size: 15px;
+    padding: 0 20px;
+}

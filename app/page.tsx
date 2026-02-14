@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Component, Brush2, Sun1, ColorSwatch, Code1, Copy, CommandSquare, DocumentCode2, Layer, TickCircle, ArrowDown2, MessageQuestion, Global, Sms, Lock1, Call, InfoCircle } from "iconsax-react";
 import { ThemeToggle } from "@/components/docs/ThemeToggle";
+import { GitHubStars } from "@/components/docs/GitHubStars";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { BadgeGroup } from "@/components/ui/BadgeGroup";
@@ -618,7 +619,7 @@ export default function Home() {
                         <div className={styles.footerLinks}>
                             <Link href="/docs/getting-started" className={styles.footerLink}>Documentation</Link>
                             <Link href="/docs/base/overview" className={styles.footerLink}>Components</Link>
-                            <a href="https://github.com/nidrosoft/omniraui" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>GitHub</a>
+                            <GitHubStars />
                         </div>
                     </div>
                     <div className={styles.footerBottom}>

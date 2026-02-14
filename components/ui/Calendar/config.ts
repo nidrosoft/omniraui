@@ -1,3 +1,9 @@
+export interface CalendarGuest {
+    name: string;
+    avatar?: string;
+    status?: "accepted" | "declined" | "pending";
+}
+
 export interface CalendarEvent {
     id: string;
     title: string;
@@ -5,6 +11,10 @@ export interface CalendarEvent {
     end: Date;
     color?: "lime" | "info" | "warning" | "error" | "success" | "accent";
     description?: string;
+    location?: string;
+    link?: string;
+    reminder?: string;
+    guests?: CalendarGuest[];
 }
 
 function getRelativeDate(dayOffset: number, hour: number, minute = 0): Date {
@@ -21,7 +31,13 @@ export const events: CalendarEvent[] = [
         start: getRelativeDate(0, 9, 0),
         end: getRelativeDate(0, 10, 0),
         color: "lime",
-        description: "Review new dashboard designs with the team",
+        description: "Review new dashboard designs with the team. Discuss component library updates and new patterns.",
+        reminder: "10 min before",
+        guests: [
+            { name: "Sienna M.", status: "accepted" },
+            { name: "Alex K.", status: "accepted" },
+            { name: "Jordan P.", status: "pending" },
+        ],
     },
     {
         id: "2",
@@ -29,7 +45,15 @@ export const events: CalendarEvent[] = [
         start: getRelativeDate(0, 13, 0),
         end: getRelativeDate(0, 14, 30),
         color: "info",
-        description: "Plan next sprint tasks and priorities",
+        description: "Plan next sprint tasks and priorities. Review backlog and assign story points.",
+        location: "Conference Room B",
+        reminder: "15 min before",
+        guests: [
+            { name: "Taylor R.", status: "accepted" },
+            { name: "Morgan L.", status: "accepted" },
+            { name: "Casey W.", status: "accepted" },
+            { name: "Riley D.", status: "declined" },
+        ],
     },
     {
         id: "3",
@@ -38,6 +62,12 @@ export const events: CalendarEvent[] = [
         end: getRelativeDate(1, 10, 0),
         color: "success",
         description: "Daily standup meeting",
+        link: "https://meet.google.com/abc-defg-hij",
+        reminder: "5 min before",
+        guests: [
+            { name: "Sienna M.", status: "accepted" },
+            { name: "Alex K.", status: "accepted" },
+        ],
     },
     {
         id: "4",
@@ -45,7 +75,16 @@ export const events: CalendarEvent[] = [
         start: getRelativeDate(1, 14, 0),
         end: getRelativeDate(1, 15, 0),
         color: "warning",
-        description: "Quarterly review with client stakeholders",
+        description: "Quarterly review with client stakeholders. Prepare slides and metrics report.",
+        link: "https://us02web.zoom.us/j/86341969512",
+        reminder: "30 min before",
+        guests: [
+            { name: "Jordan P.", status: "accepted" },
+            { name: "Sam T.", status: "accepted" },
+            { name: "Chris B.", status: "pending" },
+            { name: "Dana F.", status: "accepted" },
+            { name: "Pat H.", status: "pending" },
+        ],
     },
     {
         id: "5",
@@ -54,6 +93,7 @@ export const events: CalendarEvent[] = [
         end: getRelativeDate(2, 12, 0),
         color: "accent",
         description: "Review pull requests for the new feature branch",
+        reminder: "10 min before",
     },
     {
         id: "6",
@@ -61,7 +101,17 @@ export const events: CalendarEvent[] = [
         start: getRelativeDate(2, 15, 0),
         end: getRelativeDate(2, 16, 30),
         color: "error",
-        description: "Demo the latest release to stakeholders",
+        description: "Demo the latest release to stakeholders. Showcase new calendar component and date picker improvements.",
+        location: "Main Auditorium",
+        reminder: "15 min before",
+        guests: [
+            { name: "Morgan L.", status: "accepted" },
+            { name: "Taylor R.", status: "accepted" },
+            { name: "Casey W.", status: "accepted" },
+            { name: "Riley D.", status: "accepted" },
+            { name: "Alex K.", status: "pending" },
+            { name: "Sienna M.", status: "accepted" },
+        ],
     },
     {
         id: "7",
