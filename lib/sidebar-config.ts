@@ -123,7 +123,13 @@ export const sidebarConfig: SidebarSection[] = [
         title: "Shared Pages",
         icon: "DocumentCopy",
         items: [
-            { name: "Overview", href: "/docs/shared-pages", status: "coming-soon" },
+            { name: "Overview", href: "/docs/shared-pages" },
+            { name: "Login Page", href: "/docs/shared-pages/login", status: "new" },
+            { name: "Sign Up Page", href: "/docs/shared-pages/sign-up", status: "new" },
+            { name: "Verification Page", href: "/docs/shared-pages/verification", status: "new" },
+            { name: "Forgot Password", href: "/docs/shared-pages/forgot-password", status: "new" },
+            { name: "404 Page", href: "/docs/shared-pages/404", status: "new" },
+            { name: "Email Template", href: "/docs/shared-pages/email-template", status: "new" },
         ],
     },
     {
