@@ -27,8 +27,8 @@
     flex-direction: row;
     text-align: left;
     align-items: flex-start;
-    gap: 12px;
-    padding-bottom: 24px;
+    gap: 10px;
+    padding-bottom: 20px;
 }
 
 /* ── Indicator ── */
@@ -36,8 +36,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: var(--color-bg-elevated);
     border: 2px solid var(--color-border-standard);
@@ -48,8 +48,8 @@
 }
 
 .sm .indicator {
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
 }
 
 .active .indicator {
@@ -65,13 +65,13 @@
 }
 
 .number {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
     font-family: var(--font-display);
 }
 
 .sm .number {
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .stepIcon {
@@ -87,28 +87,28 @@
 }
 
 .horizontal .connector {
-    top: 20px;
-    left: calc(50% + 20px);
-    right: calc(-50% + 20px);
+    top: 16px;
+    left: calc(50% + 16px);
+    right: calc(-50% + 16px);
     height: 2px;
 }
 
 .sm.horizontal .connector {
-    top: 16px;
-    left: calc(50% + 16px);
-    right: calc(-50% + 16px);
+    top: 13px;
+    left: calc(50% + 13px);
+    right: calc(-50% + 13px);
 }
 
 .vertical .connector {
-    left: 19px;
-    top: 40px;
+    left: 15px;
+    top: 32px;
     bottom: 0;
     width: 2px;
 }
 
 .sm.vertical .connector {
-    left: 15px;
-    top: 32px;
+    left: 12px;
+    top: 26px;
 }
 
 .completed .connector {
@@ -120,7 +120,7 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
-    margin-top: 12px;
+    margin-top: 8px;
 }
 
 .vertical .stepText {
@@ -129,7 +129,7 @@
 }
 
 .stepTitle {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--color-text-tertiary);
 }
@@ -143,7 +143,7 @@
 }
 
 .stepDesc {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--color-text-tertiary);
     line-height: 1.4;
 }

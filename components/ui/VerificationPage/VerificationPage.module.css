@@ -1,0 +1,252 @@
+/* ============================================
+   VerificationPage — Email Verification Flow
+   ============================================ */
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--color-bg-primary, #0a0a0a);
+    font-family: var(--font-body);
+    padding: 24px;
+}
+
+.card {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+/* ── Header ── */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.iconCircle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-bg-lime-subtle, rgba(163, 230, 53, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-lime, #A3E635);
+    margin-bottom: 4px;
+}
+
+.heading {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--color-text-primary, #fff);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.subheading {
+    font-size: 14px;
+    color: var(--color-text-secondary, rgba(255, 255, 255, 0.6));
+    margin: 0;
+    line-height: 1.5;
+    max-width: 360px;
+}
+
+.emailHighlight {
+    color: var(--color-text-primary, #fff);
+    font-weight: 500;
+}
+
+/* ── OTP Code Input ── */
+
+.codeRow {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.codeInput {
+    width: 56px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border-standard);
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    outline: none;
+    transition: all 0.15s;
+    caret-color: var(--color-lime, #A3E635);
+}
+
+.codeInput::placeholder {
+    color: var(--color-text-tertiary, rgba(255, 255, 255, 0.25));
+}
+
+.codeInput:focus {
+    border-color: var(--color-border-lime-strong);
+    background: var(--color-bg-elevated);
+    box-shadow: 0 0 0 3px var(--color-bg-lime-subtle, rgba(163, 230, 53, 0.1));
+}
+
+/* ── Submit Button ── */
+
+.submitBtn {
+    width: 100%;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--color-lime);
+    border: none;
+    color: var(--color-lime-text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.submitBtn:hover {
+    background: var(--color-lime-hover);
+    box-shadow: var(--shadow-btn-primary);
+}
+
+.submitBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-top-color: #111;
+    border-radius: 50%;
+    animation: verifSpin 0.6s linear infinite;
+}
+
+@keyframes verifSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Resend ── */
+
+.resendRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--color-text-tertiary, rgba(255, 255, 255, 0.4));
+}
+
+.resendBtn {
+    color: var(--color-lime, #A3E635);
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.15s;
+}
+
+.resendBtn:hover {
+    opacity: 0.8;
+}
+
+.resendBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ── Back Link ── */
+
+.backLink {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--color-text-tertiary, rgba(255, 255, 255, 0.4));
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.15s;
+}
+
+.backLink:hover {
+    color: var(--color-text-secondary, rgba(255, 255, 255, 0.6));
+}
+
+/* ── Error ── */
+
+.errorBanner {
+    background: var(--color-error-bg);
+    border: 1px solid var(--color-error-border);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--color-error, #EF4444);
+    line-height: 1.5;
+    width: 100%;
+    text-align: center;
+}
+
+/* ── Success State ── */
+
+.successIcon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--color-bg-lime-subtle, rgba(163, 230, 53, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-lime, #A3E635);
+    margin-bottom: 4px;
+}
+
+.successText {
+    font-size: 14px;
+    color: var(--color-text-secondary, rgba(255, 255, 255, 0.6));
+    line-height: 1.5;
+    text-align: center;
+    max-width: 340px;
+    margin: 0;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 480px) {
+    .wrapper {
+        padding: 16px;
+    }
+
+    .heading {
+        font-size: 22px;
+    }
+
+    .codeInput {
+        width: 48px;
+        height: 52px;
+        font-size: 20px;
+    }
+}

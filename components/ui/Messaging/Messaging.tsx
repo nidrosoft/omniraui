@@ -156,7 +156,7 @@ export const Messaging = forwardRef<HTMLDivElement, MessagingProps>(
                             disabled={!draft.trim()}
                             aria-label="Send message"
                         >
-                            <Send2 size={18} variant="Bulk" />
+                            <Send2 size={18} variant="Bold" />
                         </button>
                     </div>
                 )}

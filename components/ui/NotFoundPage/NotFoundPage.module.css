@@ -1,0 +1,270 @@
+/* ============================================
+   NotFoundPage — 404 Error Page
+   ============================================ */
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--color-bg-primary, #0a0a0a);
+    font-family: var(--font-body);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Background grid decoration ── */
+
+.bgGrid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 20%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 20%, transparent 100%);
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+}
+
+/* ── Error Badge ── */
+
+.errorBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    background: var(--color-bg-lime-subtle, rgba(163, 230, 53, 0.1));
+    color: var(--color-lime, #A3E635);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+}
+
+/* ── Large 404 ── */
+
+.errorCode {
+    font-size: 120px;
+    font-weight: 800;
+    font-family: var(--font-display);
+    color: var(--color-text-primary, #fff);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin: 0;
+    background: linear-gradient(180deg, var(--color-text-primary, #fff) 40%, var(--color-text-tertiary, rgba(255,255,255,0.3)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Heading + Subheading ── */
+
+.heading {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--color-text-primary, #fff);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.subheading {
+    font-size: 15px;
+    color: var(--color-text-secondary, rgba(255, 255, 255, 0.6));
+    margin: 0;
+    line-height: 1.6;
+    max-width: 420px;
+}
+
+/* ── Search Bar ── */
+
+.searchWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 14px;
+    display: flex;
+    align-items: center;
+    color: var(--color-text-tertiary, rgba(255, 255, 255, 0.4));
+    pointer-events: none;
+    z-index: 1;
+}
+
+.searchInput {
+    width: 100%;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border-standard);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 0 14px 0 42px;
+    outline: none;
+    transition: all 0.15s;
+}
+
+.searchInput::placeholder {
+    color: var(--color-text-tertiary, rgba(255, 255, 255, 0.4));
+}
+
+.searchInput:focus {
+    border-color: var(--color-border-lime-strong);
+    background: var(--color-bg-elevated);
+}
+
+/* ── Buttons ── */
+
+.buttonRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.primaryBtn {
+    height: 44px;
+    padding: 0 24px;
+    border-radius: var(--radius-md);
+    background: var(--color-lime);
+    border: none;
+    color: var(--color-lime-text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.primaryBtn:hover {
+    background: var(--color-lime-hover);
+    box-shadow: var(--shadow-btn-primary);
+}
+
+.secondaryBtn {
+    height: 44px;
+    padding: 0 24px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border-standard);
+    color: var(--color-text-secondary, rgba(255, 255, 255, 0.6));
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.15s;
+}
+
+.secondaryBtn:hover {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-primary);
+}
+
+/* ── Quick Links ── */
+
+.linksGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.linkCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 16px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+}
+
+.linkCard:hover {
+    border-color: var(--color-accent);
+    background: var(--color-bg-elevated);
+}
+
+.linkCardIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-lime-subtle, rgba(163, 230, 53, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-lime, #A3E635);
+}
+
+.linkCardTitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary, #fff);
+}
+
+.linkCardDesc {
+    font-size: 12px;
+    color: var(--color-text-tertiary, rgba(255, 255, 255, 0.4));
+    line-height: 1.4;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 600px) {
+    .errorCode {
+        font-size: 80px;
+    }
+
+    .heading {
+        font-size: 22px;
+    }
+
+    .linksGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .buttonRow {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        width: 100%;
+    }
+}

@@ -5,7 +5,7 @@
 .wrapper {
     border-radius: var(--radius-xl);
     border: 1px solid var(--color-border-subtle);
-    background: var(--color-bg-elevated);
+    background: #0d1117;
     overflow: hidden;
     font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
 }
@@ -17,8 +17,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 16px;
-    border-bottom: 1px solid var(--color-border-subtle);
-    background: var(--color-bg-card);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: #0a0e14;
 }
 
 .headerLeft {
@@ -77,7 +77,7 @@
     overflow-x: auto;
     font-size: 13px;
     line-height: 1.65;
-    color: var(--color-text-secondary);
+    color: #c9d1d9;
 }
 
 .table {
@@ -95,8 +95,8 @@
     text-align: right;
     padding-right: 16px;
     user-select: none;
-    color: var(--color-text-tertiary);
-    opacity: 0.5;
+    color: #484f58;
+    opacity: 1;
     font-size: 12px;
     min-width: 32px;
     vertical-align: top;
@@ -116,43 +116,63 @@
     padding: 0;
 }
 
-/* ── Syntax colors ── */
+/* ── Syntax colors (GitHub Dark-inspired) ── */
 
 .tokenKeyword {
-    color: var(--color-lime);
-    font-weight: 600;
+    color: #ff7b72;
+    font-weight: 500;
 }
 
 .tokenString {
-    color: var(--color-info);
+    color: #a5d6ff;
 }
 
 .tokenComment {
-    color: var(--color-text-tertiary);
+    color: #8b949e;
     font-style: italic;
-    opacity: 0.7;
 }
 
 .tokenFunction {
-    color: var(--color-warning);
+    color: #d2a8ff;
 }
 
 .tokenNumber {
-    color: var(--color-error);
+    color: #79c0ff;
 }
 
 .tokenPunctuation {
-    color: var(--color-text-tertiary);
+    color: #8b949e;
 }
 
 .tokenTag {
-    color: var(--color-error);
+    color: #7ee787;
 }
 
 .tokenAttr {
-    color: var(--color-lime);
+    color: #79c0ff;
 }
 
 .tokenAttrValue {
-    color: var(--color-info);
+    color: #a5d6ff;
+}
+
+.tokenType {
+    color: #ffa657;
+}
+
+.tokenOperator {
+    color: #ff7b72;
+}
+
+.tokenProperty {
+    color: #79c0ff;
+}
+
+.tokenConst {
+    color: #79c0ff;
+    font-weight: 500;
+}
+
+.tokenBool {
+    color: #79c0ff;
 }

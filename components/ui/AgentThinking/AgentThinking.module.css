@@ -120,6 +120,8 @@
     position: relative;
     flex-shrink: 0;
     user-select: none;
+    min-width: 160px;
+    height: 42px;
 }
 
 .chip:hover {
@@ -217,6 +219,10 @@
     min-width: 0;
     position: relative;
     z-index: 1;
+    flex: 1;
+    overflow: hidden;
+    height: 28px;
+    justify-content: center;
 }
 
 .chipName {
@@ -257,6 +263,7 @@
     display: flex;
     align-items: center;
     gap: 0;
+    height: 14px;
 }
 
 .cursor {

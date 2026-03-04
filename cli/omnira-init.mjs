@@ -487,6 +487,11 @@ const PAGE_BUNDLES = {
     // ── Shared pages bundles ──
     "login":                     ["AuthPage", "LoginSimple", "LoginSplitImage", "LoginSplitQuote", "LoginCardSeparated", "SocialButton", "Button", "Input", "Checkbox"],
     "sign-up":                   ["SignUpSimple", "SignUpSplitImage", "SignUpSplitQuote", "SignUpCardSeparated", "SocialButton", "Button", "Input", "Checkbox"],
+    "verification":              ["VerificationPage", "Button", "PinInput"],
+    "forgot-password":           ["ForgotPassword", "Button", "Input", "Checkbox"],
+    "not-found-page":            ["NotFoundPage", "Button"],
+    "404":                       ["NotFoundPage", "Button"],
+    "email-template":            ["EmailTemplate"],
 };
 
 // ── Add command — copy a single component ───────────────────────────

@@ -7,33 +7,39 @@ import type { AgentConfig, AgentActivity, AgentState } from "./types";
 import s from "./AgentThinking.module.css";
 
 /* ══════════════════════════════════════════════
-   Typewriter hook
+   Text cycling hook — fixed-size status rotation
    ══════════════════════════════════════════════ */
 
-function useTypewriter(text: string, isActive: boolean, speed = 30) {
-    const [displayed, setDisplayed] = useState("");
-    const indexRef = useRef(0);
+const STATUS_PHRASES = [
+    "Analyzing...",
+    "Taking action...",
+    "Sending emails...",
+    "On a phone call...",
+    "Reflecting...",
+    "Processing data...",
+    "Searching...",
+    "Composing response...",
+];
+
+function useTextCycler(text: string, isActive: boolean, intervalMs = 2400) {
+    const [displayed, setDisplayed] = useState(text || STATUS_PHRASES[0]);
+    const idxRef = useRef(0);
 
     useEffect(() => {
-        if (!isActive || !text) {
+        if (!isActive) {
             setDisplayed("");
-            indexRef.current = 0;
             return;
         }
-        setDisplayed("");
-        indexRef.current = 0;
+        setDisplayed(text || STATUS_PHRASES[0]);
+        idxRef.current = 0;
 
-        const interval = setInterval(() => {
-            indexRef.current += 1;
-            if (indexRef.current <= text.length) {
-                setDisplayed(text.slice(0, indexRef.current));
-            } else {
-                clearInterval(interval);
-            }
-        }, speed);
+        const timer = setInterval(() => {
+            idxRef.current = (idxRef.current + 1) % STATUS_PHRASES.length;
+            setDisplayed(STATUS_PHRASES[idxRef.current]);
+        }, intervalMs);
 
-        return () => clearInterval(interval);
-    }, [text, isActive, speed]);
+        return () => clearInterval(timer);
+    }, [text, isActive, intervalMs]);
 
     return displayed;
 }
@@ -101,10 +107,10 @@ interface AgentChipProps {
 
 function AgentChip({ agent, activity, isPopoverOpen, onTogglePopover }: AgentChipProps) {
     const isAnimating = activity.state === "thinking" || activity.state === "active";
-    const typed = useTypewriter(
+    const statusText = useTextCycler(
         activity.currentAction?.text ?? "",
         isAnimating,
-        28
+        2400
     );
 
     const chipStyle: React.CSSProperties = {
@@ -158,7 +164,7 @@ function AgentChip({ agent, activity, isPopoverOpen, onTogglePopover }: AgentChi
                     </span>
                     {isAnimating ? (
                         <span className={s.activityText}>
-                            {typed}
+                            {statusText}
                             <span className={s.cursor} style={{ background: agent.color }} />
                         </span>
                     ) : activity.state === "completed" ? (
