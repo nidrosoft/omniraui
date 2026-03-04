@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -50,6 +51,8 @@ export default function AppStoreButtonPage() {
                     { label: "App Store Button" },
                 ]}
             />
+
+            <InstallBlock slug="app-store-button" components={["AppStoreButton"]} />
 
             {/* ── All Stores ── */}
             <h2 style={sectionHeading}>All Stores</h2>

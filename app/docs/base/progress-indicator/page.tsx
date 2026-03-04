@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -165,6 +166,8 @@ export default function ProgressIndicatorPage() {
                     { label: "Progress Indicator" },
                 ]}
             />
+
+            <InstallBlock slug="progress-indicator" components={["ProgressBar"]} />
 
             {/* ── Text Right ── */}
             <h2 style={sectionHeading}>Text Right</h2>

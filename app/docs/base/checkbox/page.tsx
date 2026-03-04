@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -86,6 +87,8 @@ export default function CheckboxPage() {
                     { label: "Checkbox" },
                 ]}
             />
+
+            <InstallBlock slug="checkbox" components={["Checkbox"]} />
 
             {/* ── Base with Label ── */}
             <h2 style={sectionHeading}>Base with Label</h2>

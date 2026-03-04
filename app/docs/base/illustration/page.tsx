@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -81,6 +82,8 @@ export default function IllustrationPage() {
                     { label: "Illustration" },
                 ]}
             />
+
+            <InstallBlock slug="illustration" components={["Illustration"]} />
 
             <h2 style={sectionHeading}>Types</h2>
             <p style={sectionDesc}>Six illustration types for common UI states.</p>

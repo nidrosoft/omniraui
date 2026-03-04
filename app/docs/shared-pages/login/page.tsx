@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { AuthPage } from "@/components/ui/AuthPage";
@@ -330,6 +331,8 @@ export default function LoginPage() {
                     { label: "Login Pages" },
                 ]}
             />
+
+            <InstallBlock slug="login" components={["AuthPage", "LoginSimple", "LoginSplitImage", "LoginSplitQuote", "LoginCardSeparated"]} />
 
             {/* ── 1. AuthPage Toggle ── */}
             <ComponentPreview

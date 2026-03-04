@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -117,6 +118,8 @@ export default function AvatarPage() {
                     { label: "Avatar" },
                 ]}
             />
+
+            <InstallBlock slug="avatar" components={["Avatar"]} />
 
             {/* ── Sizes ── */}
             <h2 style={sectionHeading}>Sizes</h2>

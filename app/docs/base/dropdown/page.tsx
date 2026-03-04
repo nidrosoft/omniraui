@@ -22,6 +22,7 @@ import {
     FolderOpen,
 } from "iconsax-react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -347,6 +348,8 @@ export default function DropdownPage() {
                     { label: "Dropdown" },
                 ]}
             />
+
+            <InstallBlock slug="dropdown" components={["Dropdown"]} />
 
             {/* ── Basic ── */}
             <h2 style={sectionHeading}>Basic</h2>

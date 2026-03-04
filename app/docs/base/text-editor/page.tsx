@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -134,6 +135,8 @@ export default function TextEditorPage() {
                     { label: "Text Editor" },
                 ]}
             />
+
+            <InstallBlock slug="text-editor" components={["TextEditor"]} />
 
             {/* ── Default Small ── */}
             <h2 style={sectionHeading}>Default Small</h2>

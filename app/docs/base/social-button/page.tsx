@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -51,6 +52,8 @@ export default function SocialButtonPage() {
                     { label: "Social Button" },
                 ]}
             />
+
+            <InstallBlock slug="social-button" components={["SocialButton"]} />
 
             {/* ── Brand Theme ── */}
             <h2 style={sectionHeading}>Brand Theme</h2>

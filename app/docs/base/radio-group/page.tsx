@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -157,6 +158,8 @@ export default function RadioGroupPage() {
                     { label: "Radio Group" },
                 ]}
             />
+
+            <InstallBlock slug="radio-group" components={["RadioGroup"]} />
 
             {/* ── Icon Simple ── */}
             <h2 style={sectionHeading}>Icon Simple</h2>

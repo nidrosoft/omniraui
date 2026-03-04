@@ -1,0 +1,232 @@
+/* ── Root ── */
+.root {
+    display: flex;
+    width: 100%;
+}
+
+.horizontal {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+/* ── Step ── */
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    flex: 1;
+}
+
+.vertical .step {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 12px;
+    padding-bottom: 24px;
+}
+
+/* ── Indicator ── */
+.indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-bg-elevated);
+    border: 2px solid var(--color-border-standard);
+    color: var(--color-text-tertiary);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.sm .indicator {
+    width: 32px;
+    height: 32px;
+}
+
+.active .indicator {
+    background: var(--color-bg-lime-subtle);
+    border-color: var(--color-lime);
+    color: var(--color-lime);
+}
+
+.completed .indicator {
+    background: var(--color-lime);
+    border-color: var(--color-lime);
+    color: var(--color-lime-text);
+}
+
+.number {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--font-display);
+}
+
+.sm .number {
+    font-size: 12px;
+}
+
+.stepIcon {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ── Connector ── */
+.connector {
+    position: absolute;
+    background: var(--color-border-standard);
+    transition: background 0.2s ease;
+}
+
+.horizontal .connector {
+    top: 20px;
+    left: calc(50% + 20px);
+    right: calc(-50% + 20px);
+    height: 2px;
+}
+
+.sm.horizontal .connector {
+    top: 16px;
+    left: calc(50% + 16px);
+    right: calc(-50% + 16px);
+}
+
+.vertical .connector {
+    left: 19px;
+    top: 40px;
+    bottom: 0;
+    width: 2px;
+}
+
+.sm.vertical .connector {
+    left: 15px;
+    top: 32px;
+}
+
+.completed .connector {
+    background: var(--color-lime);
+}
+
+/* ── Text ── */
+.stepText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 12px;
+}
+
+.vertical .stepText {
+    margin-top: 0;
+    padding-top: 8px;
+}
+
+.stepTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+}
+
+.active .stepTitle {
+    color: var(--color-text-primary);
+}
+
+.completed .stepTitle {
+    color: var(--color-text-secondary);
+}
+
+.stepDesc {
+    font-size: 13px;
+    color: var(--color-text-tertiary);
+    line-height: 1.4;
+}
+
+/* ── Minimal ── */
+.minimalWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.minimalDots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.minimalDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-border-standard);
+    transition: all 0.2s ease;
+}
+
+.minimalDot.active {
+    background: var(--color-lime);
+    width: 28px;
+    border-radius: 100px;
+}
+
+.minimalDot.completed {
+    background: var(--color-lime);
+}
+
+.minimalText {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+/* ── Line ── */
+.lineWrapper {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+}
+
+.lineStep {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.lineBar {
+    height: 4px;
+    border-radius: 100px;
+    background: var(--color-border-standard);
+    transition: background 0.2s ease;
+}
+
+.lineStep.active .lineBar,
+.lineStep.completed .lineBar {
+    background: var(--color-lime);
+}
+
+.lineTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+}
+
+.lineStep.active .lineTitle {
+    color: var(--color-text-primary);
+}
+
+.lineStep.completed .lineTitle {
+    color: var(--color-text-secondary);
+}
+
+.lineDesc {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}

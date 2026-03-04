@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -100,6 +101,8 @@ export default function RatingPage() {
                     { label: "Rating" },
                 ]}
             />
+
+            <InstallBlock slug="rating" components={["Rating"]} />
 
             <h2 style={sectionHeading}>Default</h2>
             <p style={sectionDesc}>Interactive star rating with click and hover.</p>

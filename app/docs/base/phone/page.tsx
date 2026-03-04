@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -80,6 +81,8 @@ export default function PhonePage() {
                     { label: "Phone" },
                 ]}
             />
+
+            <InstallBlock slug="phone" components={["Phone"]} />
 
             <h2 style={sectionHeading}>With Address Bar</h2>
             <p style={sectionDesc}>Phone frame with a bottom address bar showing the URL.</p>

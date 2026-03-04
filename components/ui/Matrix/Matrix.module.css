@@ -1,0 +1,54 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+    box-shadow: var(--shadow-card-light);
+    overflow-x: auto;
+}
+
+.columnLabels {
+    display: flex;
+    gap: 3px;
+}
+
+.columnLabel {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    font-weight: 500;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.rowLabel {
+    width: 40px;
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    font-weight: 500;
+    text-align: right;
+    padding-right: 6px;
+    flex-shrink: 0;
+}
+
+.cell {
+    flex-shrink: 0;
+    transition: transform 0.1s ease, opacity 0.15s ease;
+    cursor: default;
+}
+
+.cell:hover {
+    transform: scale(1.15);
+}

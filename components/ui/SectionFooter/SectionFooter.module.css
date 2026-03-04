@@ -1,0 +1,55 @@
+/* ── Root ── */
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border-standard);
+    flex-wrap: wrap;
+}
+
+/* ── Card variant ── */
+.card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    box-shadow: var(--shadow-card-light);
+}
+
+/* ── Actions ── */
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+/* ── Link ── */
+.link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.link:hover {
+    color: var(--color-text-primary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 639px) {
+    .root {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .actions {
+        justify-content: flex-end;
+        margin-left: 0;
+    }
+}

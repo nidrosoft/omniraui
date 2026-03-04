@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -43,6 +44,8 @@ export default function BadgeGroupPage() {
                     { label: "Badge Group" },
                 ]}
             />
+
+            <InstallBlock slug="badge-group" components={["BadgeGroup"]} />
 
             {/* ── Modern Theme — Leading ── */}
             <h2 style={sectionHeading}>Modern — Leading</h2>

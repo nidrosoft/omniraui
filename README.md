@@ -4,7 +4,7 @@ A premium glassmorphism design system — dark-first, glass-forward, no compromi
 
 30+ base components, sidebar navigation, feature cards, 1,000+ icons, and a CLI to scaffold your project with your chosen accent color and theme mode.
 
-**[Live Documentation →](https://ui.omnira.space)**
+**[Live Documentation →](https://omnira.one)**
 
 ---
 
@@ -75,7 +75,7 @@ export default function MyPage() {
 
 Browse the full library and copy advanced components (Sidebar, Feature Cards, etc.) directly from the docs:
 
-**[ui.omnira.space →](https://ui.omnira.space)**
+**[omnira.one →](https://omnira.one)**
 
 ---
 
@@ -170,4 +170,4 @@ lib/                    # Shared utilities
 
 ## License
 
-MIT © [Omnira UI](https://ui.omnira.space)
+MIT © [Omnira UI](https://omnira.one)

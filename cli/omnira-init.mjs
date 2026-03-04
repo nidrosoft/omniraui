@@ -384,7 +384,7 @@ async function main() {
     log(`       ${MAGENTA}import${RESET} { Button } ${MAGENTA}from${RESET} ${WHITE}"@/components/ui/Button"${RESET};`);
     blank();
     log(`    ${DIM}4.${RESET} Browse all components & copy advanced ones:`);
-    log(`       ${CYAN}https://ui.omnira.space${RESET}`);
+    log(`       ${CYAN}https://omnira.one${RESET}`);
     blank();
 }
 
@@ -468,6 +468,25 @@ const PAGE_BUNDLES = {
     "card":               ["Card", "Button", "Badge"],
     // Matrix
     "matrix":             ["Card"],
+    // ── Base component slug aliases (hyphenated → PascalCase folder) ──
+    "app-store-button":          ["AppStoreButton"],
+    "badge-group":               ["BadgeGroup"],
+    "button-group":              ["ButtonGroup"],
+    "credit-card":               ["CreditCard"],
+    "featured-icon":             ["FeaturedIcon"],
+    "progress-indicator":        ["ProgressBar"],
+    "qr-code":                   ["QRCode"],
+    "radio-button":              ["RadioButton"],
+    "radio-group":               ["RadioGroup"],
+    "social-button":             ["SocialButton"],
+    "text-editor":               ["TextEditor"],
+    "utility":                   ["ButtonUtility"],
+    "verification-code-input":   ["PinInput"],
+    "video-player":              ["VideoPlayer"],
+    "agent-thinking":            ["AgentThinking"],
+    // ── Shared pages bundles ──
+    "login":                     ["AuthPage", "LoginSimple", "LoginSplitImage", "LoginSplitQuote", "LoginCardSeparated", "SocialButton", "Button", "Input", "Checkbox"],
+    "sign-up":                   ["SignUpSimple", "SignUpSplitImage", "SignUpSplitQuote", "SignUpCardSeparated", "SocialButton", "Button", "Input", "Checkbox"],
 };
 
 // ── Add command — copy a single component ───────────────────────────

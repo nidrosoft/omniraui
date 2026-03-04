@@ -1,0 +1,99 @@
+/* ── Root ── */
+.root {
+    width: 100%;
+    background: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border-standard);
+    backdrop-filter: var(--blur-standard);
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+/* ── Inner ── */
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: 64px;
+    padding: 0 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* ── Brand ── */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-text-primary);
+    text-decoration: none;
+}
+
+/* ── Links ── */
+.links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    justify-content: center;
+}
+
+/* ── Link ── */
+.link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all 0.15s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.link:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-hover);
+}
+
+.linkActive {
+    color: var(--color-text-primary);
+    background: var(--color-bg-elevated);
+}
+
+.linkIcon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ── Actions ── */
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+    .inner {
+        padding: 0 16px;
+        height: 56px;
+    }
+
+    .links {
+        display: none;
+    }
+}

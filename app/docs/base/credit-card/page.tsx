@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -91,6 +92,8 @@ export default function CreditCardPage() {
                     { label: "Credit Card" },
                 ]}
             />
+
+            <InstallBlock slug="credit-card" components={["CreditCard"]} />
 
             <h2 style={sectionHeading}>Brand Dark</h2>
             <p style={sectionDesc}>Dark gradient card with white text.</p>

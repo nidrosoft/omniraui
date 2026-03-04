@@ -1,0 +1,101 @@
+.root {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-radius: var(--radius-xl);
+    transition: all 0.2s ease;
+}
+
+/* ── Variants ── */
+.default {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    box-shadow: var(--shadow-card-light);
+}
+
+.brand {
+    background: var(--color-bg-lime-subtle);
+    border: 1px solid var(--color-border-lime-medium);
+}
+
+.subtle {
+    background: var(--color-bg-elevated);
+    border: 1px solid transparent;
+}
+
+.bordered {
+    background: transparent;
+    border: 1.5px solid var(--color-border-standard);
+}
+
+/* ── Icon ── */
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-lime);
+}
+
+/* ── Content ── */
+.content {
+    flex: 1;
+    min-width: 0;
+}
+
+.title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.description {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin: 2px 0 0;
+    line-height: 1.5;
+}
+
+/* ── Actions ── */
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ── Dismiss ── */
+.dismiss {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+}
+
+.dismiss:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-hover);
+}
+
+/* ── Responsive ── */
+@media (max-width: 639px) {
+    .root {
+        flex-wrap: wrap;
+    }
+
+    .actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

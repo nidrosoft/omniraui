@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -244,6 +245,8 @@ export default function TagPage() {
                     { label: "Tag" },
                 ]}
             />
+
+            <InstallBlock slug="tag" components={["Tag"]} />
 
             {/* ── Sizes ── */}
             <h2 style={sectionHeading}>Sizes</h2>

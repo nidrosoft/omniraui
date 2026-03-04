@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { User, StatusUp } from "iconsax-react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -213,6 +214,8 @@ export default function SelectPage() {
                     { label: "Select" },
                 ]}
             />
+
+            <InstallBlock slug="select" components={["Select"]} />
 
             {/* ── Default ── */}
             <h2 style={sectionHeading}>Default</h2>

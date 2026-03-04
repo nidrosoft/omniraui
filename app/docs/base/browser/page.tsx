@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -100,6 +101,8 @@ export default function BrowserPage() {
                     { label: "Browser" },
                 ]}
             />
+
+            <InstallBlock slug="browser" components={["Browser"]} />
 
             <h2 style={sectionHeading}>Default</h2>
             <p style={sectionDesc}>Browser frame with address bar and content slot.</p>

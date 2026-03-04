@@ -1,0 +1,161 @@
+.root {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.align-left { justify-content: flex-start; }
+.align-center { justify-content: space-between; }
+.align-right { justify-content: flex-end; }
+
+/* ── Card variant ── */
+.card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-lg);
+    padding: 12px 16px;
+    box-shadow: var(--shadow-card-light);
+}
+
+/* ── Nav button ── */
+.navBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.navBtn:hover:not(:disabled) {
+    color: var(--color-text-primary);
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border-medium);
+}
+
+.navBtn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.navLabel {
+    display: inline;
+}
+
+/* ── Page text ── */
+.pageText {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ── Page numbers ── */
+.pageNumbers {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.pageBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--color-text-secondary);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.pageBtn:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-hover);
+}
+
+.pageBtnActive {
+    color: var(--color-lime-text);
+    background: var(--color-lime);
+    font-weight: 600;
+}
+
+.pageBtnActive:hover {
+    background: var(--color-lime-hover);
+    color: var(--color-lime-text);
+}
+
+.ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Dots ── */
+.dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border-standard);
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    padding: 0;
+}
+
+.dot:hover {
+    background: var(--color-text-tertiary);
+}
+
+.dotActive {
+    background: var(--color-lime);
+    width: 24px;
+    border-radius: 100px;
+}
+
+/* ── Line ── */
+.lineTrack {
+    flex: 1;
+    height: 4px;
+    background: var(--color-bg-elevated);
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.lineFill {
+    height: 100%;
+    background: var(--color-lime);
+    border-radius: 100px;
+    transition: width 0.3s ease;
+}
+
+/* ── Responsive ── */
+@media (max-width: 639px) {
+    .navLabel { display: none; }
+    .pageNumbers { gap: 0; }
+    .pageBtn { width: 32px; height: 32px; font-size: 13px; }
+}

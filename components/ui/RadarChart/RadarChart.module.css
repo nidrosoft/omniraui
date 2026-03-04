@@ -1,0 +1,25 @@
+.root {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    box-shadow: var(--shadow-card-light);
+}
+
+.label {
+    font-size: 12px;
+    fill: var(--color-text-secondary);
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.dot {
+    transition: r 0.15s ease;
+}
+
+.dot:hover {
+    r: 6;
+}

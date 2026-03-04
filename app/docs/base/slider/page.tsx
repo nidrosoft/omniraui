@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -92,6 +93,8 @@ export default function SliderPage() {
                     { label: "Slider" },
                 ]}
             />
+
+            <InstallBlock slug="slider" components={["Slider"]} />
 
             {/* ── Default ── */}
             <h2 style={sectionHeading}>Default</h2>

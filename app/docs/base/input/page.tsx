@@ -15,6 +15,7 @@ import {
     Copy,
 } from "iconsax-react";
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -411,6 +412,8 @@ export default function InputPage() {
                     { label: "Input" },
                 ]}
             />
+
+            <InstallBlock slug="input" components={["Input"]} />
 
             {/* ── Default ── */}
             <h2 style={sectionHeading}>Default</h2>

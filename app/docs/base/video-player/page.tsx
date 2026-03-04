@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -63,6 +64,8 @@ export default function VideoPlayerPage() {
                     { label: "Video Player" },
                 ]}
             />
+
+            <InstallBlock slug="video-player" components={["VideoPlayer"]} />
 
             <h2 style={sectionHeading}>Small</h2>
             <p style={sectionDesc}>Compact player with 400px max width.</p>

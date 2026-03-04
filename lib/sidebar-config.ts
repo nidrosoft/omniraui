@@ -21,7 +21,7 @@ export const sidebarConfig: SidebarSection[] = [
             { name: "Typography", href: "/docs/getting-started/typography", icon: "Text" },
             { name: "Colors", href: "/docs/getting-started/colors", icon: "ColorSwatch" },
             { name: "Icons", href: "/docs/getting-started/icons", icon: "Brush2" },
-            { name: "CLI", href: "/docs/getting-started/cli", icon: "CommandSquare", status: "coming-soon" },
+            { name: "CLI", href: "/docs/getting-started/cli", icon: "CommandSquare" },
         ],
     },
     {

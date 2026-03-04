@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -113,9 +114,11 @@ export default function TooltipPage() {
                 ]}
             />
 
+            <InstallBlock slug="tooltip" components={["Tooltip"]} />
+
             {/* ── Default ── */}
             <h2 style={sectionHeading}>Default</h2>
-            <p style={sectionDesc}>A basic tooltip that appears above the trigger on hover.</p>
+            <p style={sectionDesc}>Simple tooltip that appears above the trigger on hover.</p>
             <ComponentPreview title="Default" code={`<Tooltip content="Edit this item">\n    <button>Hover me</button>\n</Tooltip>`}>
                 <DefaultDemo />
             </ComponentPreview>

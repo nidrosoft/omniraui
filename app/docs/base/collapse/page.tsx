@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -101,6 +102,8 @@ export default function CollapsePage() {
                     { label: "Collapse" },
                 ]}
             />
+
+            <InstallBlock slug="collapse" components={["Collapse"]} />
 
             <h2 style={sectionHeading}>Accordion (Single)</h2>
             <p style={sectionDesc}>Only one item can be open at a time. Clicking another closes the current one.</p>

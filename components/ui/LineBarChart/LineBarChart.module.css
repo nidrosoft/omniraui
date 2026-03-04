@@ -1,0 +1,41 @@
+.root {
+    width: 100%;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+    box-shadow: var(--shadow-card-light);
+}
+
+.svg {
+    width: 100%;
+    height: auto;
+}
+
+.gridLine {
+    stroke: var(--color-border-subtle);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+}
+
+.axisLabel {
+    font-size: 11px;
+    fill: var(--color-text-tertiary);
+    font-family: inherit;
+}
+
+.bar {
+    transition: opacity 0.2s ease;
+}
+
+.bar:hover {
+    opacity: 1 !important;
+}
+
+.dot {
+    transition: r 0.15s ease;
+}
+
+.dot:hover {
+    r: 6;
+}

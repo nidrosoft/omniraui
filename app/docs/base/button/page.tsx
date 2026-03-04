@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -37,6 +38,8 @@ export default function ButtonPage() {
                     { label: "Button" },
                 ]}
             />
+
+            <InstallBlock slug="button" components={["Button"]} />
 
             {/* ── Primary Button ── */}
             <h2 style={sectionHeading}>Primary Button</h2>

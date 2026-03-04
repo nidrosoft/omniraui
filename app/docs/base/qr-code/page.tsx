@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -72,6 +73,8 @@ export default function QRCodePage() {
                     { label: "QR Code" },
                 ]}
             />
+
+            <InstallBlock slug="qr-code" components={["QRCode"]} />
 
             <h2 style={sectionHeading}>Sizes</h2>
             <p style={sectionDesc}>Three sizes: sm (128px), md (200px), lg (280px).</p>

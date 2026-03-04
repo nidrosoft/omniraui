@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { PropsTable } from "@/components/docs/PropsTable";
@@ -97,6 +98,8 @@ export default function TextareaPage() {
                     { label: "Textarea" },
                 ]}
             />
+
+            <InstallBlock slug="textarea" components={["Textarea"]} />
 
             {/* ── Default ── */}
             <h2 style={sectionHeading}>Default</h2>

@@ -1,6 +1,7 @@
 "use client";
 
 import { DocHeader } from "@/components/docs/DocHeader";
+import { InstallBlock } from "@/components/docs/InstallBlock";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { SignUpSimple } from "@/components/ui/SignUpSimple";
@@ -261,6 +262,8 @@ export default function SignUpPage() {
                     { label: "Sign Up Pages" },
                 ]}
             />
+
+            <InstallBlock slug="sign-up" components={["SignUpSimple", "SignUpSplitImage", "SignUpSplitQuote", "SignUpCardSeparated"]} />
 
             {/* ── 1. SignUpSimple ── */}
             <ComponentPreview
