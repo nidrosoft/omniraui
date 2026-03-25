@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback, forwardRef, useLayoutEffect } from "react";
+import { useState, useEffect, useRef, useCallback, forwardRef } from "react";
 import { createPortal } from "react-dom";
+import { autoUpdate, flip, offset, shift, useFloating } from "@floating-ui/react-dom";
 import { cn } from "@/lib/cn";
 import { motion, AnimatePresence } from "framer-motion";
 import type { AgentConfig, AgentActivity, AgentState } from "./types";
@@ -193,43 +194,52 @@ interface AgentPopoverContentProps {
 
 const AgentPopoverContent = forwardRef<HTMLDivElement, AgentPopoverContentProps>(
     function AgentPopoverContent({ agent, activity, anchorEl }, ref) {
-        const [coords, setCoords] = useState({ top: 0, left: 0 });
+        const { refs, floatingStyles } = useFloating({
+            open: Boolean(anchorEl),
+            placement: "bottom-start",
+            strategy: "fixed",
+            /* top/left positioning — avoids fighting Framer Motion transforms on the inner surface */
+            transform: false,
+            middleware: [
+                offset(8),
+                flip({ fallbackPlacements: ["top-start"] }),
+                shift({ padding: 8 }),
+            ],
+            whileElementsMounted: autoUpdate,
+            elements: {
+                reference: anchorEl,
+            },
+        });
 
-        useLayoutEffect(() => {
-            if (!anchorEl) return;
+        const setFloatingRef = useCallback(
+            (node: HTMLDivElement | null) => {
+                refs.setFloating(node);
+                if (typeof ref === "function") ref(node);
+                else if (ref) ref.current = node;
+            },
+            [refs.setFloating, ref],
+        );
 
-            const update = () => {
-                const r = anchorEl.getBoundingClientRect();
-                let left = r.left + r.width / 2 - POPOVER_WIDTH / 2;
-                const padding = 8;
-                left = Math.max(padding, Math.min(left, window.innerWidth - POPOVER_WIDTH - padding));
-                setCoords({ top: r.bottom + 8, left });
-            };
-
-            update();
-            window.addEventListener("scroll", update, true);
-            window.addEventListener("resize", update);
-            return () => {
-                window.removeEventListener("scroll", update, true);
-                window.removeEventListener("resize", update);
-            };
-        }, [anchorEl]);
+        if (!anchorEl) return null;
 
         return (
-            <motion.div
-                ref={ref}
-                className={s.popover}
+            <div
+                ref={setFloatingRef}
                 style={{
-                    position: "fixed",
-                    top: coords.top,
-                    left: coords.left,
+                    ...floatingStyles,
                     width: POPOVER_WIDTH,
+                    /* Root stacking: floatingStyles has no z-index; without this, chips (transform/z-index)
+                       in the row can paint above the portaled popover. */
+                    zIndex: 11_000,
                 }}
-                initial={{ opacity: 0, y: -6, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -4, scale: 0.98 }}
-                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
+                <motion.div
+                    className={s.popover}
+                    initial={{ opacity: 0, y: -6, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -4, scale: 0.98 }}
+                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                >
                 <div className={s.popoverHeader}>
                     <span className={s.popoverName} style={{ color: agent.color }}>{agent.name}</span>
                     <span className={s.popoverRole}>{agent.role}</span>
@@ -264,7 +274,8 @@ const AgentPopoverContent = forwardRef<HTMLDivElement, AgentPopoverContentProps>
                         </motion.div>
                     ))}
                 </div>
-            </motion.div>
+                </motion.div>
+            </div>
         );
     },
 );
