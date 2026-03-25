@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+# Use pnpm (pnpm-lock.yaml). Avoid committing npm's lockfile by mistake.
+package-lock.json
 /.pnp
 .pnp.*
 .yarn/*

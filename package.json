@@ -44,6 +44,7 @@
     "init": "node cli/omnira-init.mjs"
   },
   "dependencies": {
+    "@floating-ui/react-dom": "^2.1.8",
     "@icons-pack/react-simple-icons": "^13.11.2",
     "@types/react-syntax-highlighter": "^15.5.13",
     "framer-motion": "^12.34.0",
