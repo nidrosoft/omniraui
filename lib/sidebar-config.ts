@@ -50,6 +50,7 @@ export const sidebarConfig: SidebarSection[] = [
             { name: "Dropdown", href: "/docs/base/dropdown" },
             { name: "Select", href: "/docs/base/select" },
             { name: "Input", href: "/docs/base/input" },
+            { name: "Language Selector", href: "/docs/base/language-selector", status: "new" },
             { name: "Textarea", href: "/docs/base/textarea" },
             { name: "Verification Code Input", href: "/docs/base/verification-code-input" },
             { name: "Text Editor", href: "/docs/base/text-editor" },

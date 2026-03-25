@@ -33,6 +33,7 @@ import {
     Monitor,
     Mobile,
     ArrowSquareDown,
+    Global,
 } from "iconsax-react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -49,6 +50,7 @@ const components: { name: string; href: string; description: string; icon: any }
     { name: "Dropdown", href: "/docs/base/dropdown", description: "Dropdown menus with glass morphism styling", icon: ArrowDown2 },
     { name: "Select", href: "/docs/base/select", description: "Custom select inputs with themed options", icon: TickSquare },
     { name: "Input", href: "/docs/base/input", description: "Text inputs with labels, icons, and validation", icon: Edit2 },
+    { name: "Language Selector", href: "/docs/base/language-selector", description: "Dropdown for interface or content language", icon: Global },
     { name: "Textarea", href: "/docs/base/textarea", description: "Multi-line text inputs", icon: DocumentText },
     { name: "Verification Code Input", href: "/docs/base/verification-code-input", description: "OTP/verification code input fields", icon: PasswordCheck },
     { name: "Text Editor", href: "/docs/base/text-editor", description: "Rich text editor component", icon: TextalignLeft },

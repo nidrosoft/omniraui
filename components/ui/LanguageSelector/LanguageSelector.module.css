@@ -1,0 +1,222 @@
+/* ── Wrapper ── */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    max-width: 320px;
+    position: relative;
+}
+
+.wrapperCompact {
+    max-width: none;
+    width: auto;
+}
+
+/* ── Label ── */
+.label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Trigger ── */
+.trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 0 14px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border-standard);
+    font-family: inherit;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all 0.25s;
+    outline: none;
+    text-align: left;
+    position: relative;
+}
+
+.trigger:hover {
+    border-color: var(--color-border-medium);
+}
+
+.triggerOpen {
+    border-color: var(--color-border-lime-strong);
+    background: var(--color-bg-elevated);
+}
+
+.triggerDisabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.triggerCompact {
+    width: auto;
+    min-width: 44px;
+    padding: 0 12px;
+    justify-content: center;
+}
+
+.sm {
+    height: 36px;
+    font-size: 13px;
+    padding: 0 12px;
+}
+
+.md {
+    height: 44px;
+    font-size: 14px;
+}
+
+.lg {
+    height: 52px;
+    font-size: 16px;
+    padding: 0 16px;
+}
+
+.triggerValue {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.optionLabel {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.flag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1em;
+    line-height: 1;
+}
+
+.placeholder {
+    color: var(--color-text-tertiary);
+    opacity: 0.6;
+    font-weight: 400;
+}
+
+.chevron {
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.chevronOpen {
+    transform: rotate(180deg);
+}
+
+/* ── Listbox ── */
+.listbox {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 6px;
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-standard);
+    box-shadow: var(--shadow-card);
+    max-height: 280px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    animation: listIn 0.15s ease-out;
+}
+
+.listboxBottom {
+    top: 100%;
+    margin-top: 6px;
+}
+
+.listboxTop {
+    bottom: 100%;
+    margin-bottom: 6px;
+    animation: listInTop 0.15s ease-out;
+}
+
+.wrapperCompact .listbox {
+    min-width: 220px;
+    right: auto;
+}
+
+@keyframes listIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes listInTop {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--color-text-primary);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+}
+
+.option:hover:not(:disabled) {
+    background: var(--color-bg-hover);
+}
+
+.optionSelected {
+    background: var(--color-bg-lime-subtle);
+}
+
+.optionDisabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.optionInner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+}
+
+.check {
+    flex-shrink: 0;
+}
