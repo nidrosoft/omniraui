@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, forwardRef, useLayoutEffect } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "@/lib/cn";
 import { motion, AnimatePresence } from "framer-motion";
 import type { AgentConfig, AgentActivity, AgentState } from "./types";
@@ -101,11 +102,13 @@ function AgentRing({ state, color }: { state: AgentState; color: string }) {
 interface AgentChipProps {
     agent: AgentConfig;
     activity: AgentActivity;
-    isPopoverOpen: boolean;
     onTogglePopover: () => void;
 }
 
-function AgentChip({ agent, activity, isPopoverOpen, onTogglePopover }: AgentChipProps) {
+const AgentChip = forwardRef<HTMLDivElement, AgentChipProps>(function AgentChip(
+    { agent, activity, onTogglePopover },
+    ref,
+) {
     const isAnimating = activity.state === "thinking" || activity.state === "active";
     const statusText = useTextCycler(
         activity.currentAction?.text ?? "",
@@ -121,7 +124,7 @@ function AgentChip({ agent, activity, isPopoverOpen, onTogglePopover }: AgentChi
     } as React.CSSProperties;
 
     return (
-        <div className={s.popoverAnchor}>
+        <div ref={ref} className={s.popoverAnchor}>
             <motion.div
                 className={cn(s.chip, isAnimating && s.chipActive)}
                 style={chipStyle}
@@ -176,57 +179,95 @@ function AgentChip({ agent, activity, isPopoverOpen, onTogglePopover }: AgentChi
                     )}
                 </div>
             </motion.div>
-
-            {/* Popover */}
-            <AnimatePresence>
-                {isPopoverOpen && (
-                    <motion.div
-                        className={s.popover}
-                        initial={{ opacity: 0, y: -6, scale: 0.96 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -4, scale: 0.98 }}
-                        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                        <div className={s.popoverHeader}>
-                            <span className={s.popoverName} style={{ color: agent.color }}>{agent.name}</span>
-                            <span className={s.popoverRole}>{agent.role}</span>
-                        </div>
-                        <div className={s.popoverBody}>
-                            {activity.activityLog.map((entry, i) => (
-                                <motion.div
-                                    key={i}
-                                    className={s.logEntry}
-                                    initial={{ opacity: 0, x: -8 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: i * 0.06, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                                >
-                                    <div className={s.logIcon}>
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                            <circle cx="6" cy="6" r="2" fill="currentColor" />
-                                        </svg>
-                                    </div>
-                                    <div className={s.logContent}>
-                                        <span className={s.logText}>{entry.text}</span>
-                                        <div className={s.logMeta}>
-                                            <span className={s.logTime}>{entry.time}</span>
-                                            <span className={s.logStatus}>
-                                                <span
-                                                    className={s.logStatusDot}
-                                                    style={{ background: entry.status === "active" ? agent.color : "var(--color-success)" }}
-                                                />
-                                                {entry.status === "active" ? "active" : "done"}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </div>
     );
+});
+
+const POPOVER_WIDTH = 280;
+
+interface AgentPopoverContentProps {
+    agent: AgentConfig;
+    activity: AgentActivity;
+    anchorEl: HTMLElement | null;
 }
+
+const AgentPopoverContent = forwardRef<HTMLDivElement, AgentPopoverContentProps>(
+    function AgentPopoverContent({ agent, activity, anchorEl }, ref) {
+        const [coords, setCoords] = useState({ top: 0, left: 0 });
+
+        useLayoutEffect(() => {
+            if (!anchorEl) return;
+
+            const update = () => {
+                const r = anchorEl.getBoundingClientRect();
+                let left = r.left + r.width / 2 - POPOVER_WIDTH / 2;
+                const padding = 8;
+                left = Math.max(padding, Math.min(left, window.innerWidth - POPOVER_WIDTH - padding));
+                setCoords({ top: r.bottom + 8, left });
+            };
+
+            update();
+            window.addEventListener("scroll", update, true);
+            window.addEventListener("resize", update);
+            return () => {
+                window.removeEventListener("scroll", update, true);
+                window.removeEventListener("resize", update);
+            };
+        }, [anchorEl]);
+
+        return (
+            <motion.div
+                ref={ref}
+                className={s.popover}
+                style={{
+                    position: "fixed",
+                    top: coords.top,
+                    left: coords.left,
+                    width: POPOVER_WIDTH,
+                }}
+                initial={{ opacity: 0, y: -6, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -4, scale: 0.98 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            >
+                <div className={s.popoverHeader}>
+                    <span className={s.popoverName} style={{ color: agent.color }}>{agent.name}</span>
+                    <span className={s.popoverRole}>{agent.role}</span>
+                </div>
+                <div className={s.popoverBody}>
+                    {activity.activityLog.map((entry, i) => (
+                        <motion.div
+                            key={i}
+                            className={s.logEntry}
+                            initial={{ opacity: 0, x: -8 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.06, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            <div className={s.logIcon}>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                    <circle cx="6" cy="6" r="2" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <div className={s.logContent}>
+                                <span className={s.logText}>{entry.text}</span>
+                                <div className={s.logMeta}>
+                                    <span className={s.logTime}>{entry.time}</span>
+                                    <span className={s.logStatus}>
+                                        <span
+                                            className={s.logStatusDot}
+                                            style={{ background: entry.status === "active" ? agent.color : "var(--color-success)" }}
+                                        />
+                                        {entry.status === "active" ? "active" : "done"}
+                                    </span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </motion.div>
+        );
+    },
+);
 
 /* ══════════════════════════════════════════════
    Main AgentThinking component
@@ -242,6 +283,8 @@ export function AgentThinking({ agents, title = "Agent Activity", className }: A
     const [activities, setActivities] = useState<Record<string, AgentActivity>>({});
     const [openPopover, setOpenPopover] = useState<string | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const popoverPortalRef = useRef<HTMLDivElement>(null);
+    const chipAnchorRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
     /* ── Initialize activities with rotating demo states ── */
     useEffect(() => {
@@ -305,12 +348,13 @@ export function AgentThinking({ agents, title = "Agent Activity", className }: A
         return () => clearInterval(interval);
     }, [agents]);
 
-    /* ── Close popover on outside click ── */
+    /* ── Close popover on outside click (chip container + portaled popover) ── */
     useEffect(() => {
         function handleClick(e: MouseEvent) {
-            if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-                setOpenPopover(null);
-            }
+            const t = e.target as Node;
+            if (containerRef.current?.contains(t)) return;
+            if (popoverPortalRef.current?.contains(t)) return;
+            setOpenPopover(null);
         }
         document.addEventListener("mousedown", handleClick);
         return () => document.removeEventListener("mousedown", handleClick);
@@ -323,6 +367,10 @@ export function AgentThinking({ agents, title = "Agent Activity", className }: A
     const activeCount = Object.values(activities).filter(
         a => a.state === "active" || a.state === "thinking"
     ).length;
+
+    const openAgent = openPopover ? agents.find(a => a.id === openPopover) : undefined;
+    const openActivity = openPopover ? activities[openPopover] : undefined;
+    const anchorEl = openPopover ? chipAnchorRefs.current[openPopover] ?? null : null;
 
     return (
         <div className={cn(s.container, className)} ref={containerRef}>
@@ -340,13 +388,29 @@ export function AgentThinking({ agents, title = "Agent Activity", className }: A
                 {agents.map(agent => (
                     <AgentChip
                         key={agent.id}
+                        ref={(el) => {
+                            chipAnchorRefs.current[agent.id] = el;
+                        }}
                         agent={agent}
                         activity={activities[agent.id] ?? { state: "idle", activityLog: [] }}
-                        isPopoverOpen={openPopover === agent.id}
                         onTogglePopover={() => togglePopover(agent.id)}
                     />
                 ))}
             </div>
+            {typeof document !== "undefined" && createPortal(
+                <AnimatePresence>
+                    {openPopover && openAgent && openActivity && (
+                        <AgentPopoverContent
+                            key={openPopover}
+                            ref={popoverPortalRef}
+                            agent={openAgent}
+                            activity={openActivity}
+                            anchorEl={anchorEl}
+                        />
+                    )}
+                </AnimatePresence>,
+                document.body,
+            )}
         </div>
     );
 }
