@@ -6,17 +6,22 @@ import {
     useEffect,
     useCallback,
     useId,
+    useMemo,
     type KeyboardEvent as ReactKeyboardEvent,
 } from "react";
 import { ArrowDown2, Global, TickCircle } from "iconsax-react";
 import { cn } from "@/lib/cn";
 import styles from "./LanguageSelector.module.css";
 import type { LanguageOption } from "./types";
+import { languageCodeAbbrev } from "./languageAbbrev";
 
 export type LanguageSelectorSize = "sm" | "md" | "lg";
 
+export type LanguageSelectorLeading = "code" | "none";
+
 export interface LanguageSelectorProps {
-    options: LanguageOption[];
+    /** Prefer a stable reference (e.g. module-level const) to avoid unnecessary list updates */
+    options: readonly LanguageOption[];
     value?: string;
     defaultValue?: string;
     onValueChange?: (code: string) => void;
@@ -24,8 +29,8 @@ export interface LanguageSelectorProps {
     label?: string;
     /** Minimal trigger (icon only); pair with aria-label or label */
     compact?: boolean;
-    /** Show flag column when provided on options */
-    showFlag?: boolean;
+    /** Leading language subtag badge (default) or text-only */
+    leading?: LanguageSelectorLeading;
     /** Open the menu above or below the trigger */
     placement?: "top" | "bottom";
     size?: LanguageSelectorSize;
@@ -43,7 +48,7 @@ export function LanguageSelector({
     placeholder = "Language",
     label,
     compact = false,
-    showFlag = true,
+    leading: leadingProp,
     placement = "bottom",
     size = "md",
     disabled = false,
@@ -57,9 +62,12 @@ export function LanguageSelector({
     const rootRef = useRef<HTMLDivElement>(null);
     const listboxRef = useRef<HTMLDivElement>(null);
 
-    const selected = options.find((o) => o.code === selectedCode);
+    const selected = useMemo(
+        () => options.find((o) => o.code === selectedCode),
+        [options, selectedCode],
+    );
 
-    const enabledOptions = options.filter((o) => !o.disabled);
+    const enabledOptions = useMemo(() => options.filter((o) => !o.disabled), [options]);
 
     const handleSelect = useCallback(
         (code: string) => {
@@ -72,22 +80,20 @@ export function LanguageSelector({
 
     useEffect(() => {
         if (!open) return;
-        const handler = (e: MouseEvent) => {
+        const onPointerDown = (e: MouseEvent) => {
             if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
                 setOpen(false);
             }
         };
-        document.addEventListener("mousedown", handler);
-        return () => document.removeEventListener("mousedown", handler);
-    }, [open]);
-
-    useEffect(() => {
-        if (!open) return;
-        const handler = (e: KeyboardEvent) => {
+        const onKeyDown = (e: KeyboardEvent) => {
             if (e.key === "Escape") setOpen(false);
         };
-        document.addEventListener("keydown", handler);
-        return () => document.removeEventListener("keydown", handler);
+        document.addEventListener("mousedown", onPointerDown);
+        document.addEventListener("keydown", onKeyDown);
+        return () => {
+            document.removeEventListener("mousedown", onPointerDown);
+            document.removeEventListener("keydown", onKeyDown);
+        };
     }, [open]);
 
     /* Focus first enabled option when opening (keyboard / screen reader friendly) */
@@ -137,7 +143,7 @@ export function LanguageSelector({
         [enabledOptions, focusOptionByCode],
     );
 
-    const showFlagsEffective = showFlag && options.some((o) => o.flag != null);
+    const showCodeBadge = (leadingProp ?? "code") === "code";
 
     const triggerAriaLabel = label && !compact
         ? undefined
@@ -182,9 +188,9 @@ export function LanguageSelector({
                         <Global size={size === "sm" ? 18 : 20} variant="Bulk" color="var(--color-text-secondary)" />
                     ) : selected ? (
                         <>
-                            {showFlagsEffective && selected.flag != null && (
-                                <span className={styles.flag} aria-hidden>
-                                    {selected.flag}
+                            {showCodeBadge && (
+                                <span className={styles.codeBadge} aria-hidden>
+                                    {languageCodeAbbrev(selected.code, selected.abbreviation)}
                                 </span>
                             )}
                             <span className={styles.optionLabel}>{selected.label}</span>
@@ -236,9 +242,9 @@ export function LanguageSelector({
                             }}
                         >
                             <span className={styles.optionInner}>
-                                {showFlagsEffective && opt.flag != null && (
-                                    <span className={styles.flag} aria-hidden>
-                                        {opt.flag}
+                                {showCodeBadge && (
+                                    <span className={styles.codeBadge} aria-hidden>
+                                        {languageCodeAbbrev(opt.code, opt.abbreviation)}
                                     </span>
                                 )}
                                 <span className={styles.optionLabel}>{opt.label}</span>

@@ -96,13 +96,29 @@
     white-space: nowrap;
 }
 
-.flag {
-    display: flex;
+/* ISO-style language subtag (language identity, not a country) */
+.codeBadge {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    font-size: 1.1em;
+    min-width: 2rem;
+    padding: 0 8px;
+    height: 1.5rem;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-hover);
+    color: rgba(255, 255, 255, 0.96);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
     line-height: 1;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* Light theme: hover fill is near-white; use dark text for contrast */
+:global([data-theme="light"]) .codeBadge {
+    color: var(--color-text-primary);
 }
 
 .placeholder {
