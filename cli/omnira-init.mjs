@@ -406,6 +406,7 @@ const PAGE_BUNDLES = {
     // Navigation
     "sidebar-navigation": ["SidebarNavigation", "Button", "Avatar", "Badge", "Dropdown", "Toggle", "Tooltip"],
     "header-navigation":  ["Button", "Avatar", "Badge", "Dropdown"],
+    "language-selector":  ["LanguageSelector"],
     // Modals
     "modal":              ["Modal", "Button", "Badge", "Input", "Toggle", "Checkbox"],
     "modals":             ["Modal", "Button", "Badge", "Input", "Toggle", "Checkbox"],
