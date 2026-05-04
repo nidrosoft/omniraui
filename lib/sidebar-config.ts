@@ -82,6 +82,7 @@ export const sidebarConfig: SidebarSection[] = [
             { name: "Section Footer", href: "/docs/application-ui/section-footer" },
             { name: "Sidebar Navigation", href: "/docs/application-ui/sidebar-navigation" },
             { name: "Header Navigation", href: "/docs/application-ui/header-navigation" },
+            { name: "Language Selector", href: "/docs/application-ui/language-selector", status: "new" },
             { name: "Modal", href: "/docs/application-ui/modal" },
             { name: "Command Menu", href: "/docs/application-ui/command-menu" },
             { name: "Line & Bar Chart", href: "/docs/application-ui/line-bar-chart" },
