@@ -192,6 +192,34 @@
     border-left-color: var(--color-lime);
 }
 
+/* ── Branch row (parent item that has nested children) ── */
+.itemBranch {
+    width: 100%;
+    background: none;
+    border: none;
+    border-left: 2px solid transparent;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+}
+
+.itemBranch .chevron {
+    margin-left: auto;
+    color: var(--color-text-tertiary);
+    transition: transform 0.2s;
+    display: inline-flex;
+}
+
+.itemBranchActive {
+    color: var(--color-text-primary);
+}
+
+/* ── Nested child item ── */
+.itemNested {
+    padding-left: 40px;
+    font-size: 13px;
+}
+
 .itemIcon {
     display: flex;
     align-items: center;

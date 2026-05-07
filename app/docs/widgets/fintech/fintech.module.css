@@ -1,0 +1,53 @@
+/* ── Shared section typography ──
+   Re-exported from each section component so layout stays in one place. */
+.sectionHeading {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    margin-top: 56px;
+}
+
+.pageHeading {
+    composes: sectionHeading;
+    margin-top: 32px;
+}
+
+.sectionDesc {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* ── Three-up widget grid ──
+   Tighter horizontal margin on ComponentPreview when it holds 3 widgets in a row.
+   Top/bottom inherit the default 40px so vertical breathing room matches the
+   rest of the docs site. Only left/right are trimmed so 3 cards fit. */
+.rowPreview {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
+
+.rowGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    justify-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+@media (max-width: 720px) {
+    .rowGrid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .rowPreview {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+}

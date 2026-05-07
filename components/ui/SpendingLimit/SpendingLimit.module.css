@@ -1,0 +1,124 @@
+/* ============================================
+   SpendingLimit — Widget / Medium / 8
+   Limit tracker — header, dotted progress bar with marker, Today Spent /
+   Remaining footer. Surface uses system tokens; accent follows configurator.
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 164;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+/* ── Header ── */
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+.headerTitle,
+.headerPeriod {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+/* ── Progress bar ── */
+.bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+    min-height: 0;
+    height: 4px;
+}
+
+.dot {
+    flex: 1;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--color-bg-elevated);
+    transition: background 0.3s ease;
+}
+
+.dotFilled {
+    background: var(--color-lime);
+}
+
+.dotMarker {
+    position: relative;
+    background: var(--color-lime);
+}
+
+.dotMarker::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+    height: 12px;
+    border-radius: 2px;
+    background: var(--color-lime);
+    box-shadow: 0 0 6px var(--color-bg-lime-strong);
+}
+
+/* ── Summary footer ── */
+.summary {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+.summaryCol {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.summaryLabel {
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--color-text-primary);
+}
+
+.summaryValue {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+
+    .summaryValue {
+        font-size: 20px;
+        line-height: 26px;
+    }
+}

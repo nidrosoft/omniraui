@@ -1,0 +1,119 @@
+/* ============================================
+   AssetAllocation — Widget / Medium / 20
+   Pie chart with central amount + legend. Surface uses system tokens; per-
+   slice colors are passed by the component (default: 3 shades of accent lime).
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 164;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+.title {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    min-height: 0;
+}
+
+/* ── Pie chart ── */
+.pieWrap {
+    position: relative;
+    aspect-ratio: 1;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.pie {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.pieHole {
+    fill: var(--color-bg-card);
+}
+
+.pieAmount {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+    pointer-events: none;
+}
+
+/* ── Legend ── */
+.legend {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+.legendRow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+}
+
+.legendLabel {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-primary);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.legendPercent {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+}

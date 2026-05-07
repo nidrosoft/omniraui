@@ -1,0 +1,180 @@
+/* ============================================
+   SpendsBreakdown — Widget / Large / 6
+   Red spending breakdown widget with categorized dotted bar
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 365;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+/* ── Header ── */
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+.headerTitle,
+.headerPeriod {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+/* ── Amount block ── */
+.amountWrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: 0;
+}
+
+.amountLabel {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-secondary);
+}
+
+.amount {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.amountMain {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.amountDecimal {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+    opacity: 0.85;
+}
+
+/* ── Dotted bar with highlight blocks ── */
+.barWrap {
+    position: relative;
+    width: 100%;
+    height: 14px;
+    margin-top: 4px;
+}
+
+.highlights {
+    position: absolute;
+    inset: -2px 0 -2px 0;
+    display: flex;
+    gap: 4px;
+    pointer-events: none;
+}
+
+.highlight {
+    flex: 1;
+    height: 100%;
+    border-radius: 2px;
+    background: var(--color-bg-elevated);
+}
+
+.bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+    height: 100%;
+}
+
+.barCol {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2px;
+    height: 100%;
+}
+
+.dot {
+    width: 100%;
+    height: 2px;
+    border-radius: 1px;
+    transition: background 0.3s ease;
+}
+
+/* ── Legend rows ── */
+.legend {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.legendRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+}
+
+.legendBullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legendLabel {
+    flex: 1;
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-primary);
+}
+
+.legendAmount {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-primary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+}

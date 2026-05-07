@@ -1,0 +1,109 @@
+/* ============================================
+   CashflowRing — Widget / Medium / 2
+   Cashflow analytics — stats left, side-cropped tick ring right. Surface
+   uses system tokens so the accent (`--color-lime`) follows the configurator.
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 164;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+/* ── Left column ── */
+.left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+}
+
+.title {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.value {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.valueNumber {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+}
+
+.valueUnit {
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 1;
+    color: var(--color-text-primary);
+    opacity: 0.85;
+}
+
+.comparison {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-secondary);
+}
+
+/* ── Side-cropped ring ── */
+.ring {
+    /* Height-driven square — top/bottom inset matches widget padding so the
+       ring never clips vertically. aspect-ratio:1 keeps it perfectly circular,
+       and translateX(50%) positions the SVG centre exactly on the widget's
+       right edge (left arc visible, right arc clipped by widget overflow). */
+    position: absolute;
+    top: 16px;
+    bottom: 16px;
+    right: 0;
+    aspect-ratio: 1;
+    transform: translateX(50%);
+    overflow: visible;
+    pointer-events: none;
+}
+
+.tickFilled {
+    stroke: var(--color-lime);
+    transition: stroke 0.3s ease;
+}
+
+.tickEmpty {
+    stroke: var(--color-bg-elevated);
+    transition: stroke 0.3s ease;
+}
+
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+}

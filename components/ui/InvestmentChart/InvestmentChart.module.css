@@ -1,0 +1,105 @@
+/* ============================================
+   InvestmentChart — Widget / Medium / 4
+   Investment widget — header w/ total, big % change, dot bar chart. Surface
+   uses system tokens so the accent (`--color-lime`) follows the configurator.
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 164;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+/* ── Header ── */
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+.headerTitle,
+.headerTotal {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+/* ── Change badge ── */
+.change {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 1px;
+}
+
+.changeNumber {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: -0.02em;
+}
+
+.changeUnit {
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 1;
+    opacity: 0.85;
+}
+
+.changeUp { color: var(--color-lime); }
+.changeUp .changeNumber,
+.changeUp .changeUnit { color: var(--color-lime); }
+
+.changeDown { color: var(--color-error); }
+.changeDown .changeNumber,
+.changeDown .changeUnit { color: var(--color-error); }
+
+/* ── Bar chart ── */
+.chart {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.col {
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 2px;
+    min-width: 0;
+}
+
+.dot {
+    width: 100%;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--color-lime);
+}
+
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,227 @@
+/* ============================================
+   SavingsMonthly — Widget / Large / 7
+   Yellow/amber savings widget with progress + 3 donuts
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 365;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+/* ── Header ── */
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+.headerTitle,
+.headerPeriod {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+/* ── Amount block ── */
+.amountWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.amount {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.amountMain {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.amountDecimal {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+    opacity: 0.85;
+}
+
+.summaryLabel {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-secondary);
+}
+
+/* ── Progress bar ── */
+.progressWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+    height: 12px;
+}
+
+.barCol {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2px;
+    height: 100%;
+    transition: filter 0.3s ease;
+}
+
+.barDot {
+    width: 100%;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--color-bg-elevated);
+    transition: background 0.3s ease;
+}
+
+.barColFilled .barDot {
+    background: var(--color-lime);
+}
+
+.barColMarker .barDot {
+    background: var(--color-lime);
+    box-shadow: 0 0 4px var(--color-bg-lime-strong);
+}
+
+.progressLegend {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-primary);
+}
+
+/* ── Donuts ── */
+.donuts {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+    padding: 4px 0;
+    min-height: 0;
+}
+
+.donut {
+    position: relative;
+    aspect-ratio: 1;
+    width: 100%;
+    max-width: 110px;
+    margin: 0 auto;
+}
+
+.donutSvg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.donutTrack {
+    fill: none;
+    stroke: var(--color-bg-elevated);
+}
+
+.donutFill {
+    fill: none;
+    stroke: var(--color-lime);
+    transition: d 0.4s ease;
+}
+
+.donutCenter {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.donutAmount {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.donutLabel {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── Footer ── */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-primary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+
+    .donutAmount {
+        font-size: 12px;
+    }
+}

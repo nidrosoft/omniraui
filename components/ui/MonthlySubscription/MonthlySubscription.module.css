@@ -1,0 +1,145 @@
+/* ============================================
+   MonthlySubscription — Widget / Medium / 11
+   Subscription tracker with overlapping service avatars. Surface uses system
+   tokens so the accent (`--color-lime`) follows the configurator.
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 164;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+/* ── Header ── */
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+.headerTitle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.change {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+}
+
+.changeUp {
+    color: var(--color-success);
+}
+
+.changeDown {
+    color: var(--color-error);
+}
+
+/* ── Body ── */
+.body {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    min-height: 0;
+}
+
+.amountWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.summaryLabel {
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--color-text-primary);
+}
+
+.amount {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.amountMain {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.amountDecimal {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-text-primary);
+    opacity: 0.85;
+}
+
+/* ── Service avatar stack ── */
+.services {
+    display: flex;
+    flex-shrink: 0;
+    /* Overlap each avatar over the previous by half its diameter. */
+    padding-left: 16px;
+}
+
+.serviceAvatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg, var(--color-bg-elevated));
+    color: #ffffff;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    border: 2px solid var(--color-bg-card);
+    margin-left: -16px;
+    overflow: hidden;
+}
+
+.serviceAvatar > * {
+    width: 100%;
+    height: 100%;
+}
+
+.serviceAvatar img,
+.serviceAvatar svg {
+    object-fit: cover;
+}
+
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+}

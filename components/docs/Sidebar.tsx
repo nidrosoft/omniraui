@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SearchNormal1, ArrowDown2, HambergerMenu, CloseSquare, Book1, FolderOpen, Component, Monitor, Grid5, DocumentCopy, Magicpen, Star1 } from "iconsax-react";
-import { sidebarConfig } from "@/lib/sidebar-config";
+import { SearchNormal1, ArrowDown2, HambergerMenu, CloseSquare, Book1, FolderOpen, Component, Monitor, Grid5, DocumentCopy, Magicpen, Star1, Element4 } from "iconsax-react";
+import { sidebarConfig, type SidebarItem } from "@/lib/sidebar-config";
 import { StatusBadge } from "./StatusBadge";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/cn";
@@ -20,6 +20,7 @@ const sectionIconMap: Record<string, any> = {
     DocumentCopy,
     Magicpen,
     Star1,
+    Element4,
 };
 
 function SectionIcon({ name }: { name: string }) {
@@ -44,12 +45,28 @@ export function Sidebar() {
         setOpenSections((prev) => ({ ...prev, [title]: !prev[title] }));
     };
 
+    const matchesSearch = (item: SidebarItem): boolean => {
+        if (!search) return true;
+        const q = search.toLowerCase();
+        if (item.name.toLowerCase().includes(q)) return true;
+        return Boolean(item.children?.some(matchesSearch));
+    };
+
+    const filterItem = (item: SidebarItem): SidebarItem | null => {
+        if (!matchesSearch(item)) return null;
+        if (!item.children) return item;
+        const filteredChildren = item.children
+            .map(filterItem)
+            .filter((c): c is SidebarItem => c !== null);
+        return { ...item, children: filteredChildren };
+    };
+
     const filteredConfig = sidebarConfig
         .map((section) => ({
             ...section,
-            items: section.items.filter((item) =>
-                item.name.toLowerCase().includes(search.toLowerCase())
-            ),
+            items: section.items
+                .map(filterItem)
+                .filter((item): item is SidebarItem => item !== null),
         }))
         .filter((section) => section.items.length > 0);
 
@@ -128,21 +145,14 @@ export function Sidebar() {
                                     </button>
                                 {isOpen && (
                                     <ul className={styles.itemsList}>
-                                        {section.items.map((item) => {
-                                            const isActive = pathname === item.href;
-                                            return (
-                                                <li key={item.href}>
-                                                    <Link
-                                                        href={item.href}
-                                                        className={cn(styles.item, isActive && styles.itemActive)}
-                                                        onClick={() => setMobileOpen(false)}
-                                                    >
-                                                        <span className={styles.itemName}>{item.name}</span>
-                                                        {item.status && <StatusBadge status={item.status} />}
-                                                    </Link>
-                                                </li>
-                                            );
-                                        })}
+                                        {section.items.map((item) => (
+                                            <SidebarItemRow
+                                                key={item.href}
+                                                item={item}
+                                                pathname={pathname}
+                                                onNavigate={() => setMobileOpen(false)}
+                                            />
+                                        ))}
                                     </ul>
                                 )}
                                 </div>
@@ -166,5 +176,69 @@ export function Sidebar() {
                 </div>
             </aside>
         </>
+    );
+}
+
+interface SidebarItemRowProps {
+    item: SidebarItem;
+    pathname: string;
+    onNavigate: () => void;
+}
+
+function SidebarItemRow({ item, pathname, onNavigate }: SidebarItemRowProps) {
+    const isActive = pathname === item.href;
+    const hasChildren = Boolean(item.children?.length);
+    const isChildActive = hasChildren && (item.children ?? []).some((c) => pathname === c.href || pathname.startsWith(c.href + "/"));
+    const [open, setOpen] = useState(isChildActive || isActive);
+
+    if (!hasChildren) {
+        return (
+            <li>
+                <Link
+                    href={item.href}
+                    className={cn(styles.item, isActive && styles.itemActive)}
+                    onClick={onNavigate}
+                >
+                    <span className={styles.itemName}>{item.name}</span>
+                    {item.status && <StatusBadge status={item.status} />}
+                </Link>
+            </li>
+        );
+    }
+
+    return (
+        <li>
+            <button
+                type="button"
+                className={cn(styles.item, styles.itemBranch, (isActive || isChildActive) && styles.itemBranchActive)}
+                onClick={() => setOpen((v) => !v)}
+                aria-expanded={open}
+            >
+                <span className={styles.itemName}>{item.name}</span>
+                {item.status && <StatusBadge status={item.status} />}
+                <span className={cn(styles.chevron, open ? styles.chevronOpen : styles.chevronClosed)}>
+                    <ArrowDown2 size={11} color="currentColor" />
+                </span>
+            </button>
+            {open && (
+                <ul className={styles.itemsList}>
+                    {(item.children ?? []).map((child) => {
+                        const childActive = pathname === child.href;
+                        return (
+                            <li key={child.href}>
+                                <Link
+                                    href={child.href}
+                                    className={cn(styles.item, styles.itemNested, childActive && styles.itemActive)}
+                                    onClick={onNavigate}
+                                >
+                                    <span className={styles.itemName}>{child.name}</span>
+                                    {child.status && <StatusBadge status={child.status} />}
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            )}
+        </li>
     );
 }

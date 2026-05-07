@@ -122,6 +122,22 @@ Browse the full library and copy advanced components (Sidebar, Feature Cards, et
 - **User Account Menu** — Popup with profile, settings, account switching, sign out
 - **Search Bar** — Integrated ⌘K search component
 
+### Industry Widgets
+
+Drop-in dashboard widgets that follow the system design tokens — accent colors track the configurator and never go off-system.
+
+- **Fintech / Large** (10) — `CashflowAnalytics`, `SendMoney`, `CashflowSplit`, `SavingAccount`, `FinancialGrowth`, `SpendsBreakdown`, `SavingsMonthly`, `CreditPaymentPlanner`, `SavingsGoals`, `ExpensesChart`
+- **Fintech / Medium** (20) — `EmergencyFunds`, `IncomeBreakdown`, `WeeklyExpenditure`, `CreditCardUsed`, `AssetAllocation`, `MonthlySubscription`, `SavingsBuckets`, `MyCard`, `ConvertCurrency`, `SendMoneyCompact`, `TotalBalance`, `StockPosition`, `SpendingLimit`, `GoalProgress`, `SavedMoney`, `CashflowSummary`, `CashflowRing`, `CreditScore`, `InvestmentChart`, `DailyRevenue`
+
+Install all of one size in a single command:
+
+```bash
+npx omnira-ui add fintech-widgets         # 10 large widgets
+npx omnira-ui add fintech-widgets-medium  # 20 medium widgets
+```
+
+Or grab any single widget by its kebab-case slug — e.g. `npx omnira-ui add cashflow-analytics`. Browse them at [omnira.one/docs/widgets/fintech](https://omnira.one/docs/widgets/fintech).
+
 ---
 
 ## Design System

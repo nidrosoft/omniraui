@@ -1,0 +1,209 @@
+/* ============================================
+   CashflowSplit — Widget / Large / 3
+   Pink/magenta cashflow card with dotted progress bars
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 365;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+/* ── Header ── */
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+.headerTitle,
+.headerCta {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.headerCta {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    cursor: default;
+    transition: opacity 0.15s ease;
+}
+
+button.headerCta {
+    cursor: pointer;
+}
+
+button.headerCta:hover {
+    opacity: 0.7;
+}
+
+/* ── Amount ── */
+.amountWrap {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    width: 100%;
+}
+
+.amount {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.amountDecimal {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+    opacity: 0.85;
+}
+
+/* ── Segments ── */
+.segments {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: auto;
+}
+
+.segment {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "label label"
+        "note  percent"
+        "bar   bar";
+    column-gap: 8px;
+    row-gap: 4px;
+    padding: 0 8px;
+}
+
+.segmentLabel {
+    grid-area: label;
+    font-family: var(--font-body);
+    line-height: 20px;
+    color: var(--color-text-primary);
+}
+
+.segmentLabelHead {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.segmentLabelSuffix {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0;
+    opacity: 0.85;
+}
+
+.segmentMeta {
+    grid-area: note / note / percent / percent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.segmentNote {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0;
+    color: var(--color-text-secondary);
+}
+
+.segmentPercent {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0;
+    color: var(--color-text-secondary);
+    text-align: right;
+}
+
+/* ── Progress bar ── */
+.bar {
+    grid-area: bar;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 6px;
+    margin-top: 2px;
+}
+
+.barAccent {
+    position: absolute;
+    left: 0;
+    top: -8px;
+    width: 2px;
+    height: 24px;
+    background: var(--color-lime);
+    border-radius: 1px;
+    box-shadow: 0 0 6px var(--color-bg-lime-strong);
+}
+
+.barTrack {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+    margin-left: 6px;
+}
+
+.dot {
+    flex: 1;
+    height: 2px;
+    border-radius: 1px;
+    transition: background 0.3s ease;
+}
+
+.dotFilled {
+    background: var(--color-lime);
+}
+
+.dotEmpty {
+    background: var(--color-bg-elevated);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+}

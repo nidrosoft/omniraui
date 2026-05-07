@@ -1,0 +1,147 @@
+/* ============================================
+   SendMoneyCompact — Widget / Medium / 15
+   Quick-send widget — header w/ recipient, amount, send button. Surface uses
+   system tokens; the send CTA uses the configurable accent.
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 164;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+/* ── Header ── */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+.title {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.recipient {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.recipientName {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-lime) 0%, var(--color-lime-gradient) 100%);
+    color: var(--color-lime-text);
+    font-family: var(--font-display);
+    font-size: 8px;
+    font-weight: 600;
+    border: 1px solid var(--color-border-lime-strong);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.avatar > * {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar img {
+    object-fit: cover;
+}
+
+/* ── Amount ── */
+.amountWrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    min-height: 0;
+}
+
+.amountLabel {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-secondary);
+}
+
+.amount {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+/* ── Send button ── */
+.sendBtn {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--color-lime);
+    color: var(--color-lime-text);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.sendBtn:hover {
+    background: var(--color-lime-hover);
+    transform: translateY(-1px);
+}
+
+.sendBtn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+}

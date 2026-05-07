@@ -1,0 +1,151 @@
+/* ============================================
+   SavedMoney — Widget / Medium / 10
+   Split layout — stats left, dotted donut percent right. Surface uses system
+   tokens so the accent (`--color-lime`) follows the configurator.
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 164;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+/* ── Left column ── */
+.left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+}
+
+.title {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.balanceLabel {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-secondary);
+}
+
+.amount {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.amountMain {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.amountDecimal {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-text-primary);
+    opacity: 0.85;
+}
+
+/* ── Right donut ── */
+.donut {
+    position: relative;
+    aspect-ratio: 1;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.donutSvg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.donutTrack {
+    fill: none;
+    stroke: var(--color-bg-elevated);
+}
+
+.donutFill {
+    fill: none;
+    stroke: var(--color-lime);
+    transition: d 0.4s ease;
+}
+
+.donutCenter {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    pointer-events: none;
+}
+
+.donutText {
+    margin: 0;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 1px;
+    line-height: 1;
+}
+
+.donutValue {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+}
+
+.donutUnit {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    color: var(--color-text-primary);
+    opacity: 0.7;
+}
+
+.donutLabel {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 14px;
+    color: var(--color-text-tertiary);
+    margin-top: 2px;
+}
+
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+}

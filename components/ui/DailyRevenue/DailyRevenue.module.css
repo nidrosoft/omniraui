@@ -1,0 +1,119 @@
+/* ============================================
+   DailyRevenue — Widget / Medium / 5
+   Daily revenue widget — title, big amount, dotted bar with marker, goal footer.
+   Surface uses system tokens so the accent (`--color-lime`) follows the configurator.
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 164;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+.title {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.amount {
+    margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    min-height: 0;
+}
+
+.amountMain {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+}
+
+.amountPrefix,
+.amountDecimal {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-text-primary);
+    opacity: 0.85;
+}
+
+/* ── Progress bar ── */
+.bar {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+    height: 4px;
+}
+
+.dot {
+    flex: 1;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--color-bg-elevated);
+    transition: background 0.3s ease;
+}
+
+.dotFilled {
+    background: var(--color-lime);
+}
+
+.dotMarker {
+    position: relative;
+    background: var(--color-lime);
+}
+
+.dotMarker::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+    height: 12px;
+    border-radius: 2px;
+    background: var(--color-lime);
+    box-shadow: 0 0 6px var(--color-bg-lime-strong);
+}
+
+/* ── Footer ── */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+
+    .amountMain {
+        font-size: 26px;
+        line-height: 32px;
+    }
+}

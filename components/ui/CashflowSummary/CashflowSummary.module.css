@@ -1,0 +1,136 @@
+/* ============================================
+   CashflowSummary — Widget / Medium / 1
+   Cashflow snapshot — total + dotted bar chart. Surface uses system tokens
+   so the accent (`--color-lime`) is driven by the configurator.
+   ============================================ */
+
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    width: 100%;
+    max-width: 348px;
+    aspect-ratio: 348 / 164;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-standard);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-card-light);
+    background: var(--color-bg-card);
+}
+
+.title {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.amount {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.amountMain {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.amountDecimal {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-text-primary);
+    opacity: 0.85;
+}
+
+/* ── Inflow caption (in flex flow between amount and chart, no overlap) ── */
+.inflow {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+}
+
+.inflowAmount {
+    margin: 0;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 1px;
+}
+
+.inflowAmountMain {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+}
+
+.inflowAmountDecimal {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 14px;
+    color: var(--color-text-primary);
+    opacity: 0.85;
+}
+
+.inflowRow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+}
+
+.inflowLabel,
+.inflowPercent {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-text-secondary);
+}
+
+/* ── Chart ── */
+.chart {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2px;
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.col {
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 2px;
+    min-width: 0;
+}
+
+.dot {
+    width: 100%;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--color-lime);
+}
+
+@media (max-width: 480px) {
+    .widget {
+        max-width: 100%;
+    }
+}

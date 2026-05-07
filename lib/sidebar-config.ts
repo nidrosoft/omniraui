@@ -3,6 +3,8 @@ export interface SidebarItem {
     href: string;
     icon?: string;
     status?: "coming-soon" | "new" | "updated";
+    /** Nested sub-items rendered indented under this entry. One level deep only. */
+    children?: SidebarItem[];
 }
 
 export interface SidebarSection {
@@ -118,6 +120,28 @@ export const sidebarConfig: SidebarSection[] = [
         icon: "Grid5",
         items: [
             { name: "Dashboard", href: "/docs/application-ui-examples", status: "coming-soon" },
+        ],
+    },
+    {
+        title: "Widgets",
+        icon: "Element4",
+        items: [
+            { name: "Overview", href: "/docs/widgets", status: "new" },
+            { name: "Finance", href: "/docs/widgets/finance", status: "coming-soon" },
+            {
+                name: "Fintech",
+                href: "/docs/widgets/fintech",
+                status: "new",
+                children: [
+                    { name: "Overview", href: "/docs/widgets/fintech" },
+                    { name: "Large", href: "/docs/widgets/fintech/large", status: "new" },
+                    { name: "Medium", href: "/docs/widgets/fintech/medium", status: "new" },
+                    { name: "Small", href: "/docs/widgets/fintech/small", status: "coming-soon" },
+                ],
+            },
+            { name: "Dashboard", href: "/docs/widgets/dashboard", status: "coming-soon" },
+            { name: "Fitness", href: "/docs/widgets/fitness", status: "coming-soon" },
+            { name: "Health", href: "/docs/widgets/health", status: "coming-soon" },
         ],
     },
     {
