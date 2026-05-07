@@ -1,0 +1,341 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* ── 1. Page Header ── */
+.header {
+    padding: 16px 20px;
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.headerIconBox {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-primary-subtle);
+    border: 1px solid var(--color-border-primary-subtle);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerTitles {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    margin: 0;
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.primaryBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--color-primary);
+    color: var(--color-primary-text);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: 13px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.primaryBtn:hover { opacity: 0.9; }
+
+.secondaryBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-lg);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.secondaryBtn:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-strong);
+}
+
+/* ── 2. Summary Bar ── */
+.summaryBar {
+    display: flex;
+    align-items: center;
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-standard);
+    border-radius: var(--radius-xl);
+    padding: 16px 24px;
+}
+
+.summaryItem {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.summaryIconBox {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.summaryContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.summaryLabel {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.summaryValue {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.summaryDivider {
+    width: 1px;
+    height: 32px;
+    background: var(--color-border-subtle);
+    margin: 0 24px;
+}
+
+/* ── 3. Main Grid ── */
+.mainGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-standard);
+    border-radius: var(--radius-xl);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.cardTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.tabs {
+    display: flex;
+    gap: 2px;
+    background: var(--color-bg-input);
+    padding: 4px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-subtle);
+}
+
+.tab {
+    padding: 4px 12px;
+    border-radius: var(--radius-md);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    background: transparent;
+    border: none;
+    transition: all 0.2s;
+}
+
+.tab:hover:not(.tabActive) { color: var(--color-text-primary); }
+
+.tabActive {
+    background: var(--color-bg-primary-subtle);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Table */
+.tableHeader {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 60px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-tertiary);
+}
+
+.tableRows {
+    display: flex;
+    flex-direction: column;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 60px;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.tableRow:last-child { border-bottom: none; }
+.tableRow:hover { background: var(--color-bg-hover); }
+
+.cellId { font-family: monospace; color: var(--color-text-secondary); }
+.cellClient { font-weight: 500; color: var(--color-text-primary); }
+.cellAmount { font-weight: 600; color: var(--color-text-primary); }
+.cellDate { color: var(--color-text-tertiary); }
+
+.statusBadge {
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.statusSuccess { background: var(--color-success-bg); color: var(--color-success); border: 1px solid var(--color-success-border); }
+.statusWarning { background: var(--color-warning-bg); color: var(--color-warning); border: 1px solid var(--color-warning-border); }
+.statusError { background: var(--color-error-bg); color: var(--color-error); border: 1px solid var(--color-error-border); }
+.statusDraft { background: var(--color-bg-elevated); color: var(--color-text-secondary); border: 1px solid var(--color-border-standard); }
+
+.cellActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.iconBtn {
+    background: none;
+    border: none;
+    color: var(--color-text-tertiary);
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconBtn:hover {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+}
+
+/* Budgets */
+.viewAllBtn {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.viewAllBtn:hover { color: var(--color-text-primary); }
+
+.budgetList {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.budgetItem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.budgetTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.budgetDept {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.budgetAmt {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.progressBar {
+    height: 8px;
+    background: var(--color-border-medium);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.budgetBottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.budgetDesc {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+}

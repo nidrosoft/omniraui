@@ -1,0 +1,434 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* ── 1. Page Header ── */
+.header {
+    padding: 16px 20px;
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.headerIconBox {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-primary-subtle);
+    border: 1px solid var(--color-border-primary-subtle);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerTitles {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    margin: 0;
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.primaryBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--color-primary);
+    color: var(--color-primary-text);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: 13px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.primaryBtn:hover { opacity: 0.9; }
+
+.secondaryBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-lg);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.secondaryBtn:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-strong);
+}
+
+/* ── 2. KPI Grid ── */
+.kpiGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.kpiCard {
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-standard);
+    border-radius: var(--radius-xl);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.15s;
+}
+
+.kpiCard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.kpiLabel {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.kpiValueRow {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.kpiValue {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1;
+}
+
+.kpiChange {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+}
+
+.kpiPositive {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+}
+
+.kpiNegative {
+    background: var(--color-warning-bg);
+    color: var(--color-warning);
+}
+
+/* ── 3. Charts ── */
+.chartGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-standard);
+    border-radius: var(--radius-xl);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.cardTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.periodSelector {
+    display: flex;
+    gap: 2px;
+    background: var(--color-bg-input);
+    padding: 2px;
+    border-radius: var(--radius-md);
+}
+
+.periodBtn {
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+}
+
+.periodBtn:hover:not(.periodBtnActive) {
+    color: var(--color-text-primary);
+}
+
+.periodBtnActive {
+    background: var(--color-bg-primary-subtle);
+    color: var(--color-primary);
+}
+
+.cardBody {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bar Chart */
+.barChart {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    padding-top: 20px;
+}
+
+.barWrapper {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    group: bar;
+}
+
+.bar {
+    width: 100%;
+    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-gradient) 100%);
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s ease;
+    opacity: 0.85;
+}
+
+.barWrapper:hover .bar {
+    opacity: 1;
+    filter: brightness(1.2);
+}
+
+.barLabel {
+    text-align: center;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+    margin-top: 8px;
+}
+
+.barValue {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.barWrapper:hover .barValue {
+    opacity: 1;
+    color: var(--color-text-primary);
+}
+
+/* Line Chart */
+.lineChartWrapper {
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+
+.lineChartSvg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.lineChartLabels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+}
+
+/* ── 4. Breakdowns ── */
+.breakdownGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.viewAllBtn {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.viewAllBtn:hover { color: var(--color-text-primary); }
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    padding: 8px 20px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-tertiary);
+}
+
+.tableRows {
+    display: flex;
+    flex-direction: column;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.tableRow:last-child { border-bottom: none; }
+.tableRow:hover { background: var(--color-bg-hover); }
+
+.cellTeam { font-weight: 500; color: var(--color-text-primary); }
+.cellSuccess { color: var(--color-success); font-weight: 500; }
+
+/* Donut Chart */
+.donutWrapper {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    flex: 1;
+}
+
+.donutChart {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--color-primary) 0% 35%,
+        var(--color-info) 35% 55%,
+        var(--color-warning) 55% 75%,
+        var(--color-success) 75% 90%,
+        var(--color-text-tertiary) 90% 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donutCenter {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: var(--color-bg-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.donutCenterValue {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1;
+}
+
+.donutCenterLabel {
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.donutLegend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.legendDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.legendLabel {
+    flex: 1;
+    color: var(--color-text-secondary);
+}
+
+.legendPct {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}

@@ -153,7 +153,7 @@ const AgentChip = forwardRef<HTMLDivElement, AgentChipProps>(function AgentChip(
                         {agent.name.charAt(0)}
                     </div>
                     {activity.state === "completed" && (
-                        <div className={s.completedCheck}>
+                        <div className={s.completedCheck} style={{ background: agent.color }}>
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                                 <path d="M3 7l3 3 5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>

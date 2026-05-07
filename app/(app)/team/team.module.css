@@ -1,0 +1,272 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* ── 1. Page Header ── */
+.header {
+    padding: 16px 20px;
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-standard);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.headerIconBox {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-primary-subtle);
+    border: 1px solid var(--color-border-primary-subtle);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerTitles {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    margin: 0;
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border-standard);
+    border-radius: var(--radius-md);
+    width: 240px;
+}
+
+.searchIcon {
+    color: var(--color-text-tertiary);
+}
+
+.searchInput {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--color-text-primary);
+    font-size: 13px;
+    width: 100%;
+}
+
+.primaryBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--color-primary);
+    color: var(--color-primary-text);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: 13px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.primaryBtn:hover { opacity: 0.9; }
+
+/* ── 2. Team Grid ── */
+.teamGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.teamCard {
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-standard);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.teamCard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.cardTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.avatarContainer {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-bg-primary-subtle);
+    border: 2px solid var(--color-border-primary-subtle);
+    color: var(--color-primary);
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.statusDot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--color-bg-card);
+}
+
+.statusOnline { background: var(--color-success); }
+.statusAway { background: var(--color-warning); }
+.statusOffline { background: var(--color-text-tertiary); }
+
+.memberName {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 2px 0;
+}
+
+.memberRole {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    margin: 0 0 12px 0;
+}
+
+.deptBadge {
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-primary-subtle);
+    color: var(--color-primary);
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid var(--color-border-primary-subtle);
+}
+
+.cardStats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 0;
+    margin-top: 16px;
+    border-top: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+}
+
+.statValue {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.statLabel {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+}
+
+.statDivider {
+    width: 1px;
+    height: 24px;
+    background: var(--color-border-subtle);
+}
+
+.cardActions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.actionBtnSecondary {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 0;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-standard);
+    color: var(--color-text-primary);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.actionBtnSecondary:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-strong);
+}
+
+.actionBtnGhost {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 0;
+    border-radius: var(--radius-lg);
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.actionBtnGhost:hover {
+    background: var(--color-bg-sunken);
+    color: var(--color-text-primary);
+}

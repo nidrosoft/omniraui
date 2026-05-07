@@ -13,28 +13,48 @@
 
 /* --- CSS Custom Properties: Dark Mode (Default) --- */
 [data-theme="dark"] {
+    /* Primary Accent (Mint/Teal for Pulse Dashboard) */
+    --color-primary: #3FC39E;
+    --color-primary-hover: #36B08E;
+    --color-primary-gradient: #2D9A7A;
+    --color-primary-text: #121212;
+
+    /* Legacy Lime Accent (Kept for backward compatibility with old components) */
     --color-lime: #D2FE17;
     --color-lime-hover: #c0e616;
     --color-lime-gradient: #ABC928;
     --color-lime-text: #121212;
 
+    /* Backgrounds */
     --color-bg-primary: #202020;
     --color-bg-secondary: #1a1a1a;
     --color-bg-card: rgba(248, 248, 248, 0.03);
     --color-bg-elevated: rgba(248, 248, 248, 0.06);
     --color-bg-input: rgba(248, 248, 248, 0.04);
     --color-bg-hover: rgba(248, 248, 248, 0.05);
+    --color-bg-sunken: rgba(248, 248, 248, 0.02);
     --color-bg-overlay: rgba(10, 10, 10, 0.97);
     --color-bg-sidebar: #1a1a1a;
+
+    /* Primary Accent Backgrounds */
+    --color-bg-primary-subtle: rgba(63, 195, 158, 0.06);
+    --color-bg-primary-medium: rgba(63, 195, 158, 0.08);
+    --color-bg-primary-strong: rgba(63, 195, 158, 0.12);
 
     --color-text-primary: rgba(248, 248, 248, 0.95);
     --color-text-secondary: rgba(248, 248, 248, 0.70);
     --color-text-tertiary: rgba(248, 248, 248, 0.50);
 
+    /* Borders */
     --color-border-subtle: rgba(255, 255, 255, 0.05);
     --color-border-standard: rgba(255, 255, 255, 0.06);
     --color-border-medium: rgba(255, 255, 255, 0.08);
     --color-border-strong: rgba(255, 255, 255, 0.15);
+
+    /* Primary Accent Borders */
+    --color-border-primary-subtle: rgba(63, 195, 158, 0.10);
+    --color-border-primary-medium: rgba(63, 195, 158, 0.15);
+    --color-border-primary-strong: rgba(63, 195, 158, 0.30);
 
     --color-border-lime-subtle: rgba(210, 254, 23, 0.1);
     --color-border-lime-medium: rgba(210, 254, 23, 0.15);
@@ -62,7 +82,7 @@
     --shadow-card-light: inset 1px 2px 12px rgba(248, 248, 248, 0.03), 0px 8px 28px rgba(0, 0, 0, 0.12);
     --shadow-card-accent: inset 2px 4px 16px rgba(210, 254, 23, 0.04), 0px 16px 48px rgba(0, 0, 0, 0.2);
     --shadow-card-hover: inset 2px 4px 16px rgba(248, 248, 248, 0.08), 0px 12px 40px rgba(0, 0, 0, 0.28);
-    --shadow-btn-primary: 0 8px 24px rgba(210, 254, 23, 0.3);
+    --shadow-btn-primary: 0 8px 24px rgba(63, 195, 158, 0.3);
     --shadow-glow-lime: 0 0 8px rgba(210, 254, 23, 0.6), 0 0 16px rgba(210, 254, 23, 0.3);
 
     --gradient-text: linear-gradient(93deg, rgba(248, 248, 248, 0.9), rgba(248, 248, 248, 0.5));
