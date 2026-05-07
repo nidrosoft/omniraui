@@ -38,8 +38,10 @@
     border-radius: var(--radius-xl);
     background: var(--color-bg-card);
     border: 1px solid var(--color-border-standard);
-    box-shadow: var(--shadow-card), 0 24px 48px rgba(0, 0, 0, 0.3);
-    backdrop-filter: var(--blur-standard);
+    /* Light card shadow + elevation drop so the modal lifts off the overlay
+       without the inset heaviness of `--shadow-card` and without
+       `backdrop-filter` doubling-up over the overlay's own blur. */
+    box-shadow: var(--shadow-card-light), 0 24px 48px rgba(0, 0, 0, 0.3);
     animation: slideUp 0.25s ease;
     overflow: hidden;
 }
@@ -57,7 +59,7 @@
 .staticPreview {
     position: relative;
     animation: none;
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-card-light);
     max-height: none;
 }
 

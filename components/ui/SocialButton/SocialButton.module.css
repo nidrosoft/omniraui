@@ -200,7 +200,6 @@
     background: var(--color-bg-card);
     border-color: var(--color-border-standard);
     color: var(--color-text-primary);
-    backdrop-filter: var(--blur-standard);
 }
 
 .theme-color:hover:not(:disabled) {

@@ -38,7 +38,6 @@
     background: var(--color-bg-card);
     border: 1.5px solid var(--color-border-standard);
     box-shadow: var(--shadow-card-light);
-    backdrop-filter: var(--blur-standard);
     border-radius: var(--radius-md);
     font-weight: 600;
 }

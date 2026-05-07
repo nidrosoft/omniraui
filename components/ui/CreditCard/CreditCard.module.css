@@ -42,8 +42,7 @@
     background: var(--color-bg-card);
     border: 1px solid var(--color-border-standard);
     color: var(--color-text-primary);
-    box-shadow: var(--shadow-card);
-    backdrop-filter: var(--blur-standard);
+    box-shadow: var(--shadow-card-light);
 }
 
 /* ── Top row ── */

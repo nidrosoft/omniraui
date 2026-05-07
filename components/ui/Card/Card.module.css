@@ -3,8 +3,7 @@
     border-radius: var(--radius-2xl);
     background: var(--color-bg-card);
     border: 1.5px solid var(--color-border-standard);
-    box-shadow: var(--shadow-card);
-    backdrop-filter: var(--blur-standard);
+    box-shadow: var(--shadow-card-light);
     transition: all 0.35s ease;
     overflow: hidden;
 }

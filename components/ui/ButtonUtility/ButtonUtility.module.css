@@ -87,7 +87,6 @@
     background: var(--color-bg-card);
     color: var(--color-text-secondary);
     border-color: var(--color-border-standard);
-    backdrop-filter: var(--blur-standard);
 }
 
 .color-secondary:hover:not(:disabled) {

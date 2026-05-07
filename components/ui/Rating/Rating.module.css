@@ -54,7 +54,6 @@
     border-radius: var(--radius-full);
     background: var(--color-bg-card);
     border: 1px solid var(--color-border-standard);
-    backdrop-filter: var(--blur-standard);
 }
 
 .badgeStars {

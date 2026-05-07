@@ -8,7 +8,6 @@
     background: var(--color-bg-card);
     border: 1.5px solid var(--color-border-standard);
     box-shadow: var(--shadow-card-light);
-    backdrop-filter: var(--blur-standard);
     overflow: hidden;
     transition: box-shadow 0.3s ease;
 }
